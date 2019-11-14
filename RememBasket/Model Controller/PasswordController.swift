@@ -11,7 +11,6 @@ import Foundation
 class PasswordController {
     
     //CRUD
-    
     //create password
     
     //read password
