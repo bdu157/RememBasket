@@ -45,8 +45,4 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
     }
     
     
-    @IBAction func menuButtonTapped(_ sender: Any) {
-    }
-    
-    
 }
