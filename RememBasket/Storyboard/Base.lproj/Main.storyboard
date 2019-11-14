@@ -95,8 +95,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnq-LF-htF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnq-LF-htF">
                                 <rect key="frame" x="0.0" y="108" width="414" height="788"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="dJC-9b-2dr">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -127,15 +128,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RememBasket" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iir-sb-NTm">
-                                <rect key="frame" x="102" y="49" width="210.5" height="54.5"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="34"/>
-                                <color key="textColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-Rb-y10">
-                                <rect key="frame" x="342.5" y="64" width="34" height="34"/>
-                                <color key="backgroundColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="342" y="64" width="34" height="34"/>
+                                <color key="backgroundColor" red="0.9623369574546814" green="0.61761635541915894" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Tj-Rb-y10" secondAttribute="height" multiplier="1:1" id="Spd-g4-O5p"/>
                                 </constraints>
@@ -146,16 +141,19 @@
                                     <segue destination="acQ-K7-UNU" kind="presentation" modalPresentationStyle="fullScreen" id="cHz-5k-e9O"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RememBasketLogo" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-0j-48g">
+                                <rect key="frame" x="107" y="45" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2Kv-l3-LCj"/>
+                                    <constraint firstAttribute="width" constant="200" id="swQ-lw-jfL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="leading" secondItem="Ivz-js-tDb" secondAttribute="leading" id="L3Y-ve-AEt"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Qnq-LF-htF" secondAttribute="bottom" constant="-83" id="QIa-gL-LHk"/>
-                            <constraint firstItem="Iir-sb-NTm" firstAttribute="top" secondItem="Ivz-js-tDb" secondAttribute="top" constant="5" id="S2K-rF-LmZ"/>
-                            <constraint firstItem="2Tj-Rb-y10" firstAttribute="leading" secondItem="Iir-sb-NTm" secondAttribute="trailing" constant="30" id="Zub-8Q-Mne"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="top" secondItem="2Tj-Rb-y10" secondAttribute="bottom" constant="10" id="gOq-Gk-kjP"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="centerX" secondItem="Iir-sb-NTm" secondAttribute="centerX" id="sOG-is-VeQ"/>
-                            <constraint firstItem="Iir-sb-NTm" firstAttribute="centerX" secondItem="vdP-Yq-XNh" secondAttribute="centerX" id="spj-kh-NSI"/>
+                            <constraint firstItem="J5z-0j-48g" firstAttribute="centerX" secondItem="vdP-Yq-XNh" secondAttribute="centerX" id="B8l-wi-f07"/>
+                            <constraint firstItem="J5z-0j-48g" firstAttribute="top" secondItem="vdP-Yq-XNh" secondAttribute="top" constant="45" id="WN3-1q-zRc"/>
+                            <constraint firstItem="2Tj-Rb-y10" firstAttribute="leading" secondItem="J5z-0j-48g" secondAttribute="trailing" constant="35" id="sdx-3i-upC"/>
                             <constraint firstItem="2Tj-Rb-y10" firstAttribute="top" secondItem="Ivz-js-tDb" secondAttribute="top" constant="20" id="x6q-FU-sbM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ivz-js-tDb"/>
@@ -227,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVp-93-2Mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="674"/>
+            <point key="canvasLocation" x="18.840579710144929" y="673.66071428571422"/>
         </scene>
         <!--Notes-->
         <scene sceneID="fpB-aG-vll">
@@ -249,6 +247,9 @@
             <point key="canvasLocation" x="668" y="-305"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="RememBasketLogo" width="663" height="177"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cHz-5k-e9O"/>
     </inferredMetricsTieBreakers>
