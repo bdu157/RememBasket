@@ -10,10 +10,11 @@ import UIKit
 
 class PasswordDetailViewController: UIViewController {
 
+    @IBOutlet weak var dismissButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        dismissButton.layer.cornerRadius = dismissButton.frame.size.width / 2
     }
     
 
@@ -26,5 +27,8 @@ class PasswordDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
