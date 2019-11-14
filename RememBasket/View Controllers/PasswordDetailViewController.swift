@@ -14,7 +14,6 @@ class PasswordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dismissButton.layer.cornerRadius = dismissButton.frame.size.width / 2
     }
     
 

@@ -49,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				0B666D8C2368720800B0E72A /* RememBasket */,
+				0B677351237CF12F003C1D53 /* Resources */,
 				0B666D8B2368720800B0E72A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,7 +69,6 @@
 				0B677354237CF154003C1D53 /* Model Controller */,
 				0B677357237CF17D003C1D53 /* View Controllers */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
-				0B677351237CF12F003C1D53 /* Resources */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 			);
 			path = RememBasket;
