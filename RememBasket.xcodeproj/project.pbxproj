@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */; };
 		0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8D2368720800B0E72A /* AppDelegate.swift */; };
 		0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8F2368720800B0E72A /* SceneDelegate.swift */; };
 		0B666D952368720800B0E72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B666D932368720800B0E72A /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		0B666D8A2368720800B0E72A /* RememBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B666D8D2368720800B0E72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B666D8F2368720800B0E72A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B01BAC823841CB6009B1C6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0B666D812368720800B0E72A = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 				0B677353237CF14B003C1D53 /* Model */,
 				0B677354237CF154003C1D53 /* Model Controller */,
 				0B677357237CF17D003C1D53 /* View Controllers */,
+				0B01BAC823841CB6009B1C6F /* Extensions */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 			);
@@ -192,6 +203,7 @@
 			files = (
 				0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordViewController.swift in Sources */,
+				0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */,
@@ -350,7 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.RememBasket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -368,7 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.RememBasket;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

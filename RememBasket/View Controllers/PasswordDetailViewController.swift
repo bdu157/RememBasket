@@ -9,7 +9,7 @@
 import UIKit
 
 class PasswordDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,7 +21,7 @@ class PasswordDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.updateViews()
     }
     
     var password: Password? {
@@ -30,15 +30,15 @@ class PasswordDetailViewController: UIViewController {
         }
     }
     
-    var passwordController: PasswordController!
-
+    var passwordController: PasswordController?
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-  
+        
     }
-
+    
     @IBAction func dismissButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -46,10 +46,16 @@ class PasswordDetailViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = self.titleTextField.text,
             let userName = self.emailTextField.text,
-            let password = self.passwordTextField.text else {return}
+            let passwordInput = self.passwordTextField.text,
+            let passwordController = passwordController else {return}
         
-        self.passwordController.createPassword(title: title, userName: userName, password: password)
+        if let password = password {
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: nil)
+        } else {
+            passwordController.createPassword(title: title, userName: userName, password: passwordInput)
+        }
         
+        NotificationCenter.default.post(name: .needtoReloadData, object: self)
         self.dismiss(animated: true, completion: nil)
     }
     

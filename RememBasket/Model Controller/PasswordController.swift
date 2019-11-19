@@ -24,12 +24,11 @@ class PasswordController {
     //update password
     func updatePassword(for password: Password, changeTitleTo: String, changeUserNameTo: String, changePasswordTo: String, changeNotesTo: String?, modifiedDate: Date = Date()) {
         guard let index = self.passwords.firstIndex(of: password) else {return}
-        var updatingPassword = self.passwords[index]
-        updatingPassword.title = changeTitleTo
-        updatingPassword.username = changeUserNameTo
-        updatingPassword.password = changePasswordTo
-        updatingPassword.notes = changeNotesTo
-        updatingPassword.createdDate = modifiedDate
+        self.passwords[index].title = changeTitleTo
+        self.passwords[index].username = changeUserNameTo
+        self.passwords[index].password = changePasswordTo
+        self.passwords[index].notes = changeNotesTo
+        self.passwords[index].createdDate = modifiedDate
     }
     
     //delete password
