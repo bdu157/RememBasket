@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
-class password: Codable {
+struct Password: Codable, Equatable {
     var title: String
     var username: String
     var password: String
     var notes: String?
-    let createdDate: Date
+    var createdDate: Date
     
     init(title: String, username: String, password: String, notes: String? = nil, createdDate: Date = Date()) {
         self.title = title
