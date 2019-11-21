@@ -27,6 +27,8 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
         menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
         
         self.observeShouldReloadData()
+        
+        
     }
     
     //observer to reload data

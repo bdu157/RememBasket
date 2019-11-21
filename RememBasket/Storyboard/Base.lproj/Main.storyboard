@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="thv-ea-mHe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R28-pe-owM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="510"/>
+            <point key="canvasLocation" x="1094" y="478"/>
         </scene>
         <!--Passwords-->
         <scene sceneID="rZh-o0-VyG">
@@ -96,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnq-LF-htF">
-                                <rect key="frame" x="0.0" y="108" width="414" height="788"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="793"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="dJC-9b-2dr">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
@@ -172,12 +172,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Qnq-LF-htF" firstAttribute="leading" secondItem="Ivz-js-tDb" secondAttribute="leading" id="L3Y-ve-AEt"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Qnq-LF-htF" secondAttribute="bottom" constant="-83" id="QIa-gL-LHk"/>
+                            <constraint firstAttribute="bottom" secondItem="Qnq-LF-htF" secondAttribute="bottom" id="Ltq-F6-b7Q"/>
                             <constraint firstItem="Iir-sb-NTm" firstAttribute="top" secondItem="Ivz-js-tDb" secondAttribute="top" constant="5" id="S2K-rF-LmZ"/>
                             <constraint firstItem="2Tj-Rb-y10" firstAttribute="leading" secondItem="Iir-sb-NTm" secondAttribute="trailing" constant="30" id="Zub-8Q-Mne"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="top" secondItem="2Tj-Rb-y10" secondAttribute="bottom" constant="10" id="gOq-Gk-kjP"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="centerX" secondItem="Iir-sb-NTm" secondAttribute="centerX" id="sOG-is-VeQ"/>
+                            <constraint firstItem="Qnq-LF-htF" firstAttribute="leading" secondItem="Ivz-js-tDb" secondAttribute="leading" id="iST-ef-KpQ"/>
+                            <constraint firstItem="Qnq-LF-htF" firstAttribute="top" secondItem="2Tj-Rb-y10" secondAttribute="bottom" constant="5" id="qMI-Cb-eoX"/>
                             <constraint firstItem="Iir-sb-NTm" firstAttribute="centerX" secondItem="vdP-Yq-XNh" secondAttribute="centerX" id="spj-kh-NSI"/>
+                            <constraint firstItem="Qnq-LF-htF" firstAttribute="trailing" secondItem="Ivz-js-tDb" secondAttribute="trailing" id="vjp-17-ZGI"/>
                             <constraint firstItem="2Tj-Rb-y10" firstAttribute="top" secondItem="Ivz-js-tDb" secondAttribute="top" constant="20" id="x6q-FU-sbM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ivz-js-tDb"/>

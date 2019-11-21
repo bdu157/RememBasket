@@ -62,7 +62,7 @@ extension transitionAnimation: UIViewControllerAnimatedTransitioning {
                 UIView.animate(withDuration: duration, animations: {
                     self.circle.transform = CGAffineTransform.identity
                     presentedView.transform = CGAffineTransform.identity
-                    presentedView.alpha = 1
+                    presentedView.alpha = 1.0
                     presentedView.center = viewCenter
                 }) { (success:Bool) in
                     transitionContext.completeTransition(success)
