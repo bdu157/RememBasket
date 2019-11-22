@@ -16,7 +16,7 @@ struct Password: Codable, Equatable {
     var notes: String?
     var createdDate: Date
     
-    init(title: String, username: String, password: String, notes: String? = nil, createdDate: Date = Date()) {
+    init(title: String, username: String, password: String, notes: String?, createdDate: Date = Date()) {
         self.title = title
         self.username = username
         self.password = password

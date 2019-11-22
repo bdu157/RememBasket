@@ -14,7 +14,7 @@ class PasswordController {
     
     //CRUD
     //create password
-    func createPassword(title: String, userName: String, password: String, notes: String = "", createDate: Date = Date()) {
+    func createPassword(title: String, userName: String, password: String, notes: String?, createDate: Date = Date()) {
         let password = Password(title: title, username: userName, password: password, notes: notes, createdDate: createDate)
         self.passwords.append(password)
     }

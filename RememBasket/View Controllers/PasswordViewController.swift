@@ -26,7 +26,7 @@ class PasswordViewController: UIViewController, UITableViewDelegate, UITableView
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search Password"
-        searchController.searchBar.tintColor = #colorLiteral(red: 0.9525685906, green: 0.567997992, blue: 0, alpha: 1)
+        searchController.searchBar.tintColor = .orange
     }
     
     
