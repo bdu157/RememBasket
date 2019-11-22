@@ -22,9 +22,9 @@ class PasswordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
-        self.titleTextField.tintColor = #colorLiteral(red: 0.9427343607, green: 0.5175138712, blue: 0.1222904697, alpha: 1)
-        self.emailTextField.tintColor = #colorLiteral(red: 0.9427343607, green: 0.5175138712, blue: 0.1222904697, alpha: 1)
-        self.passwordTextField.tintColor = #colorLiteral(red: 0.9427343607, green: 0.5175138712, blue: 0.1222904697, alpha: 1)
+        self.titleTextField.tintColor = .white
+        self.emailTextField.tintColor = .white
+        self.passwordTextField.tintColor = .white
     }
     
     var password: Password? {
