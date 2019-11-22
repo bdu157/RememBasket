@@ -8,13 +8,9 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource {
+class PasswordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    let transition = transitionAnimation()
     
     let passwordController = PasswordController()
     
@@ -24,20 +20,13 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
         tableView.delegate = self
         tableView.dataSource = self
         
-        menuButton.layer.cornerRadius = menuButton.frame.size.width / 2
+        navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.observeShouldReloadData()
-        
-        
-    }
-    
-    //observer to reload data
-    func observeShouldReloadData() {
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshViews(notification:)), name: .needtoReloadData, object: nil)
-    }
-    
-    @objc func refreshViews(notification: Notification) {
-        self.tableView.reloadData()
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.placeholder = "Search Password"
+        searchController.searchBar.tintColor = .orange
     }
     
     
@@ -71,11 +60,8 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailVC = segue.destination as! PasswordDetailViewController
-        detailVC.transitioningDelegate = self
-        detailVC.modalPresentationStyle = .custom
-        
         if segue.identifier == "ToUpdatePassword" {
+            let detailVC = segue.destination as! PasswordDetailViewController
             guard let selectedRow = tableView.indexPathForSelectedRow else {return}
             let password = self.passwordController.passwords[selectedRow.row]
             detailVC.password = password
@@ -87,6 +73,7 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
     }
     
     
+    /*
     //transition animation
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
@@ -101,4 +88,5 @@ class PasswordViewController: UIViewController, UIViewControllerTransitioningDel
         transition.circleColor = menuButton.backgroundColor!
         return transition
     }
+ */
 }
