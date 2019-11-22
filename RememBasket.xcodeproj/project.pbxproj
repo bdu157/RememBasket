@@ -18,6 +18,7 @@
 		0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B67735A237D20D8003C1D53 /* transitionAnimation.swift */; };
 		0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA42369C60100CEAFF5 /* Password.swift */; };
 		0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */; };
+		0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0B67735A237D20D8003C1D53 /* transitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transitionAnimation.swift; sourceTree = "<group>"; };
 		0B6E6AA42369C60100CEAFF5 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
+		0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				0B677353237CF14B003C1D53 /* Model */,
 				0B677354237CF154003C1D53 /* Model Controller */,
 				0B677357237CF17D003C1D53 /* View Controllers */,
+				0B85DC9F23883F3A00F4C95B /* Cells */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 			);
@@ -128,6 +131,14 @@
 				0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0B85DC9F23883F3A00F4C95B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +215,7 @@
 				0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordViewController.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */,
+				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */,

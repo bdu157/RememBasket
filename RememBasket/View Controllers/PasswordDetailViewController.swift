@@ -58,8 +58,6 @@ class PasswordDetailViewController: UIViewController {
     
     var passwordController: PasswordController?
     
-    
-    
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = self.titleTextField.text,
             let userName = self.emailTextField.text,
@@ -86,6 +84,5 @@ class PasswordDetailViewController: UIViewController {
         } else {
             self.title = "Add Password"
         }
-        
     }
 }
