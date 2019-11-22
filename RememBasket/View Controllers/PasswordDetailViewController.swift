@@ -77,10 +77,15 @@ class PasswordDetailViewController: UIViewController {
     
     //private methods
     private func updateViews() {
-        guard let password = self.password else {return}
-        self.titleTextField?.text = password.title
-        self.emailTextField?.text = password.username
-        self.passwordTextField?.text = password.password
-        self.notesTextView?.text = password.notes
+        if let password = self.password {
+            self.title = password.title
+            self.titleTextField?.text = password.title
+            self.emailTextField?.text = password.username
+            self.passwordTextField?.text = password.password
+            self.notesTextView?.text = password.notes
+        } else {
+            self.title = "Add Password"
+        }
+        
     }
 }
