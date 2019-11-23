@@ -46,7 +46,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Cee-SC-sLW" kind="relationship" relationship="viewControllers" id="5xh-ZG-a4i"/>
+                        <segue destination="CCd-xu-Agx" kind="relationship" relationship="viewControllers" id="iEO-VX-Nvh"/>
                         <segue destination="o1h-jl-CjP" kind="relationship" relationship="viewControllers" id="FCh-xg-OaM"/>
                         <segue destination="CKj-u5-WKG" kind="relationship" relationship="viewControllers" id="CKr-GH-0oQ"/>
                     </connections>
@@ -85,61 +85,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R28-pe-owM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2479.7101449275365" y="509.59821428571428"/>
+            <point key="canvasLocation" x="3052.1739130434785" y="366.96428571428572"/>
         </scene>
         <!--Passwords-->
-        <scene sceneID="rZh-o0-VyG">
+        <scene sceneID="w0e-x5-sTO">
             <objects>
-                <viewController id="71p-2i-koH" customClass="PasswordViewController" customModule="RememBasket" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vdP-Yq-XNh">
+                <tableViewController id="LDl-mP-5dL" customClass="PasswordTableViewController" customModule="RememBasket" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fZy-Jb-FBb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qnq-LF-htF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PasswordCell" rowHeight="70" id="BlW-PG-S9T" customClass="PasswordTableViewCell" customModule="RememBasket" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BlW-PG-S9T" id="Diq-lX-MAp">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="acQ-K7-UNU" kind="show" identifier="ToUpdatePassword" id="InQ-aA-tbk"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="trailing" secondItem="Ivz-js-tDb" secondAttribute="trailing" id="1Xh-kP-1WX"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="leading" secondItem="Ivz-js-tDb" secondAttribute="leading" id="612-0t-M6C"/>
-                            <constraint firstItem="Qnq-LF-htF" firstAttribute="top" secondItem="Ivz-js-tDb" secondAttribute="top" id="Q5S-8C-sKF"/>
-                            <constraint firstAttribute="bottom" secondItem="Qnq-LF-htF" secondAttribute="bottom" id="WgK-lU-E2J"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ivz-js-tDb"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Passwords" id="LAx-2s-gn3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="eVE-NX-aCs">
-                            <color key="tintColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tfu-zs-ERZ">
-                            <color key="tintColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PasswordCell" textLabel="rlA-Ji-igL" detailTextLabel="ah7-gs-jdu" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="HCF-YT-f3J" customClass="PasswordTableViewCell" customModule="RememBasket" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HCF-YT-f3J" id="0hY-Ze-QfZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rlA-Ji-igL">
+                                            <rect key="frame" x="20" y="17" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ah7-gs-jdu">
+                                            <rect key="frame" x="20" y="40.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="acQ-K7-UNU" kind="show" identifier="ToUpdatePassword" id="4a6-6g-qKL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LDl-mP-5dL" id="2z3-p6-iKZ"/>
+                            <outlet property="delegate" destination="LDl-mP-5dL" id="E0I-2r-wFS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Passwords" id="OFZ-tP-Or6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Iak-Ob-5Un"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cwl-aB-Cqz">
                             <connections>
-                                <segue destination="acQ-K7-UNU" kind="show" identifier="ToAddPassword" id="Z9v-BO-rNv"/>
+                                <segue destination="acQ-K7-UNU" kind="show" identifier="ToAddPassword" id="jWk-Zq-q5m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="Qnq-LF-htF" id="N8k-wk-tX3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0eX-Zq-Ed9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azn-l4-cng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="674"/>
+            <point key="canvasLocation" x="-13.043478260869566" y="649.55357142857144"/>
         </scene>
         <!--Add Password-->
         <scene sceneID="Oc8-NU-K7u">
@@ -216,7 +217,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="87d-9g-3kf">
                             <color key="tintColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="saveButtonTapped:" destination="acQ-K7-UNU" id="zl6-0n-L84"/>
+                                <action selector="saveButtonTapped:" destination="acQ-K7-UNU" id="ybk-sJ-ZLr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -229,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVp-93-2Mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="674"/>
+            <point key="canvasLocation" x="778" y="650"/>
         </scene>
         <!--Notes-->
         <scene sceneID="fpB-aG-vll">
@@ -251,30 +252,27 @@
             <point key="canvasLocation" x="668" y="-305"/>
         </scene>
         <!--Passwords-->
-        <scene sceneID="ZV3-Br-bbt">
+        <scene sceneID="NRJ-sN-eBi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cee-SC-sLW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Passwords" id="75u-P0-Cmp"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CCd-xu-Agx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Passwords" id="9lz-w5-yFg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yAm-Iz-2RY">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="hKf-WN-EOo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TdH-Gd-5PK">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
-                        <segue destination="71p-2i-koH" kind="relationship" relationship="rootViewController" id="7Vj-Cy-CyI"/>
+                        <segue destination="LDl-mP-5dL" kind="relationship" relationship="rootViewController" id="wcZ-kL-VXb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dfJ-2j-996" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2x-xJ-OLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="674"/>
+            <point key="canvasLocation" x="-748" y="650"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z9v-BO-rNv"/>
+        <segue reference="jWk-Zq-q5m"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
