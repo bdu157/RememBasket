@@ -113,7 +113,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksI-Fj-qpO">
-                                                    <rect key="frame" x="315" y="12" width="10" height="41"/>
+                                                    <rect key="frame" x="310" y="12" width="10" height="41"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                                     <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -142,7 +142,7 @@
                                                 <constraint firstItem="mQx-Fy-UtY" firstAttribute="top" secondItem="b56-jf-3vI" secondAttribute="top" constant="20" id="Cw6-5G-vFd"/>
                                                 <constraint firstItem="M8B-Cg-jGs" firstAttribute="leading" secondItem="DbL-PI-uLq" secondAttribute="trailing" constant="10" id="JwG-o0-ksH"/>
                                                 <constraint firstAttribute="trailing" secondItem="mQx-Fy-UtY" secondAttribute="trailing" constant="15" id="TmP-ZX-ia8"/>
-                                                <constraint firstItem="mQx-Fy-UtY" firstAttribute="leading" secondItem="ksI-Fj-qpO" secondAttribute="trailing" constant="10" id="Vlz-jf-IPa"/>
+                                                <constraint firstItem="mQx-Fy-UtY" firstAttribute="leading" secondItem="ksI-Fj-qpO" secondAttribute="trailing" constant="15" id="Vlz-jf-IPa"/>
                                                 <constraint firstAttribute="bottom" secondItem="M8B-Cg-jGs" secondAttribute="bottom" constant="16" id="lWh-Sb-wer"/>
                                                 <constraint firstAttribute="bottom" secondItem="mQx-Fy-UtY" secondAttribute="bottom" constant="20" id="t2H-d8-T8m"/>
                                                 <constraint firstAttribute="bottom" secondItem="ksI-Fj-qpO" secondAttribute="bottom" constant="12" id="wkP-6k-YkG"/>

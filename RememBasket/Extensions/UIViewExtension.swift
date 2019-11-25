@@ -10,10 +10,15 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func setShadowandCornerRadius() {
+    func setShadowandCornerRadius(scale:Bool = true) {
         layer.backgroundColor = UIColor.white.cgColor
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.orange.cgColor
-        layer.cornerRadius = 6.0
+//        layer.borderWidth = 1.3
+//        layer.borderColor = UIColor.orange.cgColor
+  
+        //shadow
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = 10
     }
 }
