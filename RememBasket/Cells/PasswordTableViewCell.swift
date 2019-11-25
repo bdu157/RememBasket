@@ -89,7 +89,7 @@ class PasswordTableViewCell: UITableViewCell {
                 //            })
                 
                 UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                    self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+15), y: self.dividerLabel.center.y)
+                    self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
                 })
                 
                 UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
@@ -121,7 +121,7 @@ class PasswordTableViewCell: UITableViewCell {
                 //            })
                 
                 UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                    self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+15), y: self.dividerLabel.center.y)
+                    self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
                 })
                 
                 UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
