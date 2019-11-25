@@ -24,23 +24,17 @@ class PasswordDetailViewController: UIViewController {
         //title
         titleTextField.tintColor = .orange
         titleTextField.textColor = .black
-        titleTextField.layer.cornerRadius = 8
-        titleTextField.layer.borderWidth = 0.4
-        titleTextField.layer.borderColor = UIColor.orange.cgColor
+        titleTextField.shapeTextField()
         
         //email
         emailTextField.tintColor = .orange
         emailTextField.textColor = .black
-        emailTextField.layer.cornerRadius = 8
-        emailTextField.layer.borderWidth = 0.4
-        emailTextField.layer.borderColor = UIColor.orange.cgColor
+        emailTextField.shapeTextField()
         
         //password
         passwordTextField.tintColor = .orange
         passwordTextField.textColor = .black
-        passwordTextField.layer.cornerRadius = 8
-        passwordTextField.layer.borderWidth = 0.4
-        passwordTextField.layer.borderColor = UIColor.orange.cgColor
+        passwordTextField.shapeTextField()
         
         //notesTextField
         notesTextView.tintColor = .orange
@@ -57,8 +51,6 @@ class PasswordDetailViewController: UIViewController {
     }
     
     var passwordController: PasswordController?
-    
-    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = self.titleTextField.text,
@@ -86,6 +78,5 @@ class PasswordDetailViewController: UIViewController {
         } else {
             self.title = "Add Password"
         }
-        
     }
 }

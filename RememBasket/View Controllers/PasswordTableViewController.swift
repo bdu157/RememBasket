@@ -8,17 +8,12 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet weak var tableView: UITableView!
+class PasswordTableViewController: UITableViewController {
     
     let passwordController = PasswordController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -32,23 +27,23 @@ class PasswordViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     //tableView data source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.passwordController.passwords.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.passwordController.passwords.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
         let password = passwordController.passwords[indexPath.row]
-        cell.textLabel?.text = password.title
-        cell.detailTextLabel?.text = password.username
+        cell.password = password
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let password = self.passwordController.passwords[indexPath.row]
             self.passwordController.deletePassword(for: password)
@@ -62,7 +57,7 @@ class PasswordViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToUpdatePassword" {
             let detailVC = segue.destination as! PasswordDetailViewController
-            guard let selectedRow = tableView.indexPathForSelectedRow else {return}
+            guard let selectedRow = self.tableView.indexPathForSelectedRow else {return}
             let password = self.passwordController.passwords[selectedRow.row]
             detailVC.password = password
             detailVC.passwordController = self.passwordController
