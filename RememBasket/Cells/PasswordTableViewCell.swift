@@ -34,7 +34,7 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel.alpha = 0.0
         self.passwordLabel.alpha = 0.0
         
-        self.basketButton.backgroundColor = .clear
+        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
     }
     
     
@@ -58,18 +58,19 @@ class PasswordTableViewCell: UITableViewCell {
     private func basketButtonAnimation() {
         
         //this will be used through UIImage -> open basket image and closed basket images
-        if self.basketButton.backgroundColor == .clear {
-            self.basketButton.backgroundColor = .orange
+        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
+            self.basketButton.setImage(UIImage(named: "basket1.png"), for: .normal)
         } else {
-            self.basketButton.backgroundColor = .clear
+            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
         }
+        
     }
     
     
     //animationforLabel
     private func dividerAnimation() {
         
-        if self.basketButton.backgroundColor == .clear {
+        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
             
             UILabel.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: {
                 
