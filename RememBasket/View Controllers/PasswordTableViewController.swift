@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordTableViewController: UITableViewController {
+class PasswordTableViewController: UITableViewController, PasswordTableViewCellDelegate {
     
     let passwordController = PasswordController()
     
@@ -38,6 +38,7 @@ class PasswordTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
         let password = passwordController.passwords[indexPath.row]
+        cell.delegate = self
         cell.password = password
         return cell
     }
@@ -49,6 +50,14 @@ class PasswordTableViewController: UITableViewController {
             self.passwordController.deletePassword(for: password)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    //delegate method
+    func toggleOpenBasket(for cell: PasswordTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let password = self.passwordController.passwords[indexPath.row]
+        passwordController.updateOpenBasket(for: password)
+        self.tableView.reloadData()
     }
     
     // MARK: - Navigation

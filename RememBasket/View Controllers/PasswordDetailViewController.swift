@@ -65,7 +65,7 @@ class PasswordDetailViewController: UIViewController {
             passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
             
             //notification to make sure when creating a new password button image should show BasketImage
-            NotificationCenter.default.post(name: .setImageToBasket, object: self)
+            //NotificationCenter.default.post(name: .setImageToBasket, object: self)
         }
         self.navigationController?.popViewController(animated: true)
     }
