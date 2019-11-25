@@ -41,10 +41,9 @@ class PasswordTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
         let password = passwordController.passwords[indexPath.row]
-        cell.textLabel?.text = password.title
-        cell.detailTextLabel?.text = password.username
+        cell.password = password
         return cell
     }
     
