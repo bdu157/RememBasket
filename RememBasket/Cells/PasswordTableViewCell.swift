@@ -35,8 +35,18 @@ class PasswordTableViewCell: UITableViewCell {
         self.passwordLabel.alpha = 0.0
         
         self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        
+        self.observerShouldSetImageToBasket()
     }
     
+    //observer for setting button image to basket for creating a new password
+    func observerShouldSetImageToBasket() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setImageToBasket(notification:)), name: .setImageToBasket, object: nil)
+    }
+    
+    @objc func setImageToBasket(notification: Notification) {
+        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+    }
     
     //private method
     private func updateViews() {
@@ -59,7 +69,7 @@ class PasswordTableViewCell: UITableViewCell {
         
         //this will be used through UIImage -> open basket image and closed basket images
         if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
-            self.basketButton.setImage(UIImage(named: "basket1.png"), for: .normal)
+            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
         } else {
             self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
         }
