@@ -14,7 +14,8 @@ class PasswordTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dividerLabel: UILabel!
-    @IBOutlet weak var basketImageView: UIImageView!
+    @IBOutlet weak var basketButton: UIButton!
+    
     
     var password: Password? {
         didSet {
@@ -53,11 +54,15 @@ class PasswordTableViewCell: UITableViewCell {
          UILabel.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: {
      
             UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
-                 self.dividerLabel.center = CGPoint(x: self.dividerLabel.center.x - 200, y: self.dividerLabel.center.y)
+                 self.dividerLabel.center = CGPoint(x: self.logoImageView.center.x + (29+10), y: self.dividerLabel.center.y)
              })
             
+//            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1, animations: {
+//                self.dividerLabel.center = self.dividerLabel.center
+//            })
+            
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.dividerLabel.center.x + 200, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+15), y: self.dividerLabel.center.y)
             })
         
          }, completion: nil)

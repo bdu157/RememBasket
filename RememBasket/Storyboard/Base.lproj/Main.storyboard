@@ -162,6 +162,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="basketButton" destination="mQx-Fy-UtY" id="hbY-bR-3Z7"/>
                                     <outlet property="cellView" destination="b56-jf-3vI" id="qkX-F9-eqB"/>
                                     <outlet property="dividerLabel" destination="ksI-Fj-qpO" id="xrU-qK-f27"/>
                                     <outlet property="logoImageView" destination="DbL-PI-uLq" id="RAu-rR-Fv7"/>
