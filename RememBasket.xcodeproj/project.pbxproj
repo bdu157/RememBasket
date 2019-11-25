@@ -20,7 +20,7 @@
 		0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */; };
 		0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */; };
 		0B8BD10F238B9D2B00AEF451 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */; };
-		0B8BD113238BEDB900AEF451 /* NotificationNameStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BD112238BEDB900AEF451 /* NotificationNameStringExtension.swift */; };
+		0B8BD115238C1D4B00AEF451 /* PasswordTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BD114238C1D4B00AEF451 /* PasswordTableViewCellDelegate.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 		0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
 		0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCell.swift; sourceTree = "<group>"; };
 		0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
-		0B8BD112238BEDB900AEF451 /* NotificationNameStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameStringExtension.swift; sourceTree = "<group>"; };
+		0B8BD114238C1D4B00AEF451 /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +93,7 @@
 				0B85DC9F23883F3A00F4C95B /* Cells */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0BE431AD238A43F9009B8033 /* Extensions */,
+				0B8BD116238C1D5200AEF451 /* Protocols */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 			);
 			path = RememBasket;
@@ -150,13 +151,20 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0B8BD116238C1D5200AEF451 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0B8BD114238C1D4B00AEF451 /* PasswordTableViewCellDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		0BE431AD238A43F9009B8033 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				0BE431AA238A43EF009B8033 /* UIViewExtension.swift */,
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */,
-				0B8BD112238BEDB900AEF451 /* NotificationNameStringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,9 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B8BD113238BEDB900AEF451 /* NotificationNameStringExtension.swift in Sources */,
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */,
+				0B8BD115238C1D4B00AEF451 /* PasswordTableViewCellDelegate.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,

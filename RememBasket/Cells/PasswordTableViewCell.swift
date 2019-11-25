@@ -34,19 +34,11 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel.alpha = 0.0
         self.passwordLabel.alpha = 0.0
         
-        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
-        
-        self.observerShouldSetImageToBasket()
+        //self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
     }
     
-    //observer for setting button image to basket for creating a new password
-    func observerShouldSetImageToBasket() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setImageToBasket(notification:)), name: .setImageToBasket, object: nil)
-    }
+    var delegate: PasswordTableViewCellDelegate?
     
-    @objc func setImageToBasket(notification: Notification) {
-        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
-    }
     
     //private method
     private func updateViews() {
@@ -55,27 +47,32 @@ class PasswordTableViewCell: UITableViewCell {
         self.titleLabel?.text = password.title
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
+        
+        updateBasketButtonImage(for: password)
+        
     }
-    
     
     
     @IBAction func basketButtonTapped(_ sender: Any) {
-        self.dividerAnimation()
-        basketButtonAnimation()
-    }
-    
-    //basketButton Animation
-    private func basketButtonAnimation() {
         
-        //this will be used through UIImage -> open basket image and closed basket images
-        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
+        self.dividerAnimation()
+        
+        if self.basketButton.imageView?.image == UIImage(named: "basket.png") {
             self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
         } else {
             self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
         }
-        
     }
     
+    //update basketButton
+    private func updateBasketButtonImage(for password: Password) {
+    
+        if password.openBasket == true {
+            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
+        } else {
+            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        }
+    }
     
     //animationforLabel
     private func dividerAnimation() {
@@ -109,7 +106,9 @@ class PasswordTableViewCell: UITableViewCell {
                     self.passwordLabel.textColor = .orange
                 }
                 
-            }, completion: nil)
+            }, completion: { (_) in
+                self.delegate?.toggleOpenBasket(for: self)
+                   })
             
         } else {
             
@@ -138,7 +137,9 @@ class PasswordTableViewCell: UITableViewCell {
                     self.titleLabel.alpha = 1.0
                 }
                 
-            }, completion: nil)
+            }, completion: { (_) in
+            self.delegate?.toggleOpenBasket(for: self)
+               })
         }
     }
 }

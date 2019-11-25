@@ -14,8 +14,8 @@ class PasswordController {
     
     //CRUD
     //create password
-    func createPassword(title: String, userName: String, password: String, notes: String?, createDate: Date = Date()) {
-        let password = Password(title: title, username: userName, password: password, notes: notes, createdDate: createDate)
+    func createPassword(title: String, userName: String, password: String, notes: String?) {
+        let password = Password(title: title, username: userName, password: password, notes: notes)
         self.passwords.append(password)
     }
     
@@ -35,5 +35,10 @@ class PasswordController {
     func deletePassword(for password: Password) {
         guard let index = self.passwords.firstIndex(of: password) else {return}
         self.passwords.remove(at: index)
+    }
+    
+    func updateOpenBasket(for password: Password) {
+        guard let index = passwords.firstIndex(of: password) else {return}
+        passwords[index].openBasket = !passwords[index].openBasket
     }
 }
