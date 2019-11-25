@@ -10,15 +10,10 @@ import UIKit
 
 class PasswordTableViewController: UITableViewController {
     
-//    @IBOutlet weak var tableView: UITableView!
-    
     let passwordController = PasswordController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        tableView.delegate = self
-//        tableView.dataSource = self
         
         navigationController?.navigationBar.prefersLargeTitles = true
         

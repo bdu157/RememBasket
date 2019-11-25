@@ -126,6 +126,9 @@
                                                         <constraint firstAttribute="width" constant="30" id="pJA-LU-6pi"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="basket"/>
+                                                    <connections>
+                                                        <action selector="basketButtonTapped:" destination="HCF-YT-f3J" eventType="touchUpInside" id="mXa-Hp-o87"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wells Fargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8B-Cg-jGs">
                                                     <rect key="frame" x="78" y="16" width="229" height="33"/>
@@ -172,7 +175,7 @@
                             <outlet property="delegate" destination="LDl-mP-5dL" id="E0I-2r-wFS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Passwords" id="OFZ-tP-Or6">
+                    <navigationItem key="navigationItem" title="Passwords" largeTitleDisplayMode="always" id="OFZ-tP-Or6">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Iak-Ob-5Un"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cwl-aB-Cqz">
                             <connections>

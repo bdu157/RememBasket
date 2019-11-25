@@ -9,7 +9,7 @@
 import UIKit
 
 class PasswordTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,11 +27,11 @@ class PasswordTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         self.cellView.setShadowandCornerRadius()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
     
     //private method
     private func updateViews() {
@@ -40,4 +40,26 @@ class PasswordTableViewCell: UITableViewCell {
         self.titleLabel?.text = password.title
     }
     
+ 
+    
+    @IBAction func basketButtonTapped(_ sender: Any) {
+        self.dividerAnimation()
+    }
+    
+    
+    //animationforLabel
+     private func dividerAnimation() {
+         
+         UILabel.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: {
+     
+            UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
+                 self.dividerLabel.center = CGPoint(x: self.dividerLabel.center.x - 200, y: self.dividerLabel.center.y)
+             })
+            
+            UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                self.dividerLabel.center = CGPoint(x: self.dividerLabel.center.x + 200, y: self.dividerLabel.center.y)
+            })
+        
+         }, completion: nil)
+     }
 }
