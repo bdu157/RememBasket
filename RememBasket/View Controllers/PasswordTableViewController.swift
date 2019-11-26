@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordTableViewController: UITableViewController, PasswordTableViewCellDelegate {
+class PasswordTableViewController: UITableViewController{
     
     let passwordController = PasswordController()
     
@@ -22,6 +22,7 @@ class PasswordTableViewController: UITableViewController, PasswordTableViewCellD
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search Password"
         searchController.searchBar.tintColor = .orange
+
     }
     
     
@@ -29,6 +30,7 @@ class PasswordTableViewController: UITableViewController, PasswordTableViewCellD
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
+    
     
     //tableView data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +40,6 @@ class PasswordTableViewController: UITableViewController, PasswordTableViewCellD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
         let password = passwordController.passwords[indexPath.row]
-        cell.delegate = self
         cell.password = password
         return cell
     }
@@ -50,14 +51,6 @@ class PasswordTableViewController: UITableViewController, PasswordTableViewCellD
             self.passwordController.deletePassword(for: password)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-    }
-    
-    //delegate method
-    func toggleOpenBasket(for cell: PasswordTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let password = self.passwordController.passwords[indexPath.row]
-        passwordController.updateOpenBasket(for: password)
-        self.tableView.reloadData()
     }
     
     // MARK: - Navigation

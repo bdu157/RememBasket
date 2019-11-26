@@ -15,14 +15,12 @@ struct Password: Codable, Equatable {
     var password: String
     var notes: String?
     var createdDate: Date
-    var openBasket: Bool
     
-    init(title: String, username: String, password: String, notes: String?, createdDate: Date = Date(), openBasket: Bool = false) {
+    init(title: String, username: String, password: String, notes: String?, createdDate: Date = Date()) {
         self.title = title
         self.username = username
         self.password = password
         self.notes = notes
         self.createdDate = createdDate
-        self.openBasket = openBasket
     }
 }

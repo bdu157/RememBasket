@@ -36,9 +36,5 @@ class PasswordController {
         guard let index = self.passwords.firstIndex(of: password) else {return}
         self.passwords.remove(at: index)
     }
-    
-    func updateOpenBasket(for password: Password) {
-        guard let index = passwords.firstIndex(of: password) else {return}
-        passwords[index].openBasket = !passwords[index].openBasket
-    }
+
 }
