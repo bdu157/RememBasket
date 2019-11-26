@@ -199,7 +199,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Passwords" largeTitleDisplayMode="always" id="OFZ-tP-Or6">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Iak-Ob-5Un"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cwl-aB-Cqz">
                             <connections>
                                 <segue destination="acQ-K7-UNU" kind="show" identifier="ToAddPassword" id="jWk-Zq-q5m"/>
@@ -219,16 +218,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="02N-nb-v3S">
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="02N-nb-v3S">
                                 <rect key="frame" x="20" y="133" width="374" height="142"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Title :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF">
+                                    <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Title :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF" customClass="DesignableTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.67040346746575352" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="title"/>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="User Name or Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
                                         <rect key="frame" x="0.0" y="54" width="374" height="34"/>
@@ -238,7 +240,7 @@
                                         <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Password :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxK-MP-jvQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Password :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxK-MP-jvQ" customClass="PasswordTextField">
                                         <rect key="frame" x="0.0" y="108" width="374" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -270,7 +272,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="z5c-sU-CEB" secondAttribute="trailing" constant="20" id="1Ht-6U-HOR"/>
@@ -291,10 +293,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextField" destination="SLv-m3-Hla" id="n3U-19-ihL"/>
                         <outlet property="notesTextView" destination="Zyo-ZT-BDt" id="jVU-Dd-0by"/>
                         <outlet property="passwordTextField" destination="HxK-MP-jvQ" id="zv8-MB-g7f"/>
                         <outlet property="titleTextField" destination="zTm-Bo-FLF" id="RZM-b4-UJd"/>
+                        <outlet property="userNameTextField" destination="SLv-m3-Hla" id="EBH-Td-fVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVp-93-2Mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -343,6 +345,7 @@
     <resources>
         <image name="WFLogo" width="480" height="480"/>
         <image name="basket" width="512" height="512"/>
+        <image name="title" width="1600" height="1600"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jWk-Zq-q5m"/>

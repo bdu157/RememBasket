@@ -12,7 +12,7 @@ class PasswordDetailViewController: UIViewController {
     
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
@@ -27,9 +27,9 @@ class PasswordDetailViewController: UIViewController {
         titleTextField.shapeTextField()
         
         //email
-        emailTextField.tintColor = .orange
-        emailTextField.textColor = .black
-        emailTextField.shapeTextField()
+        userNameTextField.tintColor = .orange
+        userNameTextField.textColor = .black
+        userNameTextField.shapeTextField()
         
         //password
         passwordTextField.tintColor = .orange
@@ -42,8 +42,19 @@ class PasswordDetailViewController: UIViewController {
         notesTextView.layer.cornerRadius = 8
         notesTextView.layer.borderWidth = 0.4
         notesTextView.layer.borderColor = UIColor.orange.cgColor
+        
+        let titleIcon = UIImage(named: "title")!
+        self.titleTextField.addLeftImage(image: titleIcon)
+        
+        let userNameIcon = UIImage(named: "userName")!
+        self.userNameTextField.addLeftImage(image: userNameIcon)
+        
+        let lockIcon = UIImage(named: "lock")!
+        self.passwordTextField.addLeftImage(image: lockIcon)
     }
+  
     
+
     var password: Password? {
         didSet {
             self.updateViews()
@@ -54,7 +65,7 @@ class PasswordDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = self.titleTextField.text,
-            let userName = self.emailTextField.text,
+            let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
             let notes = self.notesTextView.text,
             let passwordController = passwordController else {return}
@@ -73,7 +84,7 @@ class PasswordDetailViewController: UIViewController {
         if let password = self.password {
             self.title = password.title
             self.titleTextField?.text = password.title
-            self.emailTextField?.text = password.username
+            self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
         } else {
