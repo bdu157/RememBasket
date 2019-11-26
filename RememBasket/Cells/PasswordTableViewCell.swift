@@ -34,10 +34,8 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel.alpha = 0.0
         self.passwordLabel.alpha = 0.0
         
+        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
     }
-    
-    var delegate: PasswordTableViewCellDelegate?
-    
     
     //private method
     private func updateViews() {
@@ -47,25 +45,22 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
         
-        updateBasketButtonImage(for: password)
+        updateBasketButtonImage()
     }
     
     //update basketButton
-    private func updateBasketButtonImage(for password: Password) {
+    private func updateBasketButtonImage() {
         
-        if password.openBasket == true {
-            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
-            self.titleLabel.alpha = 0
-            self.userNameLabel.alpha = 1
-            self.passwordLabel.alpha = 1
-        } else {
-            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
             self.titleLabel.alpha = 1
             self.userNameLabel.alpha = 0
             self.passwordLabel.alpha = 0
+        } else {
+            self.titleLabel.alpha = 0
+            self.userNameLabel.alpha = 1
+            self.passwordLabel.alpha = 1
         }
     }
-    
     
     
     @IBAction func basketButtonTapped(_ sender: Any) {
@@ -75,9 +70,8 @@ class PasswordTableViewCell: UITableViewCell {
     //animationforLabels
     private func dividerAnimation() {
         
-        guard let password = self.password else {return}
         //when clicking the button
-        if password.openBasket == false {
+        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
             self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
             showUserNameAndPassword()
         } else {
@@ -100,11 +94,6 @@ class PasswordTableViewCell: UITableViewCell {
                 self.titleLabel.alpha = 0.0
             }
             
-            
-            //            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1, animations: {
-            //                self.dividerLabel.center = self.dividerLabel.center
-            //            })
-            
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                 self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
             })
@@ -116,9 +105,7 @@ class PasswordTableViewCell: UITableViewCell {
                 self.passwordLabel.textColor = .orange
             }
             
-        }, completion: { (_) in
-            self.delegate?.toggleOpenBasket(for: self)
-        })
+        }, completion: nil)
     }
     
     private func showTitle() {
@@ -134,11 +121,6 @@ class PasswordTableViewCell: UITableViewCell {
                 self.passwordLabel.alpha = 0.0
             }
             
-            
-            //            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.1, animations: {
-            //                self.dividerLabel.center = self.dividerLabel.center
-            //            })
-            
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
                 self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
             })
@@ -147,8 +129,6 @@ class PasswordTableViewCell: UITableViewCell {
                 self.titleLabel.alpha = 1.0
             }
             
-        }, completion: { (_) in
-            self.delegate?.toggleOpenBasket(for: self)
-        })
+        }, completion: nil)
     }
 }
