@@ -22,26 +22,25 @@ class PasswordDetailViewController: UIViewController {
         super.viewDidLoad()
         self.updateViews()
         //title
-        titleTextField.tintColor = .orange
-        titleTextField.textColor = .black
         titleTextField.shapeTextField()
         
-        //email
-        userNameTextField.tintColor = .orange
-        userNameTextField.textColor = .black
+        //userName
         userNameTextField.shapeTextField()
         
         //password
-        passwordTextField.tintColor = .orange
-        passwordTextField.textColor = .black
         passwordTextField.shapeTextField()
         
         //notesTextField
         notesTextView.tintColor = .orange
         notesTextView.textColor = .black
         notesTextView.layer.cornerRadius = 8
-        notesTextView.layer.borderWidth = 0.4
-        notesTextView.layer.borderColor = UIColor.orange.cgColor
+        notesTextView.layer.borderWidth = 0.6
+        
+        //shadow
+        notesTextView.layer.shadowOpacity = 0.6
+        notesTextView.clipsToBounds = false
+        notesTextView.layer.shadowOffset = CGSize.zero
+        notesTextView.layer.shadowColor = UIColor.darkGray.cgColor
         
         let titleIcon = UIImage(named: "title")!
         self.titleTextField.addLeftImage(image: titleIcon)

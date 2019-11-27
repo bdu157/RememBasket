@@ -11,10 +11,18 @@ import UIKit
 
 extension UITextField {
     func shapeTextField() {
-        layer.cornerRadius = 15
+        
+        layer.cornerRadius = 18
         layer.borderWidth = 0.4
-        layer.borderColor = UIColor.orange.cgColor
-        textColor = UIColor.black
+        //layer.borderColor = UIColor.orange.cgColor
+        backgroundColor = .white
+        tintColor = .orange
+        textColor = .black
+        
+        //shadow
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     

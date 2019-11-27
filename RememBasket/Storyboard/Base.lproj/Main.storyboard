@@ -218,58 +218,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF">
-                                <rect key="frame" x="20" y="125" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qTJ-Sr-hlt">
+                                <rect key="frame" x="20" y="150" width="374" height="240"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="87c-7R-gIQ"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="title"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="User Name or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
+                                        <rect key="frame" x="0.0" y="85" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="NGt-Fz-Us7"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Password " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxK-MP-jvQ" customClass="PasswordTextField">
+                                        <rect key="frame" x="0.0" y="170" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="WtY-zh-HQr"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-ca-mRA">
+                                <rect key="frame" x="20" y="410" width="57" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="title"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Password " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxK-MP-jvQ" customClass="PasswordTextField">
-                                <rect key="frame" x="20" y="264" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zyo-ZT-BDt">
-                                <rect key="frame" x="20" y="390" width="374" height="304"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4a-L2-mf1">
-                                <rect key="frame" x="20" y="335" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="User Name or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
-                                <rect key="frame" x="20" y="195" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bmc-lD-Rri">
+                                <rect key="frame" x="20" y="446.5" width="374" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="DQO-JX-jPe"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bmc-lD-Rri" firstAttribute="top" secondItem="BBv-ca-mRA" secondAttribute="bottom" constant="10" id="6xA-eM-hvT"/>
+                            <constraint firstItem="qTJ-Sr-hlt" firstAttribute="top" secondItem="cgi-fy-yQk" secondAttribute="top" constant="10" id="7Ls-ls-GWv"/>
+                            <constraint firstItem="qTJ-Sr-hlt" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="8M4-D8-rFY"/>
+                            <constraint firstItem="BBv-ca-mRA" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="a1f-cz-yqY"/>
+                            <constraint firstItem="bmc-lD-Rri" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="hPT-KQ-Ic3"/>
+                            <constraint firstItem="BBv-ca-mRA" firstAttribute="top" secondItem="qTJ-Sr-hlt" secondAttribute="bottom" constant="20" id="kwj-WM-5Ag"/>
+                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="bmc-lD-Rri" secondAttribute="trailing" constant="20" id="uJ4-Em-eqR"/>
+                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="qTJ-Sr-hlt" secondAttribute="trailing" constant="20" id="wox-Ii-S2u"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cgi-fy-yQk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Password" largeTitleDisplayMode="never" id="QHk-lh-aIF">
+                    <navigationItem key="navigationItem" title="Add Password" id="QHk-lh-aIF">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="87d-9g-3kf">
                             <color key="tintColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -278,7 +299,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="notesTextView" destination="Zyo-ZT-BDt" id="jVU-Dd-0by"/>
+                        <outlet property="notesTextView" destination="bmc-lD-Rri" id="wbF-p4-TrX"/>
                         <outlet property="passwordTextField" destination="HxK-MP-jvQ" id="zv8-MB-g7f"/>
                         <outlet property="titleTextField" destination="zTm-Bo-FLF" id="RZM-b4-UJd"/>
                         <outlet property="userNameTextField" destination="SLv-m3-Hla" id="EBH-Td-fVe"/>
