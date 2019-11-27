@@ -50,8 +50,24 @@ class PasswordDetailViewController: UIViewController {
         
         let lockIcon = UIImage(named: "lock")!
         self.passwordTextField.addLeftImage(image: lockIcon)
+        
+        addDoneButtonToKeyboard()
+
+        //delegates are set up through storyboards
+        
+        //Listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-  
+    
+    deinit {
+        //removing observers
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
     
 
     var password: Password? {
@@ -89,5 +105,31 @@ class PasswordDetailViewController: UIViewController {
         } else {
             self.title = "Add Password"
         }
+    }
+}
+
+extension PasswordDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension PasswordDetailViewController: UITextViewDelegate {
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        print("keyboard will show: \(notification.name.rawValue)")
+    }
+    
+    func addDoneButtonToKeyboard() {
+        let toolBar = UIToolbar(frame: CGRect(x:0.0, y:0.0, width: UIScreen.main.bounds.size.width, height:44.0))
+        let barButton = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(doneButtonTapped(sender:)))
+        let rightSide = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([rightSide, barButton], animated: false)
+        self.notesTextView.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonTapped(sender: Any) {
+        self.notesTextView.endEditing(true)
     }
 }

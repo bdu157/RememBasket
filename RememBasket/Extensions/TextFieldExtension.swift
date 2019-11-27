@@ -41,7 +41,7 @@ extension UITextField {
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
     
-    func addShowandHidePasswordButton() {
+    func addShowandHidePassword() {
         
     }
 }
