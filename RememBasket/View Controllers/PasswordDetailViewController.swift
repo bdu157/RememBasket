@@ -52,24 +52,11 @@ class PasswordDetailViewController: UIViewController {
         self.passwordTextField.addLeftImage(image: lockIcon)
         
         addDoneButtonToKeyboard()
-
+        
         //delegates are set up through storyboards
         
-        //Listen for keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    deinit {
-        //removing observers
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-    }
-    
-    
-
     var password: Password? {
         didSet {
             self.updateViews()
@@ -113,12 +100,48 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("UIResponder.keyboardWillShow/HideNotification are removed")
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+            self.view.frame.origin.y = 0
+        }, completion: nil)
+        return true
+    }
 }
 
 extension PasswordDetailViewController: UITextViewDelegate {
     
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print("textview is being editied")
+        print("UIResponder.keyboardWillShowNotification is set")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        print("UIResponder.keyboardWillHideNotification is set")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        return true
+    }
+    
+    //this reacts whenver keyboard appears and disappears
+    //make this occur only when textView is selected
     @objc func keyboardWillChange(notification: Notification) {
-        print("keyboard will show: \(notification.name.rawValue)")
+        print("keyboard did show: \(notification.name.rawValue)")
+        
+        let info:NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        //Key Logic for show and hide
+        //self.view.fram.origin.y + space between textview and the bottom of the app
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            self.view.frame.origin.y = -keyboardSize.height + (self.view.frame.height - (self.notesTextView.frame.origin.y + self.notesTextView.frame.height))
+        } else {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func addDoneButtonToKeyboard() {
@@ -131,5 +154,8 @@ extension PasswordDetailViewController: UITextViewDelegate {
     
     @objc func doneButtonTapped(sender: Any) {
         self.notesTextView.endEditing(true)
+        print("UIResponder.keyboardWillShow/HideNotification are removed")
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
