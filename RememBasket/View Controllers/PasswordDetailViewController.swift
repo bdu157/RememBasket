@@ -19,6 +19,10 @@ class PasswordDetailViewController: UIViewController {
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
     
+    //textfield input animation
+    private var titleLabel: UILabel = UILabel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
@@ -113,6 +117,16 @@ class PasswordDetailViewController: UIViewController {
         //title
         titleTextField.shapeTextField()
         
+        //titleLabel.frame = CGRect(x: 40, y: self.titleTextField.frame.origin.y / 2 - 7, width: 40, height: 40)
+        titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
+        titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        titleLabel.text = "Title"
+        titleLabel.textColor = .lightGray
+        titleLabel.alpha = 0
+        
+        self.titleTextField.addSubview(titleLabel)
+        
+        
         //userName
         userNameTextField.shapeTextField()
         
@@ -189,6 +203,40 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
             self.view.frame.origin.y = 0
         }, completion: nil)
+        
+        return true
+    }
+    
+    //textfield did begin editing
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let oldText = textField.text,
+            let stringRange = Range(range, in: oldText) else {
+                return false
+        }
+        
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        if !newText.isEmpty {
+            
+            UILabel.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
+                UILabel.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.12) {
+                    self.titleLabel.alpha = 1
+                }
+                UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
+                    self.titleLabel.frame = CGRect(x: 40, y: self.titleTextField.frame.origin.y / 2 - 7, width: 40, height: 40)
+                }
+            }, completion: nil)
+            
+        } else {
+            UILabel.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
+                UILabel.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.12) {
+                    self.titleLabel.alpha = 0
+                }
+                UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
+                    self.titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
+                }
+            }, completion: nil)
+        }
         return true
     }
 }
