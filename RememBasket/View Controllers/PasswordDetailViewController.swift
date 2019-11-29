@@ -66,19 +66,38 @@ class PasswordDetailViewController: UIViewController {
     var passwordController: PasswordController?
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let title = self.titleTextField.text,
+        
+        if let title = self.titleTextField.text?.capitalized,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
-            let notes = self.notesTextView.text,
-            let passwordController = passwordController else {return}
-        
-        if let password = password {
-            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
-        } else {
-            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
+            let passwordController = self.passwordController {
             
+            guard let notes = self.notesTextView.text else {return}
+            
+            if let password = self.password {
+                
+                if title.isEmpty {
+                    print("title is empty (before updating password)")
+                    self.titleTextField.shake()
+                } else {
+                
+                //update
+                passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            } else {
+                
+                if title.isEmpty {
+                    print("title is empty (before creating password)")
+                    self.titleTextField.shake()
+                } else {
+                //create
+                passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
+                    navigationController?.popViewController(animated: true)
+                }
+            }
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     //private methods
