@@ -16,11 +16,81 @@ class PasswordDetailViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
+    //private properties for showHideButton
+    private var showHideButton: UIButton = UIButton()
+    private var hidePassword: Bool = false
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
+        
+        self.setUpTextFields()
+        
+        self.addDoneButtonToKeyboard()
+        //delegates are set up through storyboards
+        
+    }
+    
+    var password: Password? {
+        didSet {
+            self.updateViews()
+        }
+    }
+    
+    var passwordController: PasswordController?
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        if let title = self.titleTextField.text?.capitalized,
+            let userName = self.userNameTextField.text,
+            let passwordInput = self.passwordTextField.text,
+            let passwordController = self.passwordController {
+            
+            guard let notes = self.notesTextView.text else {return}
+            
+            if let password = self.password {
+                
+                if title.isEmpty {
+                    print("title is empty (before updating password)")
+                    self.titleTextField.shake()
+                } else {
+                    
+                    //update
+                    passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            } else {
+                
+                if title.isEmpty {
+                    print("title is empty (before creating password)")
+                    self.titleTextField.shake()
+                } else {
+                    //create
+                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
+                    navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
+    
+    //private methods
+    private func updateViews() {
+        if let password = self.password {
+            self.title = password.title
+            self.titleTextField?.text = password.title
+            self.userNameTextField?.text = password.username
+            self.passwordTextField?.text = password.password
+            self.notesTextView?.text = password.notes
+        } else {
+            self.title = "Add Password"
+        }
+    }
+    
+    //setup textfield design
+    private func setUpTextFields() {
         //title
         titleTextField.shapeTextField()
         
@@ -51,69 +121,42 @@ class PasswordDetailViewController: UIViewController {
         let lockIcon = UIImage(named: "lock")!
         self.passwordTextField.addLeftImage(image: lockIcon)
         
-        addDoneButtonToKeyboard()
-        
-        //delegates are set up through storyboards
-        
+        let eyesClosed = UIImage(named: "eyes-closed")!
+        self.setUpShowHidePasswordButton(image: eyesClosed)
     }
     
-    var password: Password? {
-        didSet {
-            self.updateViews()
-        }
-    }
-    
-    var passwordController: PasswordController?
-    
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    private func setUpShowHidePasswordButton(image: UIImage) {
+        showHideButton = UIButton(frame: CGRect(x: 3.0, y: 3.0, width: 30.0, height: 30.0))
+        showHideButton.setImage(image, for: .normal)
+        showHideButton.tintColor = UIColor.black
+        let iconContainer: UIView = UIView(frame: CGRect(x: 5.0, y: 0, width: 40, height: 30))
+        iconContainer.addSubview(showHideButton)
         
-        if let title = self.titleTextField.text?.capitalized,
-            let userName = self.userNameTextField.text,
-            let passwordInput = self.passwordTextField.text,
-            let passwordController = self.passwordController {
-            
-            guard let notes = self.notesTextView.text else {return}
-            
-            if let password = self.password {
-                
-                if title.isEmpty {
-                    print("title is empty (before updating password)")
-                    self.titleTextField.shake()
-                } else {
-                
-                //update
-                passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
-                    navigationController?.popViewController(animated: true)
-                }
-                
-            } else {
-                
-                if title.isEmpty {
-                    print("title is empty (before creating password)")
-                    self.titleTextField.shake()
-                } else {
-                //create
-                passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
-                    navigationController?.popViewController(animated: true)
-                }
-            }
-        }
+        self.passwordTextField.rightView = iconContainer
+        self.passwordTextField.rightViewMode = .always
+        
+        //logic for show hide button
+        showHideButton.addTarget(self, action: #selector(showHideButtonImageTapped), for: .touchUpInside)
     }
     
-    //private methods
-    private func updateViews() {
-        if let password = self.password {
-            self.title = password.title
-            self.titleTextField?.text = password.title
-            self.userNameTextField?.text = password.username
-            self.passwordTextField?.text = password.password
-            self.notesTextView?.text = password.notes
+    @objc func showHideButtonImageTapped() {
+        if hidePassword {
+            self.showHideButton.setImage(UIImage(named: "eyes-closed"), for: .normal)
+            self.passwordTextField.isSecureTextEntry = true
+            hidePassword = false
         } else {
-            self.title = "Add Password"
+            self.showHideButton.setImage(UIImage(named: "eyes-open"), for: .normal)
+            self.passwordTextField.isSecureTextEntry = false
+            hidePassword = true
         }
     }
+    
 }
 
+
+
+
+//Extensions
 extension PasswordDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

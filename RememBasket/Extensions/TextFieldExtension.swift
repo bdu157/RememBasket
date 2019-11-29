@@ -32,7 +32,7 @@ extension UITextField {
         leftImageView.image = image
         leftImageView.tintColor = UIColor.orange
         
-        let iconContainerView : UIView = UIView(frame: CGRect(x: 10, y: 0, width: 40, height: 30))
+        let iconContainerView : UIView = UIView(frame: CGRect(x: 10.0, y: 0, width: 40, height: 30))
         iconContainerView.addSubview(leftImageView)
         
         leftView = iconContainerView
@@ -40,6 +40,7 @@ extension UITextField {
         
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
+
     
     //textFieldAnimation
     func pulse() {
@@ -86,12 +87,5 @@ extension UITextField {
         shake.toValue = toValue
         
         layer.add(shake, forKey: nil)
-    }
-    
-    
-    
-    
-    func addShowandHidePassword() {
-        
     }
 }
