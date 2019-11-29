@@ -52,9 +52,20 @@ class PasswordDetailViewController: UIViewController {
             
             if let password = self.password {
                 
+                let randomNumber = Int.random(in: 0...2)
                 if title.isEmpty {
                     print("title is empty (before updating password)")
-                    self.titleTextField.shake()
+                    
+                    switch randomNumber {
+                    case 0:
+                        self.titleTextField.shake()
+                    case 1:
+                        self.titleTextField.pulse()
+                    case 2:
+                        self.titleTextField.flash()
+                    default:
+                        self.titleTextField.shake()
+                    }
                 } else {
                     
                     //update
@@ -64,9 +75,20 @@ class PasswordDetailViewController: UIViewController {
                 
             } else {
                 
+                let randomNumber = Int.random(in: 0...2)
                 if title.isEmpty {
-                    print("title is empty (before creating password)")
-                    self.titleTextField.shake()
+                    print("title is empty (before updating password)")
+                    
+                    switch randomNumber {
+                    case 0:
+                        self.titleTextField.shake()
+                    case 1:
+                        self.titleTextField.pulse()
+                    case 2:
+                        self.titleTextField.flash()
+                    default:
+                        self.titleTextField.shake()
+                    }
                 } else {
                     //create
                     passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
