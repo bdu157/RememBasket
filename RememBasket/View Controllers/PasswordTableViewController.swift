@@ -22,7 +22,6 @@ class PasswordTableViewController: UITableViewController{
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search Password"
         searchController.searchBar.tintColor = .orange
-
     }
     
     
@@ -68,5 +67,9 @@ class PasswordTableViewController: UITableViewController{
             detailVC.passwordController = self.passwordController
         }
     }
-
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        NotificationCenter.default.post(name: .needtoResetData, object: self)
+    }
+    
 }

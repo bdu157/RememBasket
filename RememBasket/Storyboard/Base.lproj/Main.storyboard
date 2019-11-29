@@ -199,6 +199,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Passwords" largeTitleDisplayMode="always" id="OFZ-tP-Or6">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="fjG-cT-b0N">
+                            <connections>
+                                <action selector="resetButtonTapped:" destination="LDl-mP-5dL" id="8ge-VC-xgU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cwl-aB-Cqz">
                             <connections>
                                 <segue destination="acQ-K7-UNU" kind="show" identifier="ToAddPassword" id="jWk-Zq-q5m"/>

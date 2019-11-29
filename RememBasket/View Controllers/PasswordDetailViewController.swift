@@ -10,7 +10,6 @@ import UIKit
 
 class PasswordDetailViewController: UIViewController {
     
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -19,8 +18,6 @@ class PasswordDetailViewController: UIViewController {
     //private properties for showHideButton
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

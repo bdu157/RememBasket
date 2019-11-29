@@ -10,6 +10,7 @@ import UIKit
 
 class PasswordTableViewCell: UITableViewCell {
     
+    
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -35,6 +36,20 @@ class PasswordTableViewCell: UITableViewCell {
         self.passwordLabel.alpha = 0.0
         
         self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        
+        observeShouldResetData()
+    }
+    
+    //observerFortheReset
+    func observeShouldResetData() {
+        NotificationCenter.default.addObserver(self, selector: #selector(resetCells(notification:)), name: .needtoResetData, object: nil)
+    }
+    
+    @objc func resetCells(notification: Notification) {
+        if self.basketButton.image(for: .normal) == UIImage(named: "basket-id-password.png") {
+            showTitle()
+            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        }
     }
     
     //private method
