@@ -23,7 +23,7 @@ class PasswordDetailViewController: UIViewController {
     private var titleLabel: UILabel = UILabel()
     private var userNameLabel: UILabel = UILabel()
     private var passwordInputLabel: UILabel = UILabel()
-    
+    private var chosenLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -234,53 +234,31 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
         
-        if textField == self.titleTextField {
+        let chosenTextField = textField
+        switch chosenTextField {
+        case self.titleTextField:
+            self.chosenLabel = self.titleLabel
+        case self.userNameTextField:
+            self.chosenLabel = self.userNameLabel
+        case self.passwordTextField:
+            self.chosenLabel = self.passwordInputLabel
+        default:
+            self.chosenLabel = self.titleLabel
+        }
+        
             if !newText.isEmpty {
                 UILabel.animate(withDuration: 0.1, animations: {
-                    self.titleLabel.alpha = 1
-                    self.titleLabel.frame.origin.x = 40
-                    self.titleLabel.frame.origin.y = -5
+                    self.chosenLabel.alpha = 1
+                    self.chosenLabel.frame.origin.x = 40
+                    self.chosenLabel.frame.origin.y = -5
                 }, completion: nil)
                 
             } else {
                 UILabel.animate(withDuration: 0.1, animations: {
-                    self.titleLabel.alpha = 0
-                    self.titleLabel.frame.origin.x = 40
-                    self.titleLabel.frame.origin.y = 15
+                    self.chosenLabel.alpha = 0
+                    self.chosenLabel.frame.origin.x = 40
+                    self.chosenLabel.frame.origin.y = 15
                 }, completion: nil)
-            }
-            
-        } else if textField == self.userNameTextField {
-            if !newText.isEmpty {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.userNameLabel.alpha = 1
-                    self.userNameLabel.frame.origin.x = 40
-                    self.userNameLabel.frame.origin.y = -5
-                }, completion: nil)
-                
-            } else {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.userNameLabel.alpha = 0
-                    self.userNameLabel.frame.origin.x = 40
-                    self.userNameLabel.frame.origin.y = 15
-                }, completion: nil)
-            }
-            
-        } else if textField == self.passwordTextField {
-            if !newText.isEmpty {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.passwordInputLabel.alpha = 1
-                    self.passwordInputLabel.frame.origin.x = 40
-                    self.passwordInputLabel.frame.origin.y = -5
-                }, completion: nil)
-                
-            } else {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.passwordInputLabel.alpha = 0
-                    self.passwordInputLabel.frame.origin.x = 40
-                    self.passwordInputLabel.frame.origin.y = 15
-                }, completion: nil)
-            }
         }
         return true
     }
