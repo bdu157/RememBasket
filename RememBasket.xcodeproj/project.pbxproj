@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */; };
+		0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */; };
 		0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8D2368720800B0E72A /* AppDelegate.swift */; };
 		0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8F2368720800B0E72A /* SceneDelegate.swift */; };
 		0B666D952368720800B0E72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B666D932368720800B0E72A /* Main.storyboard */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		0B666D8A2368720800B0E72A /* RememBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B666D8D2368720800B0E72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B666D8F2368720800B0E72A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				0B67735A237D20D8003C1D53 /* transitionAnimation.swift */,
-				0B01BAC923841CCE009B1C6F /* NotificationExtension.swift */,
 			);
 			path = Later;
 			sourceTree = "<group>";
@@ -154,6 +153,7 @@
 				0BE431AA238A43EF009B8033 /* UIViewExtension.swift */,
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */,
+				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
-				0B01BACA23841CCE009B1C6F /* NotificationExtension.swift in Sources */,
+				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,

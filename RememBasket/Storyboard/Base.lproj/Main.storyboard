@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R28-pe-owM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3052.1739130434785" y="366.96428571428572"/>
+            <point key="canvasLocation" x="1784" y="363"/>
         </scene>
         <!--Passwords-->
         <scene sceneID="w0e-x5-sTO">
@@ -199,7 +199,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Passwords" largeTitleDisplayMode="always" id="OFZ-tP-Or6">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Iak-Ob-5Un"/>
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="fjG-cT-b0N">
+                            <connections>
+                                <action selector="resetButtonTapped:" destination="LDl-mP-5dL" id="8ge-VC-xgU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cwl-aB-Cqz">
                             <connections>
                                 <segue destination="acQ-K7-UNU" kind="show" identifier="ToAddPassword" id="jWk-Zq-q5m"/>
@@ -219,70 +223,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="02N-nb-v3S">
-                                <rect key="frame" x="20" y="133" width="374" height="142"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qTJ-Sr-hlt">
+                                <rect key="frame" x="20" y="150" width="374" height="240"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Title :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Title (required)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTm-Bo-FLF">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="User Name or Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" borderStyle="roundedRect" placeholder="Password :" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HxK-MP-jvQ">
-                                        <rect key="frame" x="0.0" y="108" width="374" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="87c-7R-gIQ"/>
+                                        </constraints>
                                         <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="title"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="acQ-K7-UNU" id="wNW-qS-vai"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="User Name or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
+                                        <rect key="frame" x="0.0" y="85" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="NGt-Fz-Us7"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="acQ-K7-UNU" id="1Bv-zB-5xp"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-xi-3aQ">
+                                        <rect key="frame" x="0.0" y="170" width="374" height="70"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Jb6-uo-Jw3"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="acQ-K7-UNU" id="UJ5-RD-Nwj"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z5c-sU-CEB">
-                                <rect key="frame" x="20" y="305" width="374" height="250"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4a-L2-mf1">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zyo-ZT-BDt">
-                                        <rect key="frame" x="0.0" y="30.5" width="374" height="219.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-ca-mRA">
+                                <rect key="frame" x="20" y="410" width="57" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bmc-lD-Rri">
+                                <rect key="frame" x="20" y="446.5" width="374" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="bYW-OW-Zz5"/>
+                                    <constraint firstAttribute="height" constant="200" id="DQO-JX-jPe"/>
                                 </constraints>
-                            </stackView>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="acQ-K7-UNU" id="xo0-vh-Y3k"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="z5c-sU-CEB" secondAttribute="trailing" constant="20" id="1Ht-6U-HOR"/>
-                            <constraint firstItem="z5c-sU-CEB" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="4fk-un-qvJ"/>
-                            <constraint firstItem="02N-nb-v3S" firstAttribute="top" secondItem="cgi-fy-yQk" secondAttribute="top" constant="45" id="C3U-dY-rHm"/>
-                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="02N-nb-v3S" secondAttribute="trailing" constant="20" id="CWS-8T-dYC"/>
-                            <constraint firstItem="02N-nb-v3S" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="JBv-q1-PQz"/>
-                            <constraint firstItem="z5c-sU-CEB" firstAttribute="top" secondItem="02N-nb-v3S" secondAttribute="bottom" constant="30" id="l21-HX-QMB"/>
+                            <constraint firstItem="bmc-lD-Rri" firstAttribute="top" secondItem="BBv-ca-mRA" secondAttribute="bottom" constant="10" id="6xA-eM-hvT"/>
+                            <constraint firstItem="qTJ-Sr-hlt" firstAttribute="top" secondItem="cgi-fy-yQk" secondAttribute="top" constant="10" id="7Ls-ls-GWv"/>
+                            <constraint firstItem="qTJ-Sr-hlt" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="8M4-D8-rFY"/>
+                            <constraint firstItem="BBv-ca-mRA" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="a1f-cz-yqY"/>
+                            <constraint firstItem="bmc-lD-Rri" firstAttribute="leading" secondItem="cgi-fy-yQk" secondAttribute="leading" constant="20" id="hPT-KQ-Ic3"/>
+                            <constraint firstItem="BBv-ca-mRA" firstAttribute="top" secondItem="qTJ-Sr-hlt" secondAttribute="bottom" constant="20" id="kwj-WM-5Ag"/>
+                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="bmc-lD-Rri" secondAttribute="trailing" constant="20" id="uJ4-Em-eqR"/>
+                            <constraint firstItem="cgi-fy-yQk" firstAttribute="trailing" secondItem="qTJ-Sr-hlt" secondAttribute="trailing" constant="20" id="wox-Ii-S2u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cgi-fy-yQk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Password" largeTitleDisplayMode="never" id="QHk-lh-aIF">
+                    <navigationItem key="navigationItem" title="Add Password" id="QHk-lh-aIF">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="87d-9g-3kf">
                             <color key="tintColor" red="0.94149035219999999" green="0.51895129679999996" blue="0.12267810849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -291,15 +316,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emailTextField" destination="SLv-m3-Hla" id="n3U-19-ihL"/>
-                        <outlet property="notesTextView" destination="Zyo-ZT-BDt" id="jVU-Dd-0by"/>
-                        <outlet property="passwordTextField" destination="HxK-MP-jvQ" id="zv8-MB-g7f"/>
+                        <outlet property="notesTextView" destination="bmc-lD-Rri" id="wbF-p4-TrX"/>
+                        <outlet property="passwordTextField" destination="9aV-xi-3aQ" id="zud-6t-5XF"/>
                         <outlet property="titleTextField" destination="zTm-Bo-FLF" id="RZM-b4-UJd"/>
+                        <outlet property="userNameTextField" destination="SLv-m3-Hla" id="EBH-Td-fVe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVp-93-2Mb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778" y="650"/>
+            <point key="canvasLocation" x="776.81159420289862" y="649.55357142857144"/>
         </scene>
         <!--Notes-->
         <scene sceneID="fpB-aG-vll">
@@ -343,6 +368,7 @@
     <resources>
         <image name="WFLogo" width="480" height="480"/>
         <image name="basket" width="512" height="512"/>
+        <image name="title" width="1600" height="1600"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jWk-Zq-q5m"/>
