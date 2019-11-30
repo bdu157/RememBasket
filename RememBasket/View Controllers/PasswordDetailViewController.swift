@@ -19,8 +19,11 @@ class PasswordDetailViewController: UIViewController {
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
     
-    //textfield input animation
+    //textfield input animation for placeholder
     private var titleLabel: UILabel = UILabel()
+    private var userNameLabel: UILabel = UILabel()
+    private var passwordInputLabel: UILabel = UILabel()
+    
     
     
     override func viewDidLoad() {
@@ -116,22 +119,37 @@ class PasswordDetailViewController: UIViewController {
     private func setUpTextFields() {
         //title
         titleTextField.shapeTextField()
-        
+        //titleLabel
         //titleLabel.frame = CGRect(x: 40, y: self.titleTextField.frame.origin.y / 2 - 7, width: 40, height: 40)
         titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
         titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
         titleLabel.text = "Title"
         titleLabel.textColor = .lightGray
         titleLabel.alpha = 0
-        
         self.titleTextField.addSubview(titleLabel)
         
         
         //userName
         userNameTextField.shapeTextField()
+        //userNameLabel
+        userNameLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
+        userNameLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        userNameLabel.text = "Username"
+        userNameLabel.textColor = .lightGray
+        userNameLabel.alpha = 0
+        self.userNameTextField.addSubview(userNameLabel)
+        
         
         //password
         passwordTextField.shapeTextField()
+        //passwordInputLabel
+        passwordInputLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
+        passwordInputLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        passwordInputLabel.text = "Password"
+        passwordInputLabel.textColor = .lightGray
+        passwordInputLabel.alpha = 0
+        self.passwordTextField.addSubview(passwordInputLabel)
+        
         
         //notesTextField
         notesTextView.tintColor = .orange
@@ -188,7 +206,6 @@ class PasswordDetailViewController: UIViewController {
 
 
 
-
 //Extensions
 extension PasswordDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -207,7 +224,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         return true
     }
     
-    //textfield did begin editing
+    //textfield being edited
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let oldText = textField.text,
@@ -216,26 +233,54 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         }
         
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
-        if !newText.isEmpty {
-            
-            UILabel.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
-                UILabel.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.12) {
+        
+        if textField == self.titleTextField {
+            if !newText.isEmpty {
+                UILabel.animate(withDuration: 0.1, animations: {
                     self.titleLabel.alpha = 1
-                }
-                UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
-                    self.titleLabel.frame = CGRect(x: 40, y: self.titleTextField.frame.origin.y / 2 - 7, width: 40, height: 40)
-                }
-            }, completion: nil)
-            
-        } else {
-            UILabel.animateKeyframes(withDuration: 0.25, delay: 0, options: [], animations: {
-                UILabel.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.12) {
+                    self.titleLabel.frame.origin.x = 40
+                    self.titleLabel.frame.origin.y = -5
+                }, completion: nil)
+                
+            } else {
+                UILabel.animate(withDuration: 0.1, animations: {
                     self.titleLabel.alpha = 0
-                }
-                UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2) {
-                    self.titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
-                }
-            }, completion: nil)
+                    self.titleLabel.frame.origin.x = 40
+                    self.titleLabel.frame.origin.y = 15
+                }, completion: nil)
+            }
+            
+        } else if textField == self.userNameTextField {
+            if !newText.isEmpty {
+                UILabel.animate(withDuration: 0.1, animations: {
+                    self.userNameLabel.alpha = 1
+                    self.userNameLabel.frame.origin.x = 40
+                    self.userNameLabel.frame.origin.y = -5
+                }, completion: nil)
+                
+            } else {
+                UILabel.animate(withDuration: 0.1, animations: {
+                    self.userNameLabel.alpha = 0
+                    self.userNameLabel.frame.origin.x = 40
+                    self.userNameLabel.frame.origin.y = 15
+                }, completion: nil)
+            }
+            
+        } else if textField == self.passwordTextField {
+            if !newText.isEmpty {
+                UILabel.animate(withDuration: 0.1, animations: {
+                    self.passwordInputLabel.alpha = 1
+                    self.passwordInputLabel.frame.origin.x = 40
+                    self.passwordInputLabel.frame.origin.y = -5
+                }, completion: nil)
+                
+            } else {
+                UILabel.animate(withDuration: 0.1, animations: {
+                    self.passwordInputLabel.alpha = 0
+                    self.passwordInputLabel.frame.origin.x = 40
+                    self.passwordInputLabel.frame.origin.y = 15
+                }, completion: nil)
+            }
         }
         return true
     }
