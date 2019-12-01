@@ -16,7 +16,7 @@ class PasswordController {
     func createPassword(title: String, userName: String, password: String, notes: String?) {
         //let firstLetterOfTitle = title[0] this would work with StringExtension
         let firstLetter = title.prefix(1)
-        let _ = Password(title: title, username: title, password: title, notes: notes, sectionTitle: String(firstLetter))
+        let _ = Password(title: title, username: userName, password: password, notes: notes, sectionTitle: String(firstLetter))
         saveToPersistentStore()
     }
     
@@ -29,6 +29,7 @@ class PasswordController {
         password.password = changePasswordTo
         password.notes = changeNotesTo
         password.timestamp = modifiedDate
+        password.sectionTitle = String(changeTitleTo.prefix(1))
         
         saveToPersistentStore()
     }
