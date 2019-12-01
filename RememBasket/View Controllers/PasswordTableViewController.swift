@@ -69,26 +69,26 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let password = self.fetchedResultsController.object(at: indexPath)
-//            self.passwordController.deletePassword(for: password)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let password = self.fetchedResultsController.object(at: indexPath)
+            self.passwordController.deletePassword(for: password)
+        }
+    }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToUpdatePassword" {
-            let detailVC = segue.destination as! PasswordDetailViewController
-            guard let selectedRow = self.tableView.indexPathForSelectedRow else {return}
+            guard let detailVC = segue.destination as? PasswordDetailViewController,
+                let selectedRow = self.tableView.indexPathForSelectedRow else {return}
             let password = self.fetchedResultsController.object(at: selectedRow)
             detailVC.password = password
             detailVC.passwordController = self.passwordController
         } else if segue.identifier == "ToAddPassword" {
-            let detailVC = segue.destination as! PasswordDetailViewController
+            
+            guard let detailVC = segue.destination as? PasswordDetailViewController else {return}
             detailVC.passwordController = self.passwordController
         }
     }
