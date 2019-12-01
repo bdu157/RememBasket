@@ -16,9 +16,9 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     //fetchedResultsController
     lazy var fetchedResultsController: NSFetchedResultsController<Password> = {
         let fetchRequest: NSFetchRequest<Password> = Password.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)] //giving first NSSortDescriptor mood is the key to make section srot correctly
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sectionTitle", ascending: true), NSSortDescriptor(key: "timestamp", ascending: true)] //giving first NSSortDescriptor mood is the key to make section srot correctly
         let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "sectionTitle", cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc

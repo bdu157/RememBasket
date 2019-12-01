@@ -22,6 +22,7 @@
 		0B8BD10F238B9D2B00AEF451 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */; };
 		0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */; };
 		0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1C239391DF004836B8 /* CoreDataStack.swift */; };
+		0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A212393BF74004836B8 /* StringExtension.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,8 @@
 		0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Password+Convenience.swift"; sourceTree = "<group>"; };
 		0BA26A1C239391DF004836B8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 2.xcdatamodel"; sourceTree = "<group>"; };
+		0BA26A212393BF74004836B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +163,7 @@
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
+				0BA26A212393BF74004836B8 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +241,7 @@
 			files = (
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
+				0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
@@ -453,9 +458,10 @@
 		0B65A762239389A500300633 /* Models.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */,
 				0B65A763239389A500300633 /* Models.xcdatamodel */,
 			);
-			currentVersion = 0B65A763239389A500300633 /* Models.xcdatamodel */;
+			currentVersion = 0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */;
 			path = Models.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
