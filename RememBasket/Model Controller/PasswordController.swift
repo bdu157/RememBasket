@@ -15,8 +15,8 @@ class PasswordController {
     //CRUD
     //create password
     func createPassword(title: String, userName: String, password: String, notes: String?) {
-        let password = Password(title: title, username: userName, password: password, notes: notes)
-        self.passwords.append(password)
+        //let password =
+        //self.passwords.append(password)
     }
     
     //read password
@@ -28,7 +28,7 @@ class PasswordController {
         self.passwords[index].username = changeUserNameTo
         self.passwords[index].password = changePasswordTo
         self.passwords[index].notes = changeNotesTo
-        self.passwords[index].createdDate = modifiedDate
+        //self.passwords[index].createdDate = modifiedDate
     }
     
     //delete password
