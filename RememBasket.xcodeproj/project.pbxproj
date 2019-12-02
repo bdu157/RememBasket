@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */; };
+		0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B65A762239389A500300633 /* Models.xcdatamodeld */; };
 		0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8D2368720800B0E72A /* AppDelegate.swift */; };
 		0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8F2368720800B0E72A /* SceneDelegate.swift */; };
 		0B666D952368720800B0E72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B666D932368720800B0E72A /* Main.storyboard */; };
@@ -16,16 +17,19 @@
 		0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */; };
 		0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */; };
 		0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B67735A237D20D8003C1D53 /* transitionAnimation.swift */; };
-		0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA42369C60100CEAFF5 /* Password.swift */; };
 		0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */; };
 		0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */; };
 		0B8BD10F238B9D2B00AEF451 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */; };
+		0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */; };
+		0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1C239391DF004836B8 /* CoreDataStack.swift */; };
+		0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A212393BF74004836B8 /* StringExtension.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
+		0B65A763239389A500300633 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		0B666D8A2368720800B0E72A /* RememBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B666D8D2368720800B0E72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B666D8F2368720800B0E72A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,10 +40,13 @@
 		0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDetailViewController.swift; sourceTree = "<group>"; };
 		0B67735A237D20D8003C1D53 /* transitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transitionAnimation.swift; sourceTree = "<group>"; };
-		0B6E6AA42369C60100CEAFF5 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
 		0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCell.swift; sourceTree = "<group>"; };
 		0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Password+Convenience.swift"; sourceTree = "<group>"; };
+		0BA26A1C239391DF004836B8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 2.xcdatamodel"; sourceTree = "<group>"; };
+		0BA26A212393BF74004836B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +124,9 @@
 		0B677353237CF14B003C1D53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0B6E6AA42369C60100CEAFF5 /* Password.swift */,
+				0B65A762239389A500300633 /* Models.xcdatamodeld */,
+				0BA26A1C239391DF004836B8 /* CoreDataStack.swift */,
+				0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +163,7 @@
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
+				0BA26A212393BF74004836B8 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,16 +240,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
-				0B6E6AA52369C60100CEAFF5 /* Password.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
+				0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
+				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,
+				0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */,
 				0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */,
 				0B8BD10F238B9D2B00AEF451 /* TextFieldExtension.swift in Sources */,
 				0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */,
 				0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */,
+				0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */,
 				0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +453,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B65A762239389A500300633 /* Models.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */,
+				0B65A763239389A500300633 /* Models.xcdatamodel */,
+			);
+			currentVersion = 0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */;
+			path = Models.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B666D822368720800B0E72A /* Project object */;
 }
