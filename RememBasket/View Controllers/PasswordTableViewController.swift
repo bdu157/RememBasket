@@ -36,6 +36,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Search Password"
         searchController.searchBar.tintColor = .orange
+        searchController.searchBar.scopeButtonTitles = ["Alphabetical", "Recently Added"]
     }
     
     
