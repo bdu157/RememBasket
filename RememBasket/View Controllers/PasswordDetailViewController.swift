@@ -15,6 +15,10 @@ class PasswordDetailViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var buttonsView: UIView!
+    
     //private properties for showHideButton
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
@@ -32,8 +36,11 @@ class PasswordDetailViewController: UIViewController {
         
         self.setUpTextFields()
         
+        self.setUpButtonsUIView()
+        
         self.addDoneButtonToKeyboard()
         //delegates are set up through storyboards
+        navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     
@@ -47,6 +54,40 @@ class PasswordDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
+        if let title = self.titleTextField.text?.capitalized,
+            let userName = self.userNameTextField.text,
+            let passwordInput = self.passwordTextField.text,
+            let passwordController = self.passwordController {
+            
+            guard let notes = self.notesTextView.text else {return}
+            
+            if self.password == nil {
+                
+                let randomNumber = Int.random(in: 0...2)
+                if title.isEmpty {
+                    print("title is empty (before updating password)")
+                    
+                    switch randomNumber {
+                    case 0:
+                        self.titleTextField.shake()
+                    case 1:
+                        self.titleTextField.pulse()
+                    case 2:
+                        self.titleTextField.flash()
+                    default:
+                        self.titleTextField.shake()
+                    }
+                } else {
+                    //create
+                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            }
+        }
+    }
+    
+    @IBAction func saveButtonFromUpdateView(_ sender: Any) {
         if let title = self.titleTextField.text?.capitalized,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
@@ -74,33 +115,18 @@ class PasswordDetailViewController: UIViewController {
                     
                     //update
                     passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
-                    navigationController?.popViewController(animated: true)
+                    NotificationCenter.default.post(name: .needtoReloadData, object: self)
+                    self.dismiss(animated: true, completion: nil)
                 }
                 
-            } else {
-                
-                let randomNumber = Int.random(in: 0...2)
-                if title.isEmpty {
-                    print("title is empty (before updating password)")
-                    
-                    switch randomNumber {
-                    case 0:
-                        self.titleTextField.shake()
-                    case 1:
-                        self.titleTextField.pulse()
-                    case 2:
-                        self.titleTextField.flash()
-                    default:
-                        self.titleTextField.shake()
-                    }
-                } else {
-                    //create
-                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
-                    navigationController?.popViewController(animated: true)
-                }
             }
         }
     }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     //private methods
     private func updateViews() {
@@ -110,9 +136,16 @@ class PasswordDetailViewController: UIViewController {
             self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
+            self.buttonsView?.isHidden = false
         } else {
             self.title = "Add Password"
+            self.buttonsView?.isHidden = true
         }
+    }
+    
+    //setup uiview
+    private func setUpButtonsUIView() {
+        self.buttonsView.shapeButtonsView()
     }
     
     //setup textfield design
@@ -246,19 +279,19 @@ extension PasswordDetailViewController: UITextFieldDelegate {
             self.chosenLabel = self.titleLabel
         }
         
-            if !newText.isEmpty {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.chosenLabel.alpha = 1
-                    self.chosenLabel.frame.origin.x = 40
-                    self.chosenLabel.frame.origin.y = -5
-                }, completion: nil)
-                
-            } else {
-                UILabel.animate(withDuration: 0.1, animations: {
-                    self.chosenLabel.alpha = 0
-                    self.chosenLabel.frame.origin.x = 40
-                    self.chosenLabel.frame.origin.y = 15
-                }, completion: nil)
+        if !newText.isEmpty {
+            UILabel.animate(withDuration: 0.1, animations: {
+                self.chosenLabel.alpha = 1
+                self.chosenLabel.frame.origin.x = 40
+                self.chosenLabel.frame.origin.y = -5
+            }, completion: nil)
+            
+        } else {
+            UILabel.animate(withDuration: 0.1, animations: {
+                self.chosenLabel.alpha = 0
+                self.chosenLabel.frame.origin.x = 40
+                self.chosenLabel.frame.origin.y = 15
+            }, completion: nil)
         }
         return true
     }

@@ -38,7 +38,12 @@ class PasswordController {
     func deletePassword(for password: Password) {
         let moc = CoreDataStack.shared.mainContext
         moc.delete(password)
-        saveToPersistentStore()
+        do {
+            try moc.save()
+        } catch {
+            moc.reset()
+            NSLog("there is an error in deleting row: \(error)")
+        }
     }
 
     

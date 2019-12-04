@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static var needtoResetData = Notification.Name("needtoResetData")
+    static var needtoReloadData = Notification.Name("needtoReloadData")
 }
