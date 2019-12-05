@@ -83,7 +83,7 @@ class PasswordController {
     
     var baseUrl = URL(string: "https://logo.clearbit.com/")!
     
-    var imageURLString: String!
+    var logoImageURLString: String!
     
     func fetchCompanyLogo(searchTerms: [String], completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
         
@@ -114,7 +114,7 @@ class PasswordController {
                 
                 let image = UIImage(data: data)
                 print("\(aTerm) after receiving Data!!")
-                self.imageURLString = aTerm
+                self.logoImageURLString = "https://logo.clearbit.com/\(aTerm)"
                 completion(.success(image))
                 
             }.resume()

@@ -85,6 +85,9 @@ class PasswordDetailViewController: UIViewController {
                         self.titleTextField.shake()
                     }
                 } else {
+                    
+                    //add imageURL and rightuiview color to be created
+                    
                     //create
                     passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
                     navigationController?.popViewController(animated: true)
@@ -119,6 +122,8 @@ class PasswordDetailViewController: UIViewController {
                         self.titleTextField.shake()
                     }
                 } else {
+                    
+                    //add imageURL and rightuiview color to be updated
                     
                     //update
                     passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
