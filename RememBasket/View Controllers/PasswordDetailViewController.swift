@@ -296,12 +296,29 @@ extension PasswordDetailViewController: UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         
         if textField == self.titleTextField {
+            
+            let inputText = textField.text!
             //add fetch company logo here and make completion result to show in logoRightView
             //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
             // then save it to the object property - image
-            let searchTerm = textField.text!
-            if !searchTerm.isEmpty {
-                self.passwordController?.fetchCompanyLogo(searchTerm: "\(searchTerm).com", completion: { (result) in
+            if !inputText.isEmpty {
+                
+                var searchTerms: [String] {
+                    
+                    let domainExtensionsArray = ["com", "net", "org", "co", "us", "co.kr", "io"]
+                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
+                    
+                    var completeDomainsArray: [String] = []
+                    
+                    for domain in domainExtensionsArray {
+                        completeDomainsArray.append("\(betterTerm).\(domain)")
+                    }
+
+                    return completeDomainsArray
+                }
+                
+                
+                self.passwordController?.fetchCompanyLogo(searchTerms: searchTerms, completion: { (result) in
                     if let result = try? result.get() {
                         DispatchQueue.main.async {
                             self.logoImageView.alpha = 1
@@ -318,6 +335,8 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 self.logoRightView.layer.borderWidth = 1.5
             }
         }
+        
+        
         return true
     }
     

@@ -79,36 +79,42 @@ class PasswordController {
         case otherError
         case noLogo
     }
-//https://logo.clearbit.com/google.com
+    //https://logo.clearbit.com/google.com
     
     var baseUrl = URL(string: "https://logo.clearbit.com/")!
     
-    func fetchCompanyLogo(searchTerm: String, completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
+    func fetchCompanyLogo(searchTerms: [String], completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
         
-        let urlRequest = baseUrl.appendingPathComponent(searchTerm)
-        var request = URLRequest(url: urlRequest)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response as? HTTPURLResponse,
-                response.statusCode == 404 {
-                completion(.failure(.noLogo))
-                return
-            }
+        for aTerm in searchTerms {
             
-            if let _ = error {
-                completion(.failure(.otherError))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
+            let urlRequest = baseUrl.appendingPathComponent(aTerm)
+            var request = URLRequest(url: urlRequest)
+            request.httpMethod = "GET"
             
-            let image = UIImage(data: data)
-            //print("\(image!) is being fetched correctly")
-            completion(.success(image))
-
-        }.resume()
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let response = response as? HTTPURLResponse,
+                    response.statusCode == 404 {
+                    completion(.failure(.noLogo))
+                    print("\(aTerm) after receiving 404 response")
+                    return
+                }
+                
+                if let _ = error {
+                    completion(.failure(.otherError))
+                    print("\(aTerm) after receiving error")
+                    return
+                }
+                guard let data = data else {
+                    completion(.failure(.noData))
+                    print("\(aTerm) after receiving no data")
+                    return
+                }
+                
+                let image = UIImage(data: data)
+                print("\(aTerm) after receiving Data!!")
+                completion(.success(image))
+                
+            }.resume()
+        }
     }
 }
