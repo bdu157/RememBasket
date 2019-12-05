@@ -46,7 +46,7 @@ class PasswordController {
             NSLog("there is an error in deleting row: \(error)")
         }
     }
-
+    
     
     //MARK: SaveToCoreDataStore - maincontext
     func saveToPersistentStore() {
@@ -69,5 +69,46 @@ class PasswordController {
             }
         }
         if let error = error {throw error}
+    }
+    
+    
+    //Networking for company logo
+    enum NetworkError: Error {
+        case badData
+        case noData
+        case otherError
+        case noLogo
+    }
+//https://logo.clearbit.com/google.com
+    
+    var baseUrl = URL(string: "https://logo.clearbit.com/")!
+    
+    func fetchCompanyLogo(searchTerm: String, completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
+        
+        let urlRequest = baseUrl.appendingPathComponent(searchTerm)
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 404 {
+                completion(.failure(.noLogo))
+                return
+            }
+            
+            if let _ = error {
+                completion(.failure(.otherError))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            let image = UIImage(data: data)
+            print("\(image!) is being fetched correctly")
+            completion(.success(image))
+
+        }.resume()
     }
 }

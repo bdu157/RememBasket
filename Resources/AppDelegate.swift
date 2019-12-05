@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UISearchBar.appearance().tintColor = .orange
         UINavigationBar.appearance().tintColor = .orange
+        
+        let passwordController = PasswordController()
+        passwordController.fetchCompanyLogo(searchTerm: "google.com") { (result) in
+            if let result = try? result.get() {
+                
+            }
+        }
         return true
     }
 
