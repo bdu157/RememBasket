@@ -23,11 +23,16 @@ class PasswordDetailViewController: UIViewController {
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
     
+    //private properties for setting up logoimage
+    private var logoRightLabel: UILabel = UILabel()
+    private var logoRightView: UIView = UIView()
+    
     //textfield input animation for placeholder
     private var titleLabel: UILabel = UILabel()
     private var userNameLabel: UILabel = UILabel()
     private var passwordInputLabel: UILabel = UILabel()
     private var chosenLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -137,6 +142,7 @@ class PasswordDetailViewController: UIViewController {
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
             self.buttonsView?.isHidden = false
+            self.logoRightLabel.text = String(password.title!.prefix(1))
         } else {
             self.title = "Add Password"
             self.buttonsView?.isHidden = true
@@ -160,6 +166,9 @@ class PasswordDetailViewController: UIViewController {
         titleLabel.textColor = .lightGray
         titleLabel.alpha = 0
         self.titleTextField.addSubview(titleLabel)
+        
+        self.addRightLogoView()
+        
         
         
         //userName
@@ -196,6 +205,8 @@ class PasswordDetailViewController: UIViewController {
         notesTextView.layer.shadowOffset = CGSize.zero
         notesTextView.layer.shadowColor = UIColor.darkGray.cgColor
         
+        
+        //textfields images
         let titleIcon = UIImage(named: "title")!
         self.titleTextField.addLeftImage(image: titleIcon)
         
@@ -235,6 +246,30 @@ class PasswordDetailViewController: UIViewController {
         }
     }
     
+    //set up rightview for setting up the logo image property
+    private func addRightLogoView() {
+        logoRightLabel.frame = CGRect(x: 10.0, y: 10.0, width: 30.0, height: 30.0)
+        logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        logoRightView.backgroundColor = .white
+
+        //give constraints for the label
+        logoRightView.frame = CGRect(x: 0.0, y: 0, width: 40, height: 40)
+        logoRightView.layer.cornerRadius = 10
+        logoRightView.layer.borderWidth = 1.5
+        logoRightView.layer.borderColor = UIColor.black.cgColor
+        //random uiview color
+        //logoRightView.backgroundColor = .orange
+        logoRightView.addSubview(logoRightLabel)
+        
+        //add padding by adding another uiview with bigger width
+        let logoRightViewWithPadding: UIView = UIView(frame: CGRect(x: 0.0, y: 0, width: 50, height: 40))
+        logoRightViewWithPadding.addSubview(logoRightView)
+        
+        self.titleTextField.rightView = logoRightViewWithPadding
+        self.titleTextField.rightViewMode = .always
+    }
+    
 }
 
 
@@ -254,6 +289,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
             self.view.frame.origin.y = 0
         }, completion: nil)
         
+
         return true
     }
     
@@ -280,10 +316,22 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         }
         
         if !newText.isEmpty {
+            
+        //add fetch company logo here and make completion result to show in logoRightView
+        //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
+        // then save it to the object property - image
+            
+            
             UILabel.animate(withDuration: 0.1, animations: {
                 self.chosenLabel.alpha = 1
                 self.chosenLabel.frame.origin.x = 40
                 self.chosenLabel.frame.origin.y = -5
+                //give a logic so if there is no image from the internet then trigger this
+                if self.chosenLabel == self.titleLabel {
+                    self.logoRightLabel.alpha = 1
+                    self.logoRightLabel.text = String(newText.prefix(1).capitalized)
+                    self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 2...255)) / 255, green: CGFloat(Int.random(in: 1...255)) / 255, blue: CGFloat(Int.random(in: 1...255)) / 255, alpha: 1)
+                }
             }, completion: nil)
             
         } else {
@@ -291,6 +339,10 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 self.chosenLabel.alpha = 0
                 self.chosenLabel.frame.origin.x = 40
                 self.chosenLabel.frame.origin.y = 15
+                if self.chosenLabel == self.titleLabel {
+                    self.logoRightLabel.alpha = 0
+                    self.logoRightView.backgroundColor = .white
+                }
             }, completion: nil)
         }
         return true
