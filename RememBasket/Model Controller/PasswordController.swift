@@ -106,7 +106,7 @@ class PasswordController {
             }
             
             let image = UIImage(data: data)
-            print("\(image!) is being fetched correctly")
+            //print("\(image!) is being fetched correctly")
             completion(.success(image))
 
         }.resume()

@@ -320,6 +320,15 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         //add fetch company logo here and make completion result to show in logoRightView
         //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
         // then save it to the object property - image
+            self.passwordController?.fetchCompanyLogo(searchTerm: "\(newText).com", completion: { (result) in
+                if let result = try? result.get() {
+                    DispatchQueue.main.async {
+                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+                        imageView.image = result
+                        self.logoRightView.addSubview(imageView)
+                    }
+                }
+            })
             
             
             UILabel.animate(withDuration: 0.1, animations: {
