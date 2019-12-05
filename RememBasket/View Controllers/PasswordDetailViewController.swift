@@ -117,7 +117,7 @@ class PasswordDetailViewController: UIViewController {
                         self.titleTextField.shake()
                     }
                 } else {
-                    
+    
                     //update
                     passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
                     NotificationCenter.default.post(name: .needtoReloadData, object: self)
