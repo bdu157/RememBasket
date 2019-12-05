@@ -33,6 +33,8 @@ class PasswordDetailViewController: UIViewController {
     private var passwordInputLabel: UILabel = UILabel()
     private var chosenLabel: UILabel!
     
+    //imageview for company logo
+    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     
     
     override func viewDidLoad() {
@@ -117,7 +119,7 @@ class PasswordDetailViewController: UIViewController {
                         self.titleTextField.shake()
                     }
                 } else {
-    
+                    
                     //update
                     passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
                     NotificationCenter.default.post(name: .needtoReloadData, object: self)
@@ -252,9 +254,9 @@ class PasswordDetailViewController: UIViewController {
         logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         logoRightView.backgroundColor = .white
-
+        
         //give constraints for the label
-        logoRightView.frame = CGRect(x: 0.0, y: 0, width: 40, height: 40)
+        logoRightView.frame = CGRect(x: 0.0, y: 0.0, width: 40, height: 40)
         logoRightView.layer.cornerRadius = 10
         logoRightView.layer.borderWidth = 1.5
         logoRightView.layer.borderColor = UIColor.black.cgColor
@@ -288,10 +290,37 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
             self.view.frame.origin.y = 0
         }, completion: nil)
-        
-
         return true
     }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        if textField == self.titleTextField {
+            //add fetch company logo here and make completion result to show in logoRightView
+            //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
+            // then save it to the object property - image
+            let searchTerm = textField.text!
+            if !searchTerm.isEmpty {
+                self.passwordController?.fetchCompanyLogo(searchTerm: "\(searchTerm).com", completion: { (result) in
+                    if let result = try? result.get() {
+                        DispatchQueue.main.async {
+                            self.logoImageView.alpha = 1
+                            self.logoImageView.image = result
+                            self.logoRightView.alpha = 1
+                            self.logoRightView.layer.borderColor = UIColor.clear.cgColor
+                            self.logoRightView.addSubview(self.logoImageView)
+                        }
+                    }
+                })
+            } else {
+                self.logoImageView.image = nil
+                self.logoRightView.layer.cornerRadius = 10
+                self.logoRightView.layer.borderWidth = 1.5
+            }
+        }
+        return true
+    }
+    
     
     //textfield being edited
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -317,26 +346,13 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         
         if !newText.isEmpty {
             
-        //add fetch company logo here and make completion result to show in logoRightView
-        //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
-        // then save it to the object property - image
-            self.passwordController?.fetchCompanyLogo(searchTerm: "\(newText).com", completion: { (result) in
-                if let result = try? result.get() {
-                    DispatchQueue.main.async {
-                        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-                        imageView.image = result
-                        self.logoRightView.addSubview(imageView)
-                    }
-                }
-            })
-            
-            
             UILabel.animate(withDuration: 0.1, animations: {
                 self.chosenLabel.alpha = 1
                 self.chosenLabel.frame.origin.x = 40
                 self.chosenLabel.frame.origin.y = -5
                 //give a logic so if there is no image from the internet then trigger this
                 if self.chosenLabel == self.titleLabel {
+                    self.logoRightView.alpha = 1
                     self.logoRightLabel.alpha = 1
                     self.logoRightLabel.text = String(newText.prefix(1).capitalized)
                     self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 2...255)) / 255, green: CGFloat(Int.random(in: 1...255)) / 255, blue: CGFloat(Int.random(in: 1...255)) / 255, alpha: 1)
@@ -349,13 +365,17 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 self.chosenLabel.frame.origin.x = 40
                 self.chosenLabel.frame.origin.y = 15
                 if self.chosenLabel == self.titleLabel {
-                    self.logoRightLabel.alpha = 0
+                    self.logoRightLabel.text = nil
                     self.logoRightView.backgroundColor = .white
+                    
+                    self.logoImageView.image = nil
+                    self.logoRightView.layer.borderColor = UIColor.black.cgColor
                 }
             }, completion: nil)
         }
         return true
     }
+    
 }
 
 extension PasswordDetailViewController: UITextViewDelegate {
