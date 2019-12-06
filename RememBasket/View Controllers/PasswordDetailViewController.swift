@@ -26,6 +26,8 @@ class PasswordDetailViewController: UIViewController {
     //private properties for setting up logoimage
     private var logoRightLabel: UILabel = UILabel()
     private var logoRightView: UIView = UIView()
+    private var rightViewBackgroundColor: UIColor!
+    
     
     //textfield input animation for placeholder
     private var titleLabel: UILabel = UILabel()
@@ -85,6 +87,8 @@ class PasswordDetailViewController: UIViewController {
                 if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
                     //add imageURL and rightuiview color to be created
                     print(self.passwordController?.logoImageURLString! ?? "")
+                    //print(self.logoRightView.backgroundColor ?? .black)
+                    print(self.rightViewBackgroundColor ?? .black)
                     //create
                     passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
                     navigationController?.popViewController(animated: true)
@@ -374,6 +378,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                     self.logoRightLabel.alpha = 1
                     self.logoRightLabel.text = String(newText.prefix(1).capitalized)
                     self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 2...255)) / 255, green: CGFloat(Int.random(in: 1...255)) / 255, blue: CGFloat(Int.random(in: 1...255)) / 255, alpha: 1)
+                    self.rightViewBackgroundColor = self.logoRightView.backgroundColor
                 }
             }, completion: nil)
             
