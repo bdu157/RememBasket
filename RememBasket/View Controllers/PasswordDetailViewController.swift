@@ -91,10 +91,10 @@ class PasswordDetailViewController: UIViewController {
                 if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
                     //add imageURL and rightuiview color to be created
                     print(self.passwordController?.logoImageURLString! ?? "")
-                    //print(self.logoRightView.backgroundColor ?? .black)
                     print(self.rightViewBackgroundColor ?? .black)
                     //create
                     passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
+                    print(logoViewbgColor.rgbUIColorToHexString())
                     navigationController?.popViewController(animated: true)
                 }
             }

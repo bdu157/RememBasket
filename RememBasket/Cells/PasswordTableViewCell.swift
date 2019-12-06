@@ -68,8 +68,16 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
         
-        self.passwordController.fetchCompanyLogoForOneTerm(searchTerm: password.imageURLString!) { (result) in
-            <#code#>
+        guard let imageURLString = password.imageURLString else {return}
+        
+        self.passwordController.fetchCompanyLogoForOneTerm(searchTerm: imageURLString) { (result) in
+            if let result = try? result.get() {
+                DispatchQueue.main.async {
+                    self.logoImageView.image = result
+                }
+            } else {
+                //self.logoImageView.backgroundColor = password.logoViewbgColor //convert String (hex) to UIColor (rgb)
+            }
         }
         
         updateBasketButtonImage()
