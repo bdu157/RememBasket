@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Password" representedClassName="Password" syncable="YES" codeGenerationType="class">
+        <attribute name="imageURLString" optional="YES" attributeType="String"/>
+        <attribute name="logoViewbgColor" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="openBasket" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="password" attributeType="String"/>
+        <attribute name="sectionTitle" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="username" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Password" positionX="-63" positionY="-18" width="128" height="178"/>
+    </elements>
+</model>
