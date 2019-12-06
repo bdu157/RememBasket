@@ -244,7 +244,7 @@
                                             <outlet property="delegate" destination="acQ-K7-UNU" id="wNW-qS-vai"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="User Name or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="User Name or Email (required)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLv-m3-Hla">
                                         <rect key="frame" x="0.0" y="85" width="374" height="70"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -258,7 +258,7 @@
                                             <outlet property="delegate" destination="acQ-K7-UNU" id="1Bv-zB-5xp"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-xi-3aQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Password (required)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aV-xi-3aQ">
                                         <rect key="frame" x="0.0" y="170" width="374" height="70"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

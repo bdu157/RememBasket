@@ -70,29 +70,25 @@ class PasswordDetailViewController: UIViewController {
             
             if self.password == nil {
                 
-                let randomNumber = Int.random(in: 0...2)
                 if title.isEmpty {
-                    print("title is empty (before updating password)")
-                    
-                    switch randomNumber {
-                    case 0:
-                        self.titleTextField.shake()
-                    case 1:
-                        self.titleTextField.pulse()
-                    case 2:
-                        self.titleTextField.flash()
-                    default:
-                        self.titleTextField.shake()
-                    }
-                } else {
-                    
+                    self.titleTextField.shake()
+                }
+                
+                if userName.isEmpty {
+                    self.userNameTextField.shake()
+                }
+                
+                if passwordInput.isEmpty {
+                    self.passwordTextField.shake()
+                }
+                
+                if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
                     //add imageURL and rightuiview color to be created
-                    
+                    print(self.passwordController?.logoImageURLString! ?? "")
                     //create
                     passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
                     navigationController?.popViewController(animated: true)
                 }
-                
             }
         }
     }
@@ -309,8 +305,8 @@ extension PasswordDetailViewController: UITextFieldDelegate {
             if !inputText.isEmpty {
                 
                 var searchTerms: [String] {
-                    
-                    let domainExtensionsArray = ["com", "net", "org", "co", "us", "co.kr", "io"]
+                    // less common -> more common
+                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
                     let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
                     
                     var completeDomainsArray: [String] = []
@@ -329,6 +325,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                             self.logoImageView.alpha = 1
                             self.logoImageView.image = result
                             self.logoRightView.alpha = 1
+                            self.logoRightView.backgroundColor = .clear
                             self.logoRightView.layer.borderColor = UIColor.clear.cgColor
                             self.logoRightView.addSubview(self.logoImageView)
                         }
@@ -338,6 +335,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 self.logoImageView.image = nil
                 self.logoRightView.layer.cornerRadius = 10
                 self.logoRightView.layer.borderWidth = 1.5
+                self.logoRightView.backgroundColor = .white
             }
         }
         
