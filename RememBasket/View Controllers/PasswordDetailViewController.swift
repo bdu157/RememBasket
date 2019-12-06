@@ -63,12 +63,16 @@ class PasswordDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
+        //required ones
         if let title = self.titleTextField.text?.capitalized,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
-            let passwordController = self.passwordController {
+            let passwordController = self.passwordController,
+            let logoViewbgColor = self.rightViewBackgroundColor {
             
-            guard let notes = self.notesTextView.text else {return}
+            //optionals
+            guard let notes = self.notesTextView.text,
+                let imageURLString = passwordController.logoImageURLString else {return}
             
             if self.password == nil {
                 
@@ -90,7 +94,7 @@ class PasswordDetailViewController: UIViewController {
                     //print(self.logoRightView.backgroundColor ?? .black)
                     print(self.rightViewBackgroundColor ?? .black)
                     //create
-                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes)
+                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
                     navigationController?.popViewController(animated: true)
                 }
             }
@@ -98,12 +102,16 @@ class PasswordDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
+        //required ones
         if let title = self.titleTextField.text?.capitalized,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
-            let passwordController = self.passwordController {
+            let passwordController = self.passwordController,
+            let logoViewbgColor = self.rightViewBackgroundColor {
             
-            guard let notes = self.notesTextView.text else {return}
+            //optionals
+            guard let notes = self.notesTextView.text,
+                let imageURLString = passwordController.logoImageURLString else {return}
             
             if let password = self.password {
                 
@@ -123,7 +131,7 @@ class PasswordDetailViewController: UIViewController {
                     //add imageURL and rightuiview color to be updated
                     
                     //update
-                    passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes)
+                    passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
                     NotificationCenter.default.post(name: .needtoReloadData, object: self)
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -314,7 +322,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                     for domain in domainExtensionsArray {
                         completeDomainsArray.append("\(betterTerm).\(domain)")
                     }
-
+                    
                     return completeDomainsArray
                 }
                 
@@ -446,5 +454,20 @@ extension PasswordDetailViewController: UITextViewDelegate {
         print("UIResponder.keyboardWillShow/HideNotification are removed")
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+extension UIColor {
+    
+    func rgbUIColorToHexString() -> String {
+        
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        return String(format: "#%06x", rgb)
     }
 }
