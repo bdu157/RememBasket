@@ -63,79 +63,68 @@ class PasswordDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        //required ones
-        if let title = self.titleTextField.text?.capitalized,
+        guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
-            let passwordInput = self.passwordTextField.text,
-            let passwordController = self.passwordController,
-            let logoViewbgColor = self.rightViewBackgroundColor {
-            
-            //optionals
-            guard let notes = self.notesTextView.text,
-                let imageURLString = passwordController.logoImageURLString else {return}
-            
-            if self.password == nil {
-                
-                if title.isEmpty {
-                    self.titleTextField.shake()
-                }
-                
-                if userName.isEmpty {
-                    self.userNameTextField.shake()
-                }
-                
-                if passwordInput.isEmpty {
-                    self.passwordTextField.shake()
-                }
-                
-                if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-                    //add imageURL and rightuiview color to be created
-                    print(self.passwordController?.logoImageURLString! ?? "")
-                    print(self.rightViewBackgroundColor ?? .black)
-                    //create
-                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
-                    print(logoViewbgColor.rgbUIColorToHexString())
-                    navigationController?.popViewController(animated: true)
-                }
+            let passwordInput = self.passwordTextField.text else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        if userName.isEmpty {
+            self.userNameTextField.shake()
+        }
+        
+        if passwordInput.isEmpty {
+            self.passwordTextField.shake()
+        }
+        
+        guard let passwordController = self.passwordController,
+            let notes = self.notesTextView.text,
+            let logoViewbgColor = self.rightViewBackgroundColor else {return}
+        
+        if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
+            //add imageURL and rightuiview color to be created
+            let url = passwordController.logoImageURLString
+            defer {
+                passwordController.logoImageURLString = nil
             }
+            //create
+            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: url ?? nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
+            print(logoViewbgColor.rgbUIColorToHexString())
+            navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
         //required ones
-        if let title = self.titleTextField.text?.capitalized,
+        guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
             let passwordController = self.passwordController,
-            let logoViewbgColor = self.rightViewBackgroundColor {
-            
-            //optionals
-            guard let notes = self.notesTextView.text,
-                let imageURLString = passwordController.logoImageURLString else {return}
-            
-            if let password = self.password {
-                
-                if title.isEmpty {
-                    self.titleTextField.shake()
-                }
-                
-                if userName.isEmpty {
-                    self.userNameTextField.shake()
-                }
-                
-                if passwordInput.isEmpty {
-                    self.passwordTextField.shake()
-                }
-                
-                if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-                    //add imageURL and rightuiview color to be updated
-                    
-                    //update
-                    passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
-                    NotificationCenter.default.post(name: .needtoReloadData, object: self)
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            let logoViewbgColor = self.rightViewBackgroundColor,
+            let notes = self.notesTextView.text,
+            let password = self.password else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        if userName.isEmpty {
+            self.userNameTextField.shake()
+        }
+        
+        if passwordInput.isEmpty {
+            self.passwordTextField.shake()
+        }
+        
+        if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
+            //add imageURL and rightuiview color to be updated
+            let url = passwordController.logoImageURLString
+            //update
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: url ?? nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
+            NotificationCenter.default.post(name: .needtoReloadData, object: self)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -401,6 +390,8 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                     
                     self.logoImageView.image = nil
                     self.logoRightView.layer.borderColor = UIColor.black.cgColor
+                    
+                    self.passwordController?.logoImageURLString = nil
                 }
             }, completion: nil)
         }

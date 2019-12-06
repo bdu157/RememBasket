@@ -362,7 +362,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="87d-9g-3kf">
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="saveButtonTapped:" destination="acQ-K7-UNU" id="ybk-sJ-ZLr"/>
+                                <action selector="saveButtonTapped:" destination="acQ-K7-UNU" id="G8B-LX-MQD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
