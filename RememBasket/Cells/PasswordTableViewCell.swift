@@ -22,6 +22,8 @@ class PasswordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var basketButton: UIButton!
     
+    //this is to use fetchcompanlogo
+    let passwordController = PasswordController()
     
     var password: Password? {
         didSet {
@@ -65,6 +67,10 @@ class PasswordTableViewCell: UITableViewCell {
         self.titleLabel?.text = password.title
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
+        
+        self.passwordController.fetchCompanyLogoForOneTerm(searchTerm: password.imageURLString!) { (result) in
+            <#code#>
+        }
         
         updateBasketButtonImage()
     }

@@ -116,13 +116,41 @@ class PasswordController {
                 
                 let image = UIImage(data: data)
                 print("\(aTerm) after receiving Data!!")
-                self.logoImageURLString = "https://logo.clearbit.com/\(aTerm)"
+                self.logoImageURLString = aTerm
                 completion(.success(image))
             }.resume()
         }
     }
+    
+    func fetchCompanyLogoForOneTerm(searchTerm: String, completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
+        
+        let urlRequest = baseUrl.appendingPathComponent(searchTerm)
+        var request = URLRequest(url: urlRequest)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse,
+                response.statusCode == 404 {
+                completion(.failure(.noLogo))
+                print("\(searchTerm) after receiving 404 response")
+                return
+            }
+            
+            if let _ = error {
+                completion(.failure(.otherError))
+                print("\(searchTerm) after receiving error")
+                return
+            }
+            guard let data = data else {
+                completion(.failure(.noData))
+                print("\(searchTerm) after receiving no data")
+                return
+            }
+            
+            let image = UIImage(data: data)
+            print("\(searchTerm) after receiving Data!!")
+            completion(.success(image))
+        }.resume()
+    }
 }
 
-extension UIColor {
-    
-}
