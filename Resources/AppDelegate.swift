@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UISearchBar.appearance().tintColor = .orange
         UINavigationBar.appearance().tintColor = .orange
+    
         return true
     }
 

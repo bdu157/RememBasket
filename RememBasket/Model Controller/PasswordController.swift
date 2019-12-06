@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class PasswordController {
     
@@ -45,7 +46,7 @@ class PasswordController {
             NSLog("there is an error in deleting row: \(error)")
         }
     }
-
+    
     
     //MARK: SaveToCoreDataStore - maincontext
     func saveToPersistentStore() {
@@ -68,5 +69,54 @@ class PasswordController {
             }
         }
         if let error = error {throw error}
+    }
+    
+    
+    //Networking for company logo
+    enum NetworkError: Error {
+        case badData
+        case noData
+        case otherError
+        case noLogo
+    }
+    //https://logo.clearbit.com/google.com
+    
+    var baseUrl = URL(string: "https://logo.clearbit.com/")!
+    
+    var logoImageURLString: String?
+    
+    func fetchCompanyLogo(searchTerms: [String], completion: @escaping (Result<UIImage?, NetworkError>) -> Void ) {
+        
+        for aTerm in searchTerms {
+            
+            let urlRequest = baseUrl.appendingPathComponent(aTerm)
+            var request = URLRequest(url: urlRequest)
+            request.httpMethod = "GET"
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let response = response as? HTTPURLResponse,
+                    response.statusCode == 404 {
+                    completion(.failure(.noLogo))
+                    print("\(aTerm) after receiving 404 response")
+                    return
+                }
+                
+                if let _ = error {
+                    completion(.failure(.otherError))
+                    print("\(aTerm) after receiving error")
+                    return
+                }
+                guard let data = data else {
+                    completion(.failure(.noData))
+                    print("\(aTerm) after receiving no data")
+                    return
+                }
+                
+                let image = UIImage(data: data)
+                print("\(aTerm) after receiving Data!!")
+                self.logoImageURLString = "https://logo.clearbit.com/\(aTerm)"
+                completion(.success(image))
+            }.resume()
+        }
     }
 }

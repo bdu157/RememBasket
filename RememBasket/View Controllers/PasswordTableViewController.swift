@@ -29,6 +29,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
      }()
      */
     
+    //computed property
     var sortOnes: [NSSortDescriptor] {
         let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
         
