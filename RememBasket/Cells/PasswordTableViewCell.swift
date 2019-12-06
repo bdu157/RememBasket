@@ -40,8 +40,7 @@ class PasswordTableViewCell: UITableViewCell {
         
         self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
         
-        self.logoImageView.backgroundColor = .orange
-        self.logoImageView.tintColor = .white
+        self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
         
         
