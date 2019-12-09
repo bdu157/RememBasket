@@ -45,6 +45,7 @@ class PasswordTableViewCell: UITableViewCell {
         
         
         observeShouldResetData()
+        updateViews()
     }
     
     //observerFortheReset
@@ -67,19 +68,11 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
         
-        if let imageURLString = password.imageURLString {
-        
-        self.passwordController.fetchCompanyLogoForOneTerm(searchTerm: imageURLString) { (result) in
-            if let result = try? result.get() {
-                DispatchQueue.main.async {
-                    self.logoImageView.image = result
-                    }
-                }
-            }
-        } else {
-            //self.logoImageView.backgroundColor = password.logoViewbgColor //convert string HEX to UIColor RGB
-            self.logoImageView.backgroundColor = .black
+        print("\(password.logoViewbgColor!)")
+        DispatchQueue.main.async {
+            self.logoImageView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
         }
+        
         updateBasketButtonImage()
     }
     

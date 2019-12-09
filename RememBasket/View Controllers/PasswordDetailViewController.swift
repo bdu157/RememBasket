@@ -39,6 +39,10 @@ class PasswordDetailViewController: UIViewController {
     private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     
     
+    //logo
+    //private var searchTerm: String = "noURL"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateViews()
@@ -84,14 +88,9 @@ class PasswordDetailViewController: UIViewController {
             let logoViewbgColor = self.rightViewBackgroundColor else {return}
         
         if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-            //add imageURL and rightuiview color to be created
-            let url = passwordController.logoImageURLString
-            defer {
-                passwordController.logoImageURLString = nil
-            }
-            //create
-            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: url ?? nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
-            print(logoViewbgColor.rgbUIColorToHexString())
+            
+            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString())
+            
             navigationController?.popViewController(animated: true)
         }
     }
@@ -120,9 +119,8 @@ class PasswordDetailViewController: UIViewController {
         
         if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
             //add imageURL and rightuiview color to be updated
-            let url = passwordController.logoImageURLString
             //update
-            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: url ?? nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
             NotificationCenter.default.post(name: .needtoReloadData, object: self)
             self.dismiss(animated: true, completion: nil)
         }
@@ -291,54 +289,62 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
-        if textField == self.titleTextField {
-            
-            let inputText = textField.text!
-            //add fetch company logo here and make completion result to show in logoRightView
-            //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
-            // then save it to the object property - image
-            if !inputText.isEmpty {
-                
-                var searchTerms: [String] {
-                    // less common -> more common
-                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
-                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
-                    
-                    var completeDomainsArray: [String] = []
-                    
-                    for domain in domainExtensionsArray {
-                        completeDomainsArray.append("\(betterTerm).\(domain)")
-                    }
-                    
-                    return completeDomainsArray
-                }
-                
-                
-                self.passwordController?.fetchCompanyLogo(searchTerms: searchTerms, completion: { (result) in
-                    if let result = try? result.get() {
-                        DispatchQueue.main.async {
-                            self.logoImageView.alpha = 1
-                            self.logoImageView.image = result
-                            self.logoRightView.alpha = 1
-                            self.logoRightView.backgroundColor = .clear
-                            self.logoRightView.layer.borderColor = UIColor.clear.cgColor
-                            self.logoRightView.addSubview(self.logoImageView)
-                        }
-                    }
-                })
-            } else {
-                self.logoImageView.image = nil
-                self.logoRightView.layer.cornerRadius = 10
-                self.logoRightView.layer.borderWidth = 1.5
-                self.logoRightView.backgroundColor = .white
-            }
-        }
-        
-        
-        return true
-    }
+    /*
+     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+     
+     if textField == self.titleTextField {
+     
+     let inputText = textField.text!
+     //add fetch company logo here and make completion result to show in logoRightView
+     //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
+     // then save it to the object property - image
+     if !inputText.isEmpty {
+     
+     //                var searchTerms: [String] {
+     //                    // less common -> more common
+     //                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
+     //                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
+     //
+     //                    var completeDomainsArray: [String] = []
+     //
+     //                    for domain in domainExtensionsArray {
+     //                        completeDomainsArray.append("\(betterTerm).\(domain)")
+     //                    }
+     //
+     //                    return completeDomainsArray
+     //                }
+     
+     
+     self.passwordController?.fetchCompanyLogoForOneTerm(searchTerm: inputText, completion: { (result) in
+     if let result = try? result.get() {
+     DispatchQueue.main.async {
+     self.logoImageView.alpha = 1
+     self.logoImageView.image = result
+     self.logoRightView.alpha = 1
+     self.logoRightView.backgroundColor = .clear
+     self.logoRightView.layer.borderColor = UIColor.clear.cgColor
+     self.logoRightView.addSubview(self.logoImageView)
+     self.searchTerm = inputText
+     print("setting \(self.searchTerm) in fetchcompanylogo")
+     }
+     } else {
+     self.searchTerm = "noURL"
+     }
+     })
+     } else {
+     self.logoImageView.image = nil
+     self.logoRightView.layer.cornerRadius = 10
+     self.logoRightView.layer.borderWidth = 1.5
+     self.logoRightView.backgroundColor = .white
+     
+     self.searchTerm = "noURL"
+     }
+     }
+     
+     
+     return true
+     }
+     */
     
     
     //textfield being edited
@@ -391,7 +397,6 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                     self.logoImageView.image = nil
                     self.logoRightView.layer.borderColor = UIColor.black.cgColor
                     
-                    self.passwordController?.logoImageURLString = nil
                 }
             }, completion: nil)
         }

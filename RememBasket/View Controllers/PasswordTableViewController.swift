@@ -35,7 +35,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         
         switch selectedScopeIndex {
         case 0:
-            return [NSSortDescriptor(key: "title", ascending: true)]
+            return [NSSortDescriptor(key: "title", ascending: true), NSSortDescriptor(key: "imageURLString", ascending: true) ]
         case 1:
             return [NSSortDescriptor(key: "title", ascending: false)]
         case 2:
@@ -89,10 +89,10 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .needtoReloadData, object: nil)
     }
     
+    
     @objc func refresh(notification: Notification) {
         self.tableView.reloadData()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
