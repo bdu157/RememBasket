@@ -36,7 +36,7 @@ class PasswordDetailViewController: UIViewController {
     private var chosenLabel: UILabel!
     
     //imageview for company logo
-    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     
     
     //logo
@@ -96,7 +96,7 @@ class PasswordDetailViewController: UIViewController {
     }
     
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
-        //required ones
+
         guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
@@ -133,14 +133,19 @@ class PasswordDetailViewController: UIViewController {
     
     //private methods
     private func updateViews() {
-        if let password = self.password {
-            self.title = password.title
+        if let password = self.password, isViewLoaded {
+            //self.title = password.title
             self.titleTextField?.text = password.title
             self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
             self.buttonsView?.isHidden = false
-            self.logoRightLabel.text = String(password.title!.prefix(1))
+            
+        
+            self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
+            self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
+            self.rightViewBackgroundColor = UIColor(hexString: password.logoViewbgColor!)
+    
         } else {
             self.title = "Add Password"
             self.buttonsView?.isHidden = true
@@ -249,15 +254,13 @@ class PasswordDetailViewController: UIViewController {
         logoRightLabel.frame = CGRect(x: 12.0, y: 6.0, width: 30.0, height: 30.0)
         logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-        logoRightView.backgroundColor = .white
         
         //give constraints for the label
         logoRightView.frame = CGRect(x: 0.0, y: 0.0, width: 40, height: 40)
         logoRightView.layer.cornerRadius = 10
         logoRightView.layer.borderWidth = 1.5
         logoRightView.layer.borderColor = UIColor.black.cgColor
-        //random uiview color
-        //logoRightView.backgroundColor = .orange
+
         logoRightView.addSubview(logoRightLabel)
         
         //add padding by adding another uiview with bigger width
@@ -393,8 +396,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 if self.chosenLabel == self.titleLabel {
                     self.logoRightLabel.text = nil
                     self.logoRightView.backgroundColor = .white
-                    
-                    self.logoImageView.image = nil
+                
                     self.logoRightView.layer.borderColor = UIColor.black.cgColor
                     
                 }
