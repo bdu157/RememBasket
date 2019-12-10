@@ -156,7 +156,13 @@ class PasswordDetailViewController: UIViewController {
             let createdDate = dateFormatter.string(from: dateFromCoreData!)
             dateFormatter.timeZone = NSTimeZone.local
         
+            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
+            let modifiedDateFromCoreData = password.modifiedDate
+            let modifiedDate = dateFormatter.string(from: modifiedDateFromCoreData!)
+            dateFormatter.timeZone = NSTimeZone.local
+            
             self.createdDateLabel.text = createdDate
+            self.modifiedDateLabel.text = modifiedDate
             
             self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
             self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)

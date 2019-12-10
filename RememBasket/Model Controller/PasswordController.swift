@@ -16,8 +16,7 @@ class PasswordController {
     //create password
     func createPassword(title: String, userName: String, password: String, notes: String?, imageURLString: String?, logoViewbgColor: String) {
         //let firstLetterOfTitle = title[0] this would work with StringExtension
-        let firstLetter = title.prefix(1)
-        let _ = Password(title: title, username: userName, password: password, notes: notes, sectionTitle: String(firstLetter), imageURLString: imageURLString, logoViewbgColor: logoViewbgColor)
+        let _ = Password(title: title, username: userName, password: password, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor)
         saveToPersistentStore()
     }
     
@@ -29,8 +28,7 @@ class PasswordController {
         password.username = changeUserNameTo
         password.password = changePasswordTo
         password.notes = changeNotesTo
-        password.timestamp = modifiedDate
-        password.sectionTitle = String(changeTitleTo.prefix(1))
+        password.modifiedDate = modifiedDate
         password.imageURLString = changeImageURLStringTo
         password.logoViewbgColor = logoViewbgColor
         
