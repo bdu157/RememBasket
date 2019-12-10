@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension Password {
-    convenience init(title: String, username: String, password: String, notes: String?, timestamp: Date = Date(), modifiedDate: Date = Date(), openBasket: Bool = false, imageURLString: String?, logoViewbgColor: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(title: String, username: String, password: String, notes: String?, timestamp: Date = Date(), modifiedDate: Date? = nil, openBasket: Bool = false, imageURLString: String?, logoViewbgColor: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.title = title
         self.username = username

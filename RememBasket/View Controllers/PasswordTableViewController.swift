@@ -35,11 +35,11 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         
         switch selectedScopeIndex {
         case 0:
-            return [NSSortDescriptor(key: "title", ascending: true), NSSortDescriptor(key: "imageURLString", ascending: true) ]
+            return [NSSortDescriptor(key: "title", ascending: true)]
         case 1:
             return [NSSortDescriptor(key: "title", ascending: false)]
         case 2:
-            return [NSSortDescriptor(key: "timestamp", ascending: false)]
+            return [NSSortDescriptor(key: "modifiedDate", ascending: false)]
         default:
             return [NSSortDescriptor(key: "title", ascending: true)]
         }

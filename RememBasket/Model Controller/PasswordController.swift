@@ -23,7 +23,7 @@ class PasswordController {
     //read password
     
     //update password
-    func updatePassword(for password: Password, changeTitleTo: String, changeUserNameTo: String, changePasswordTo: String, changeNotesTo: String?, modifiedDate: Date = Date(), changeImageURLStringTo: String?, logoViewbgColor: String) {
+    func updatePassword(for password: Password, changeTitleTo: String, changeUserNameTo: String, changePasswordTo: String, changeNotesTo: String?, modifiedDate: Date, changeImageURLStringTo: String?, logoViewbgColor: String) {
         password.title = changeTitleTo
         password.username = changeUserNameTo
         password.password = changePasswordTo

@@ -21,7 +21,9 @@ class PasswordDetailViewController: UIViewController {
     
     
     @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var modifiedDateLabel: UILabel!
+    @IBOutlet weak var modifiedLabel: UILabel!
     
     
     //private properties for showHideButton
@@ -41,7 +43,7 @@ class PasswordDetailViewController: UIViewController {
     private var chosenLabel: UILabel!
     
     //imageview for company logo
-//    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    //    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
     
     
     //logo
@@ -100,8 +102,9 @@ class PasswordDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func saveButtonFromUpdateView(_ sender: Any) {
 
+    @IBAction func saveButtonFromUpdateView(_ sender: Any) {
+        
         guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
@@ -125,7 +128,7 @@ class PasswordDetailViewController: UIViewController {
         if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
             //add imageURL and rightuiview color to be updated
             //update
-            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, modifiedDate: Date(), changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
             NotificationCenter.default.post(name: .needtoReloadData, object: self)
             self.dismiss(animated: true, completion: nil)
         }
@@ -146,8 +149,10 @@ class PasswordDetailViewController: UIViewController {
             self.notesTextView?.text = password.notes
             
             self.buttonsView?.isHidden = false
+            
+            //created date
             self.createdDateLabel?.isHidden = false
-            self.modifiedDateLabel?.isHidden = false
+            self.createdLabel.isHidden = false
             
             let dateFormatter = DateFormatter()
             //dateFormatter.dateFormat = "yyyy-MM-dd'T00':HH:mm:sssZ"
@@ -155,24 +160,38 @@ class PasswordDetailViewController: UIViewController {
             let dateFromCoreData = password.timestamp
             let createdDate = dateFormatter.string(from: dateFromCoreData!)
             dateFormatter.timeZone = NSTimeZone.local
-        
-            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
-            let modifiedDateFromCoreData = password.modifiedDate
-            let modifiedDate = dateFormatter.string(from: modifiedDateFromCoreData!)
-            dateFormatter.timeZone = NSTimeZone.local
             
             self.createdDateLabel.text = createdDate
-            self.modifiedDateLabel.text = modifiedDate
+
+            self.modifiedDateLabel?.isHidden = true
+            self.modifiedLabel?.isHidden = true
+            
+            //modieifed date
+        
+            if password.modifiedDate != nil {
+                let dateFormatterModified = DateFormatter()
+                self.modifiedDateLabel?.isHidden = false
+                self.modifiedLabel?.isHidden = false
+                dateFormatterModified.dateFormat = "MM/dd/yyyy HH:mm:ss"
+                let modifiedDateFromCoreData = password.modifiedDate
+                let modifiedDate = dateFormatter.string(from: modifiedDateFromCoreData!)
+                dateFormatter.timeZone = NSTimeZone.local
+                
+                self.modifiedDateLabel.text = modifiedDate
+            }
+                
             
             self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
             self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
             self.rightViewBackgroundColor = UIColor(hexString: password.logoViewbgColor!)
-    
+            
         } else {
             self.title = "Add Password"
             self.buttonsView?.isHidden = true
             self.createdDateLabel?.isHidden = true
             self.modifiedDateLabel?.isHidden = true
+            self.createdLabel?.isHidden = true
+            self.modifiedLabel?.isHidden = true
         }
     }
     
@@ -284,7 +303,7 @@ class PasswordDetailViewController: UIViewController {
         logoRightView.layer.cornerRadius = 10
         logoRightView.layer.borderWidth = 1.5
         logoRightView.layer.borderColor = UIColor.black.cgColor
-
+        
         logoRightView.addSubview(logoRightLabel)
         
         //add padding by adding another uiview with bigger width
@@ -420,7 +439,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 if self.chosenLabel == self.titleLabel {
                     self.logoRightLabel.text = nil
                     self.logoRightView.backgroundColor = .white
-                
+                    
                     self.logoRightView.layer.borderColor = UIColor.black.cgColor
                     
                 }
