@@ -35,6 +35,13 @@ class PasswordController {
         saveToPersistentStore()
     }
     
+    //toggle openBasket
+    func toggleOpenBasket(for password: Password) {
+        password.openBasket = !password.openBasket
+        saveToPersistentStore()
+    }
+    
+    
     //delete password
     func deletePassword(for password: Password) {
         let moc = CoreDataStack.shared.mainContext

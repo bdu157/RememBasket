@@ -33,6 +33,8 @@ class PasswordTableViewCell: UITableViewCell {
         }
     }
     
+    var delegate: PasswordTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
@@ -151,7 +153,9 @@ class PasswordTableViewCell: UITableViewCell {
                 self.passwordLabel.textColor = .orange
             }
             
-        }, completion: nil)
+        }, completion: {(_) in
+            self.delegate?.toggleOpenBasketImage(for: self)
+        })
     }
     
     private func showTitle() {
@@ -175,6 +179,8 @@ class PasswordTableViewCell: UITableViewCell {
                 self.titleLabel.alpha = 1.0
             }
             
-        }, completion: nil)
+        }, completion: { (_) in
+            self.delegate?.toggleOpenBasketImage(for: self)
+        })
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */; };
+		0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */; };
 		0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B65A762239389A500300633 /* Models.xcdatamodeld */; };
 		0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8D2368720800B0E72A /* AppDelegate.swift */; };
 		0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B666D8F2368720800B0E72A /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		0B08C1E0239FAE970090010A /* Models 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 4.xcdatamodel"; sourceTree = "<group>"; };
+		0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B65A763239389A500300633 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		0B666D8A2368720800B0E72A /* RememBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B666D8D2368720800B0E72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0BE431AD238A43F9009B8033 /* Extensions */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
+				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
 			);
 			path = RememBasket;
 			sourceTree = "<group>";
@@ -130,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				0B65A762239389A500300633 /* Models.xcdatamodeld */,
-				0BA26A1C239391DF004836B8 /* CoreDataStack.swift */,
 				0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */,
+				0BA26A1C239391DF004836B8 /* CoreDataStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B68DD0F239A58BC00E2DD67 /* UIColorExtension.swift in Sources */,
+				0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,
