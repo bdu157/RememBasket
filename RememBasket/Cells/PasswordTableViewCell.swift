@@ -92,21 +92,24 @@ class PasswordTableViewCell: UITableViewCell {
             self.logoImageView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
             self.logoLabel.text = password.title?.prefix(1).capitalized
         }
-        
-        updateBasketButtonImage()
+        updateBasketButtonImage(for: password)
     }
     
     //update basketButton
-    private func updateBasketButtonImage() {
-        
-        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
-            self.titleLabel.alpha = 1
-            self.userNameLabel.alpha = 0
-            self.passwordLabel.alpha = 0
-        } else {
+    private func updateBasketButtonImage(for password: Password) {
+
+        if password.openBasket == true {
+            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
             self.titleLabel.alpha = 0
             self.userNameLabel.alpha = 1
             self.passwordLabel.alpha = 1
+            self.userNameLabel.textColor = .orange
+            self.passwordLabel.textColor = .orange
+        } else {
+            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+            self.titleLabel.alpha = 1
+            self.userNameLabel.alpha = 0
+            self.passwordLabel.alpha = 0
         }
     }
     
@@ -117,14 +120,14 @@ class PasswordTableViewCell: UITableViewCell {
     
     //animationforLabels
     private func dividerAnimation() {
-        
+        guard let password = self.password else {return}
         //when clicking the button
-        if self.basketButton.image(for: .normal) == UIImage(named: "basket.png") {
+        if password.openBasket == false {
             self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
             showUserNameAndPassword()
         } else {
-            showTitle()
             self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+            showTitle()
         }
     }
     
@@ -153,7 +156,7 @@ class PasswordTableViewCell: UITableViewCell {
                 self.passwordLabel.textColor = .orange
             }
             
-        }, completion: {(_) in
+        }, completion: { (_) in
             self.delegate?.toggleOpenBasketImage(for: self)
         })
     }
@@ -179,8 +182,8 @@ class PasswordTableViewCell: UITableViewCell {
                 self.titleLabel.alpha = 1.0
             }
             
-        }, completion: { (_) in
-            self.delegate?.toggleOpenBasketImage(for: self)
-        })
+        }, completion:  { (_) in
+                   self.delegate?.toggleOpenBasketImage(for: self)
+               })
     }
 }

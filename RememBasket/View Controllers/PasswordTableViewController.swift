@@ -39,7 +39,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         case 1:
             return [NSSortDescriptor(key: "title", ascending: false)]
         case 2:
-            return [NSSortDescriptor(key: "modifiedDate", ascending: false)]
+            return [NSSortDescriptor(key: "timestamp", ascending: false)]
         default:
             return [NSSortDescriptor(key: "title", ascending: true)]
         }
