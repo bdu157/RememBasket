@@ -52,8 +52,17 @@ class PasswordTableViewCell: UITableViewCell {
         
         logoLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         logoLabel.layer.backgroundColor = UIColor.clear.cgColor
-        logoLabel.textColor = .white
+        logoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        logoLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        logoLabel.translatesAutoresizingMaskIntoConstraints = false
         self.logoImageView.addSubview(logoLabel)
+        
+        //add constraints
+        logoLabel.topAnchor.constraint(equalTo: logoImageView.topAnchor, constant: 15).isActive = true
+        logoLabel.trailingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: -10.5).isActive = true
+        logoLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: 18.5).isActive = true
+        logoLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -15).isActive = true
+        
     }
     
     //observerFortheReset

@@ -246,7 +246,7 @@ class PasswordDetailViewController: UIViewController {
     
     //set up rightview for setting up the logo image property
     private func addRightLogoView() {
-        logoRightLabel.frame = CGRect(x: 10.0, y: 10.0, width: 30.0, height: 30.0)
+        logoRightLabel.frame = CGRect(x: 12.0, y: 6.0, width: 30.0, height: 30.0)
         logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
         logoRightView.backgroundColor = .white
