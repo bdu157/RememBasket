@@ -19,6 +19,11 @@ class PasswordDetailViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var buttonsView: UIView!
     
+    
+    @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var modifiedDateLabel: UILabel!
+    
+    
     //private properties for showHideButton
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
@@ -139,9 +144,20 @@ class PasswordDetailViewController: UIViewController {
             self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
-            self.buttonsView?.isHidden = false
             
+            self.buttonsView?.isHidden = false
+            self.createdDateLabel?.isHidden = false
+            self.modifiedDateLabel?.isHidden = false
+            
+            let dateFormatter = DateFormatter()
+            //dateFormatter.dateFormat = "yyyy-MM-dd'T00':HH:mm:sssZ"
+            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
+            let dateFromCoreData = password.timestamp
+            let createdDate = dateFormatter.string(from: dateFromCoreData!)
+            dateFormatter.timeZone = NSTimeZone.local
         
+            self.createdDateLabel.text = createdDate
+            
             self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
             self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
             self.rightViewBackgroundColor = UIColor(hexString: password.logoViewbgColor!)
@@ -149,6 +165,8 @@ class PasswordDetailViewController: UIViewController {
         } else {
             self.title = "Add Password"
             self.buttonsView?.isHidden = true
+            self.createdDateLabel?.isHidden = true
+            self.modifiedDateLabel?.isHidden = true
         }
     }
     

@@ -340,6 +340,20 @@
                                     <constraint firstItem="wAc-rv-7v9" firstAttribute="centerX" secondItem="8bl-4D-EsQ" secondAttribute="centerX" id="xza-AO-cyH"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blw-eL-qk9">
+                                <rect key="frame" x="86" y="744" width="242" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGC-6W-LXV">
+                                <rect key="frame" x="86" y="773" width="242" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -369,6 +383,8 @@
                     <connections>
                         <outlet property="buttonsView" destination="8bl-4D-EsQ" id="inZ-6H-omA"/>
                         <outlet property="cancelButton" destination="IhZ-Gr-NXL" id="nTr-GC-T91"/>
+                        <outlet property="createdDateLabel" destination="blw-eL-qk9" id="G7o-hH-V3j"/>
+                        <outlet property="modifiedDateLabel" destination="MGC-6W-LXV" id="Mno-tJ-s3t"/>
                         <outlet property="notesTextView" destination="bmc-lD-Rri" id="wbF-p4-TrX"/>
                         <outlet property="passwordTextField" destination="9aV-xi-3aQ" id="zud-6t-5XF"/>
                         <outlet property="titleTextField" destination="zTm-Bo-FLF" id="RZM-b4-UJd"/>
