@@ -22,6 +22,10 @@ class PasswordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var basketButton: UIButton!
     
+    private var logoLabel: UILabel = UILabel()
+    
+    //this is to use fetchcompanlogo
+    let passwordController = PasswordController()
     
     var password: Password? {
         didSet {
@@ -38,12 +42,27 @@ class PasswordTableViewCell: UITableViewCell {
         
         self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
         
-        self.logoImageView.backgroundColor = .orange
-        self.logoImageView.tintColor = .white
+        self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
         
         
         observeShouldResetData()
+        updateViews()
+        
+        
+        logoLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        logoLabel.layer.backgroundColor = UIColor.clear.cgColor
+        logoLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        logoLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        logoLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.logoImageView.addSubview(logoLabel)
+        
+        //add constraints
+        logoLabel.topAnchor.constraint(equalTo: logoImageView.topAnchor, constant: 15).isActive = true
+        logoLabel.trailingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: -10.5).isActive = true
+        logoLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: 18.5).isActive = true
+        logoLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -15).isActive = true
+        
     }
     
     //observerFortheReset
@@ -65,6 +84,12 @@ class PasswordTableViewCell: UITableViewCell {
         self.titleLabel?.text = password.title
         self.userNameLabel?.text = password.username
         self.passwordLabel?.text = password.password
+        
+        print("\(password.logoViewbgColor!)")
+        DispatchQueue.main.async {
+            self.logoImageView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
+            self.logoLabel.text = password.title?.prefix(1).capitalized
+        }
         
         updateBasketButtonImage()
     }

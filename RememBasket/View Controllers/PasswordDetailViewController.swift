@@ -36,7 +36,11 @@ class PasswordDetailViewController: UIViewController {
     private var chosenLabel: UILabel!
     
     //imageview for company logo
-    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    
+    
+    //logo
+    //private var searchTerm: String = "noURL"
     
     
     override func viewDidLoad() {
@@ -63,79 +67,62 @@ class PasswordDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        //required ones
-        if let title = self.titleTextField.text?.capitalized,
+        guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
-            let passwordInput = self.passwordTextField.text,
-            let passwordController = self.passwordController,
-            let logoViewbgColor = self.rightViewBackgroundColor {
+            let passwordInput = self.passwordTextField.text else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        if userName.isEmpty {
+            self.userNameTextField.shake()
+        }
+        
+        if passwordInput.isEmpty {
+            self.passwordTextField.shake()
+        }
+        
+        guard let passwordController = self.passwordController,
+            let notes = self.notesTextView.text,
+            let logoViewbgColor = self.rightViewBackgroundColor else {return}
+        
+        if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
             
-            //optionals
-            guard let notes = self.notesTextView.text,
-                let imageURLString = passwordController.logoImageURLString else {return}
+            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString())
             
-            if self.password == nil {
-                
-                if title.isEmpty {
-                    self.titleTextField.shake()
-                }
-                
-                if userName.isEmpty {
-                    self.userNameTextField.shake()
-                }
-                
-                if passwordInput.isEmpty {
-                    self.passwordTextField.shake()
-                }
-                
-                if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-                    //add imageURL and rightuiview color to be created
-                    print(self.passwordController?.logoImageURLString! ?? "")
-                    //print(self.logoRightView.backgroundColor ?? .black)
-                    print(self.rightViewBackgroundColor ?? .black)
-                    //create
-                    passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //change this UIColor to String
-                    navigationController?.popViewController(animated: true)
-                }
-            }
+            navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
-        //required ones
-        if let title = self.titleTextField.text?.capitalized,
+
+        guard let title = self.titleTextField.text,
             let userName = self.userNameTextField.text,
             let passwordInput = self.passwordTextField.text,
             let passwordController = self.passwordController,
-            let logoViewbgColor = self.rightViewBackgroundColor {
-            
-            //optionals
-            guard let notes = self.notesTextView.text,
-                let imageURLString = passwordController.logoImageURLString else {return}
-            
-            if let password = self.password {
-                
-                if title.isEmpty {
-                    self.titleTextField.shake()
-                }
-                
-                if userName.isEmpty {
-                    self.userNameTextField.shake()
-                }
-                
-                if passwordInput.isEmpty {
-                    self.passwordTextField.shake()
-                }
-                
-                if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-                    //add imageURL and rightuiview color to be updated
-                    
-                    //update
-                    passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: imageURLString, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
-                    NotificationCenter.default.post(name: .needtoReloadData, object: self)
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            let logoViewbgColor = self.rightViewBackgroundColor,
+            let notes = self.notesTextView.text,
+            let password = self.password else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        if userName.isEmpty {
+            self.userNameTextField.shake()
+        }
+        
+        if passwordInput.isEmpty {
+            self.passwordTextField.shake()
+        }
+        
+        if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
+            //add imageURL and rightuiview color to be updated
+            //update
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
+            NotificationCenter.default.post(name: .needtoReloadData, object: self)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -146,14 +133,19 @@ class PasswordDetailViewController: UIViewController {
     
     //private methods
     private func updateViews() {
-        if let password = self.password {
-            self.title = password.title
+        if let password = self.password, isViewLoaded {
+            //self.title = password.title
             self.titleTextField?.text = password.title
             self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
             self.buttonsView?.isHidden = false
-            self.logoRightLabel.text = String(password.title!.prefix(1))
+            
+        
+            self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
+            self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
+            self.rightViewBackgroundColor = UIColor(hexString: password.logoViewbgColor!)
+    
         } else {
             self.title = "Add Password"
             self.buttonsView?.isHidden = true
@@ -259,18 +251,16 @@ class PasswordDetailViewController: UIViewController {
     
     //set up rightview for setting up the logo image property
     private func addRightLogoView() {
-        logoRightLabel.frame = CGRect(x: 10.0, y: 10.0, width: 30.0, height: 30.0)
+        logoRightLabel.frame = CGRect(x: 12.0, y: 6.0, width: 30.0, height: 30.0)
         logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
         logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-        logoRightView.backgroundColor = .white
         
         //give constraints for the label
         logoRightView.frame = CGRect(x: 0.0, y: 0.0, width: 40, height: 40)
         logoRightView.layer.cornerRadius = 10
         logoRightView.layer.borderWidth = 1.5
         logoRightView.layer.borderColor = UIColor.black.cgColor
-        //random uiview color
-        //logoRightView.backgroundColor = .orange
+
         logoRightView.addSubview(logoRightLabel)
         
         //add padding by adding another uiview with bigger width
@@ -302,54 +292,62 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
-        if textField == self.titleTextField {
-            
-            let inputText = textField.text!
-            //add fetch company logo here and make completion result to show in logoRightView
-            //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
-            // then save it to the object property - image
-            if !inputText.isEmpty {
-                
-                var searchTerms: [String] {
-                    // less common -> more common
-                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
-                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
-                    
-                    var completeDomainsArray: [String] = []
-                    
-                    for domain in domainExtensionsArray {
-                        completeDomainsArray.append("\(betterTerm).\(domain)")
-                    }
-                    
-                    return completeDomainsArray
-                }
-                
-                
-                self.passwordController?.fetchCompanyLogo(searchTerms: searchTerms, completion: { (result) in
-                    if let result = try? result.get() {
-                        DispatchQueue.main.async {
-                            self.logoImageView.alpha = 1
-                            self.logoImageView.image = result
-                            self.logoRightView.alpha = 1
-                            self.logoRightView.backgroundColor = .clear
-                            self.logoRightView.layer.borderColor = UIColor.clear.cgColor
-                            self.logoRightView.addSubview(self.logoImageView)
-                        }
-                    }
-                })
-            } else {
-                self.logoImageView.image = nil
-                self.logoRightView.layer.cornerRadius = 10
-                self.logoRightView.layer.borderWidth = 1.5
-                self.logoRightView.backgroundColor = .white
-            }
-        }
-        
-        
-        return true
-    }
+    /*
+     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+     
+     if textField == self.titleTextField {
+     
+     let inputText = textField.text!
+     //add fetch company logo here and make completion result to show in logoRightView
+     //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
+     // then save it to the object property - image
+     if !inputText.isEmpty {
+     
+     //                var searchTerms: [String] {
+     //                    // less common -> more common
+     //                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
+     //                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
+     //
+     //                    var completeDomainsArray: [String] = []
+     //
+     //                    for domain in domainExtensionsArray {
+     //                        completeDomainsArray.append("\(betterTerm).\(domain)")
+     //                    }
+     //
+     //                    return completeDomainsArray
+     //                }
+     
+     
+     self.passwordController?.fetchCompanyLogoForOneTerm(searchTerm: inputText, completion: { (result) in
+     if let result = try? result.get() {
+     DispatchQueue.main.async {
+     self.logoImageView.alpha = 1
+     self.logoImageView.image = result
+     self.logoRightView.alpha = 1
+     self.logoRightView.backgroundColor = .clear
+     self.logoRightView.layer.borderColor = UIColor.clear.cgColor
+     self.logoRightView.addSubview(self.logoImageView)
+     self.searchTerm = inputText
+     print("setting \(self.searchTerm) in fetchcompanylogo")
+     }
+     } else {
+     self.searchTerm = "noURL"
+     }
+     })
+     } else {
+     self.logoImageView.image = nil
+     self.logoRightView.layer.cornerRadius = 10
+     self.logoRightView.layer.borderWidth = 1.5
+     self.logoRightView.backgroundColor = .white
+     
+     self.searchTerm = "noURL"
+     }
+     }
+     
+     
+     return true
+     }
+     */
     
     
     //textfield being edited
@@ -398,9 +396,9 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 if self.chosenLabel == self.titleLabel {
                     self.logoRightLabel.text = nil
                     self.logoRightView.backgroundColor = .white
-                    
-                    self.logoImageView.image = nil
+                
                     self.logoRightView.layer.borderColor = UIColor.black.cgColor
+                    
                 }
             }, completion: nil)
         }
@@ -457,17 +455,3 @@ extension PasswordDetailViewController: UITextViewDelegate {
     }
 }
 
-extension UIColor {
-    
-    func rgbUIColorToHexString() -> String {
-        
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-        getRed(&r, green: &g, blue: &b, alpha: &a)
-        
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-        return String(format: "#%06x", rgb)
-    }
-}
