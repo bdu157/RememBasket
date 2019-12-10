@@ -22,6 +22,8 @@ class PasswordTableViewCell: UITableViewCell {
     
     @IBOutlet weak var basketButton: UIButton!
     
+    private var logoLabel: UILabel = UILabel()
+    
     //this is to use fetchcompanlogo
     let passwordController = PasswordController()
     
@@ -46,6 +48,12 @@ class PasswordTableViewCell: UITableViewCell {
         
         observeShouldResetData()
         updateViews()
+        
+        
+        logoLabel.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        logoLabel.layer.backgroundColor = UIColor.clear.cgColor
+        logoLabel.textColor = .white
+        self.logoImageView.addSubview(logoLabel)
     }
     
     //observerFortheReset
@@ -71,6 +79,7 @@ class PasswordTableViewCell: UITableViewCell {
         print("\(password.logoViewbgColor!)")
         DispatchQueue.main.async {
             self.logoImageView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
+            self.logoLabel.text = password.title?.prefix(1).capitalized
         }
         
         updateBasketButtonImage()

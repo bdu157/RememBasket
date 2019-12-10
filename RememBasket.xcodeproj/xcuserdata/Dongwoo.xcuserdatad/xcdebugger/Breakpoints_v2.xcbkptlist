@@ -41,9 +41,9 @@
             filePath = "RememBasket/Cells/PasswordTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "updateViews()"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "resetCells(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
