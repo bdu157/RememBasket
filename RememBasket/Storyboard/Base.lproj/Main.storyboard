@@ -7,29 +7,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="1Jb-We-tEL">
             <objects>
-                <viewController id="thv-ea-mHe" sceneMemberID="viewController">
+                <viewController id="thv-ea-mHe" customClass="AuthenticationViewController" customModule="RememBasket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="drT-HS-mva">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9l-ID-00b">
-                                <rect key="frame" x="156" y="433" width="102" height="76"/>
+                                <rect key="frame" x="81" y="410" width="253" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Local Authentication">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PC8-Fp-1ag" kind="presentation" modalPresentationStyle="fullScreen" id="fxn-f8-Ccd"/>
+                                    <action selector="buttonTapped:" destination="thv-ea-mHe" eventType="touchUpInside" id="ohB-dI-XmT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.31636712210000001" green="0.71047113910000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SyE-nG-q6D"/>
                     </view>
+                    <connections>
+                        <outlet property="authenticationButton" destination="Y9l-ID-00b" id="afl-kz-eqv"/>
+                        <segue destination="PC8-Fp-1ag" kind="presentation" identifier="toPasswordTableVC" modalPresentationStyle="fullScreen" id="KF6-HK-Agf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWl-qw-XAJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
