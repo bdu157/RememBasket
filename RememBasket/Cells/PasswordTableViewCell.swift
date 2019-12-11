@@ -47,8 +47,6 @@ class PasswordTableViewCell: UITableViewCell {
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
         
-        
-        observeShouldResetData()
         updateViews()
         
         
@@ -65,18 +63,6 @@ class PasswordTableViewCell: UITableViewCell {
         logoLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: 18.5).isActive = true
         logoLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -15).isActive = true
         
-    }
-    
-    //observerFortheReset
-    func observeShouldResetData() {
-        NotificationCenter.default.addObserver(self, selector: #selector(resetCells(notification:)), name: .needtoResetData, object: nil)
-    }
-    
-    @objc func resetCells(notification: Notification) {
-        if self.basketButton.image(for: .normal) == UIImage(named: "basket-id-password.png") {
-            showTitle()
-            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
-        }
     }
     
     //private method
