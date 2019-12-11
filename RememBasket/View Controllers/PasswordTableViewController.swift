@@ -154,7 +154,16 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
-        NotificationCenter.default.post(name: .needtoResetData, object: self)
+        self.reset()
+    }
+    
+    private func reset() {
+        let passwordsforReset = self.passwords.filter {$0.openBasket == true}
+        for password in passwordsforReset {
+            password.openBasket = false
+        }
+        self.passwordController.saveToPersistentStore()
+        self.tableView.reloadData()
     }
     
     

@@ -9,8 +9,8 @@
 import Foundation
 
 extension Notification.Name {
-    static var needtoResetData = Notification.Name("needtoResetData")
+    //static var needtoResetData = Notification.Name("needtoResetData")
     static var needtoReloadData = Notification.Name("needtoReloadData")
-    static var needtoFetchImage = Notification.Name("needtoFetchImage")
-    static var needtoSetUpData = Notification.Name("needtoremoveURL")
+    //static var needtoFetchImage = Notification.Name("needtoFetchImage")
+    //static var needtoSetUpData = Notification.Name("needtoremoveURL")
 }
