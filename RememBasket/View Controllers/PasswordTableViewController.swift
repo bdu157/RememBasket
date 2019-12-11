@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PasswordTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+class PasswordTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, PasswordTableViewCellDelegate {
     
     let passwordController = PasswordController()
     let searchController = UISearchController(searchResultsController: nil)
@@ -39,7 +39,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         case 1:
             return [NSSortDescriptor(key: "title", ascending: false)]
         case 2:
-            return [NSSortDescriptor(key: "modifiedDate", ascending: false)]
+            return [NSSortDescriptor(key: "timestamp", ascending: false)]
         default:
             return [NSSortDescriptor(key: "title", ascending: true)]
         }
@@ -122,6 +122,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
         //let password = self.fetchedResultsController.object(at: indexPath)
         let password = self.passwords[indexPath.row]
+        cell.delegate = self
         cell.password = password
         return cell
     }
@@ -166,6 +167,14 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
             }
             print("changed isFiltering")
         }
+    }
+    
+    
+    func toggleOpenBasketImage(for cell: PasswordTableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else {return}
+        let password = self.passwords[indexPath.row]
+        self.passwordController.toggleOpenBasket(for: password)
+        self.tableView.reloadData()
     }
     
     /* not being used
