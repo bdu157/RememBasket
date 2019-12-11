@@ -13,10 +13,20 @@ class AuthenticationViewController: UIViewController {
 
     @IBOutlet weak var authenticationButton: UIButton!
     
+    let myContext: LAContext = LAContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
+            if myContext.biometryType == .faceID {
+                authenticationButton.setImage(UIImage(named: "basket"), for: .normal)
+            } else if myContext.biometryType == .touchID {
+                authenticationButton.setImage(UIImage(named: "title"), for: .normal)
+            } else {
+                authenticationButton.setTitle("no biometrics", for: .normal)
+            }
+        }
         
     }
     
@@ -39,6 +49,7 @@ class AuthenticationViewController: UIViewController {
                     DispatchQueue.main.sync {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
                     }
+                    //use userdefault to automatically run this part as soon as the app launches within viewDidLoad
                     print("good")
                 } else {
                     print("no authentication")
@@ -48,5 +59,4 @@ class AuthenticationViewController: UIViewController {
             print("your device does not support biometrics")
         }
     }
-    
 }
