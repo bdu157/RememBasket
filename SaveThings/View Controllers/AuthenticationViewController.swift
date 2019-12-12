@@ -32,6 +32,7 @@ class AuthenticationViewController: UIViewController {
         
         
         self.saveThingsButtonView.shapeSaveThingsButtonView()
+        self.authenticationButton.setTitleColor(.white, for: .normal)
         self.authenticationButton.layer.shadowOpacity = 1.0
         self.authenticationButton.layer.shadowOffset = CGSize.zero
         self.authenticationButton.layer.shadowColor = UIColor.gray.cgColor
@@ -53,7 +54,7 @@ class AuthenticationViewController: UIViewController {
         let context:LAContext = LAContext()
         
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Message") { (success, error) in
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Pleas type device password") { (success, error) in
                 if success {
                     DispatchQueue.main.sync {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
