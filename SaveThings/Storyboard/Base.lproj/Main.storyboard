@@ -15,10 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-q6-7dr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVi-zG-vuF">
                                 <rect key="frame" x="68" y="699" width="278" height="63"/>
                                 <subviews>
@@ -47,6 +43,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="278" id="X2O-OU-Geb"/>
                                     <constraint firstAttribute="bottom" secondItem="Y9l-ID-00b" secondAttribute="bottom" constant="15" id="gVH-Ek-iF4"/>
+                                    <constraint firstItem="lB4-l4-7db" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y9l-ID-00b" secondAttribute="trailing" constant="8" symbolic="YES" id="lcj-KC-rbK"/>
                                     <constraint firstItem="lB4-l4-7db" firstAttribute="top" secondItem="jVi-zG-vuF" secondAttribute="top" constant="15" id="lel-we-EiT"/>
                                     <constraint firstAttribute="bottom" secondItem="lB4-l4-7db" secondAttribute="bottom" constant="15" id="sq1-oj-Uh8"/>
                                     <constraint firstAttribute="trailing" secondItem="lB4-l4-7db" secondAttribute="trailing" constant="30" id="tNr-Bv-W7c"/>
@@ -54,6 +51,84 @@
                                     <constraint firstItem="Y9l-ID-00b" firstAttribute="leading" secondItem="jVi-zG-vuF" secondAttribute="leading" constant="50" id="yJA-7l-tx8"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WO4-gF-kWx">
+                                <rect key="frame" x="68" y="254" width="44" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3i3-jb-OO6">
+                                <rect key="frame" x="68" y="133" width="47" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="H" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhG-T0-GKt">
+                                <rect key="frame" x="126" y="254" width="54" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfK-hy-1hv">
+                                <rect key="frame" x="130" y="130" width="51" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWw-hQ-WKh">
+                                <rect key="frame" x="189" y="253" width="22" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="V" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reV-iO-FdQ">
+                                <rect key="frame" x="196" y="130" width="49" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iiM-5i-Auf">
+                                <rect key="frame" x="260" y="130" width="47" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="G" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC3-QZ-XDB">
+                                <rect key="frame" x="260" y="251" width="56" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMU-Sl-iCF">
+                                <rect key="frame" x="213" y="254" width="54" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiC-8l-k2K">
+                                <rect key="frame" x="47" y="648" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="gather"/>
+                                <connections>
+                                    <action selector="gatherButton:" destination="thv-ea-mHe" eventType="touchUpInside" id="eTk-ci-dx1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cU-by-77d">
+                                <rect key="frame" x="324" y="251" width="38" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -65,6 +140,16 @@
                     <connections>
                         <outlet property="authenticationButton" destination="Y9l-ID-00b" id="afl-kz-eqv"/>
                         <outlet property="faceortouchIDImageView" destination="lB4-l4-7db" id="fdP-Pa-DAV"/>
+                        <outlet property="labelA" destination="jfK-hy-1hv" id="xlP-Xl-VlM"/>
+                        <outlet property="labelE" destination="iiM-5i-Auf" id="E1c-Gr-Db3"/>
+                        <outlet property="labelG" destination="IC3-QZ-XDB" id="bIz-oA-Fhc"/>
+                        <outlet property="labelH" destination="BhG-T0-GKt" id="jcA-v2-uci"/>
+                        <outlet property="labelI" destination="bWw-hQ-WKh" id="zve-4w-ofG"/>
+                        <outlet property="labelN" destination="YMU-Sl-iCF" id="xux-TE-zlX"/>
+                        <outlet property="labelS" destination="3i3-jb-OO6" id="nvE-O4-QwI"/>
+                        <outlet property="labelSecondS" destination="9cU-by-77d" id="mqx-H3-oeb"/>
+                        <outlet property="labelT" destination="WO4-gF-kWx" id="XyJ-pS-Yks"/>
+                        <outlet property="labelV" destination="reV-iO-FdQ" id="Uvs-EL-9tc"/>
                         <outlet property="saveThingsButtonView" destination="jVi-zG-vuF" id="qpt-H6-cgv"/>
                         <segue destination="PC8-Fp-1ag" kind="presentation" identifier="toPasswordTableVC" modalPresentationStyle="fullScreen" id="KF6-HK-Agf"/>
                     </connections>
