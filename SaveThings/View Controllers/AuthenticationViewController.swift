@@ -12,6 +12,8 @@ import LocalAuthentication
 class AuthenticationViewController: UIViewController {
 
     @IBOutlet weak var authenticationButton: UIButton!
+    @IBOutlet weak var faceortouchIDImageView: UIImageView!
+    @IBOutlet weak var buttonandimageStackView: UIStackView!
     
     let myContext: LAContext = LAContext()
     
@@ -20,11 +22,11 @@ class AuthenticationViewController: UIViewController {
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             if myContext.biometryType == .faceID {
-                authenticationButton.setImage(UIImage(named: "basket"), for: .normal)
+                faceortouchIDImageView.image = UIImage(named: "faceID")
             } else if myContext.biometryType == .touchID {
-                authenticationButton.setImage(UIImage(named: "title"), for: .normal)
+                faceortouchIDImageView.image = UIImage(named: "touchID")
             } else {
-                authenticationButton.setTitle("no biometrics", for: .normal)
+                faceortouchIDImageView.image = UIImage(named: "none")
             }
         }
         
