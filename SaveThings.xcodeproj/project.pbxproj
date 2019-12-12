@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,7 +36,7 @@
 		0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B17025523A1199900924B7F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0B65A763239389A500300633 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
-		0B666D8A2368720800B0E72A /* RememBasket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RememBasket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B666D8A2368720800B0E72A /* SaveThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B666D8D2368720800B0E72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B666D8F2368720800B0E72A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0B666D942368720800B0E72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		0B666D812368720800B0E72A = {
 			isa = PBXGroup;
 			children = (
-				0B666D8C2368720800B0E72A /* RememBasket */,
+				0B666D8C2368720800B0E72A /* SaveThings */,
 				0B24AFC72386BBA100EC1C5A /* Later */,
 				0B677351237CF12F003C1D53 /* Resources */,
 				0B666D8B2368720800B0E72A /* Products */,
@@ -92,12 +92,12 @@
 		0B666D8B2368720800B0E72A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0B666D8A2368720800B0E72A /* RememBasket.app */,
+				0B666D8A2368720800B0E72A /* SaveThings.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0B666D8C2368720800B0E72A /* RememBasket */ = {
+		0B666D8C2368720800B0E72A /* SaveThings */ = {
 			isa = PBXGroup;
 			children = (
 				0B677353237CF14B003C1D53 /* Model */,
@@ -109,7 +109,7 @@
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
 			);
-			path = RememBasket;
+			path = SaveThings;
 			sourceTree = "<group>";
 		};
 		0B677351237CF12F003C1D53 /* Resources */ = {
@@ -182,9 +182,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0B666D892368720800B0E72A /* RememBasket */ = {
+		0B666D892368720800B0E72A /* SaveThings */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0B666D9E2368720C00B0E72A /* Build configuration list for PBXNativeTarget "RememBasket" */;
+			buildConfigurationList = 0B666D9E2368720C00B0E72A /* Build configuration list for PBXNativeTarget "SaveThings" */;
 			buildPhases = (
 				0B666D862368720800B0E72A /* Sources */,
 				0B666D872368720800B0E72A /* Frameworks */,
@@ -194,9 +194,9 @@
 			);
 			dependencies = (
 			);
-			name = RememBasket;
+			name = SaveThings;
 			productName = RememBasket;
-			productReference = 0B666D8A2368720800B0E72A /* RememBasket.app */;
+			productReference = 0B666D8A2368720800B0E72A /* SaveThings.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -214,8 +214,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 0B666D852368720800B0E72A /* Build configuration list for PBXProject "RememBasket" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 0B666D852368720800B0E72A /* Build configuration list for PBXProject "SaveThings" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -227,7 +227,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0B666D892368720800B0E72A /* RememBasket */,
+				0B666D892368720800B0E72A /* SaveThings */,
 			);
 		};
 /* End PBXProject section */
@@ -343,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -397,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -413,13 +413,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C22Z4773SH;
-				INFOPLIST_FILE = RememBasket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				INFOPLIST_FILE = SaveThings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.RememBasket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.SaveThings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -432,13 +432,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C22Z4773SH;
-				INFOPLIST_FILE = RememBasket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				INFOPLIST_FILE = SaveThings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.RememBasket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dongwoopae.SaveThings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -448,7 +448,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0B666D852368720800B0E72A /* Build configuration list for PBXProject "RememBasket" */ = {
+		0B666D852368720800B0E72A /* Build configuration list for PBXProject "SaveThings" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0B666D9C2368720C00B0E72A /* Debug */,
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0B666D9E2368720C00B0E72A /* Build configuration list for PBXNativeTarget "RememBasket" */ = {
+		0B666D9E2368720C00B0E72A /* Build configuration list for PBXNativeTarget "SaveThings" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0B666D9F2368720C00B0E72A /* Debug */,

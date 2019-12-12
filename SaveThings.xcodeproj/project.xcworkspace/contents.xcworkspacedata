@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RememBasket.xcodeproj">
+      location = "self:/Users/Dongwoo/Desktop/SaveThings/SaveThings.xcodeproj">
    </FileRef>
 </Workspace>
