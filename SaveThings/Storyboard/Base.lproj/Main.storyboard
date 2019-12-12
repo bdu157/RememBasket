@@ -15,53 +15,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-q6-7dr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVi-zG-vuF">
-                                <rect key="frame" x="90" y="682" width="234" height="30"/>
+                                <rect key="frame" x="0.0" y="722" width="414" height="65"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TbZ-02-mRt">
-                                        <rect key="frame" x="0.0" y="0.0" width="234" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9l-ID-00b">
-                                                <rect key="frame" x="0.0" y="0.0" width="194" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                                <state key="normal" title="Save Things">
-                                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonTapped:" destination="thv-ea-mHe" eventType="touchUpInside" id="ohB-dI-XmT"/>
-                                                </connections>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lB4-l4-7db">
-                                                <rect key="frame" x="204" y="0.0" width="30" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="UuI-Vf-1Oi"/>
-                                                    <constraint firstAttribute="height" constant="30" id="eGh-D1-Sna"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lB4-l4-7db">
+                                        <rect key="frame" x="369" y="22" width="21" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lB4-l4-7db" secondAttribute="height" multiplier="1:1" id="Y6e-yX-cZf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9l-ID-00b">
+                                        <rect key="frame" x="118.5" y="16" width="177" height="33"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                        <state key="normal" title="Save Things">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="thv-ea-mHe" eventType="touchUpInside" id="ohB-dI-XmT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="TbZ-02-mRt" secondAttribute="bottom" id="6l6-tg-ysU"/>
-                                    <constraint firstItem="TbZ-02-mRt" firstAttribute="leading" secondItem="jVi-zG-vuF" secondAttribute="leading" id="G3Y-2W-raC"/>
-                                    <constraint firstAttribute="trailing" secondItem="TbZ-02-mRt" secondAttribute="trailing" id="TiJ-bX-jeL"/>
-                                    <constraint firstItem="TbZ-02-mRt" firstAttribute="top" secondItem="jVi-zG-vuF" secondAttribute="top" id="WGy-rb-mZU"/>
+                                    <constraint firstItem="Y9l-ID-00b" firstAttribute="centerX" secondItem="jVi-zG-vuF" secondAttribute="centerX" id="32u-FH-PC5"/>
+                                    <constraint firstAttribute="height" constant="65" id="NdH-vM-KfI"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y9l-ID-00b" secondAttribute="bottom" constant="16" id="YBH-P3-Voh"/>
+                                    <constraint firstAttribute="trailing" secondItem="lB4-l4-7db" secondAttribute="trailing" constant="24" id="a7D-mx-uoB"/>
+                                    <constraint firstAttribute="bottom" secondItem="lB4-l4-7db" secondAttribute="bottom" constant="22" id="dLH-qZ-FfN"/>
+                                    <constraint firstItem="lB4-l4-7db" firstAttribute="top" secondItem="jVi-zG-vuF" secondAttribute="top" constant="22" id="lAI-jn-cnC"/>
+                                    <constraint firstItem="Y9l-ID-00b" firstAttribute="top" secondItem="jVi-zG-vuF" secondAttribute="top" constant="16" id="qRa-7t-l6v"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SyE-nG-q6D" firstAttribute="bottom" secondItem="jVi-zG-vuF" secondAttribute="bottom" constant="150" id="ZPz-fK-06Z"/>
-                            <constraint firstItem="SyE-nG-q6D" firstAttribute="trailing" secondItem="jVi-zG-vuF" secondAttribute="trailing" constant="90" id="c0J-iR-WiF"/>
-                            <constraint firstItem="jVi-zG-vuF" firstAttribute="leading" secondItem="SyE-nG-q6D" secondAttribute="leading" constant="90" id="per-Gd-XjB"/>
+                            <constraint firstItem="SyE-nG-q6D" firstAttribute="bottom" secondItem="jVi-zG-vuF" secondAttribute="bottom" constant="75" id="3yp-FK-IeC"/>
+                            <constraint firstItem="jVi-zG-vuF" firstAttribute="trailing" secondItem="SyE-nG-q6D" secondAttribute="trailing" id="ApH-Aa-VQ1"/>
+                            <constraint firstItem="jVi-zG-vuF" firstAttribute="leading" secondItem="SyE-nG-q6D" secondAttribute="leading" id="v6S-pv-pI1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SyE-nG-q6D"/>
                     </view>
                     <connections>
                         <outlet property="authenticationButton" destination="Y9l-ID-00b" id="afl-kz-eqv"/>
-                        <outlet property="buttonandimageStackView" destination="TbZ-02-mRt" id="oWH-wF-zAd"/>
                         <outlet property="faceortouchIDImageView" destination="lB4-l4-7db" id="fdP-Pa-DAV"/>
+                        <outlet property="saveThingsButtonView" destination="jVi-zG-vuF" id="qpt-H6-cgv"/>
                         <segue destination="PC8-Fp-1ag" kind="presentation" identifier="toPasswordTableVC" modalPresentationStyle="fullScreen" id="KF6-HK-Agf"/>
                     </connections>
                 </viewController>

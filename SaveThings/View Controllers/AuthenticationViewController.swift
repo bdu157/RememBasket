@@ -13,7 +13,7 @@ class AuthenticationViewController: UIViewController {
 
     @IBOutlet weak var authenticationButton: UIButton!
     @IBOutlet weak var faceortouchIDImageView: UIImageView!
-    @IBOutlet weak var buttonandimageStackView: UIStackView!
+    @IBOutlet weak var saveThingsButtonView: UIView!
     
     let myContext: LAContext = LAContext()
     
@@ -30,6 +30,13 @@ class AuthenticationViewController: UIViewController {
             }
         }
         
+        
+        self.saveThingsButtonView.shapeSaveThingsButtonView()
+        self.authenticationButton.layer.shadowOpacity = 1.0
+        self.authenticationButton.layer.shadowOffset = CGSize.zero
+        self.authenticationButton.layer.shadowColor = UIColor.gray.cgColor
+        self.authenticationButton.layer.cornerRadius = 10
+
     }
     
 

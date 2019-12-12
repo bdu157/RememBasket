@@ -33,6 +33,18 @@ extension UIView {
         layer.cornerRadius = 10
     }
     
+    func shapeSaveThingsButtonView() {
+        layer.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        layer.opacity = 1.0
+        //        layer.borderWidth = 1.3
+        //        layer.borderColor = UIColor.orange.cgColor
+        
+        //shadow
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowColor = UIColor.darkGray.cgColor
+    }
+    
     var image: UIImage? {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in layer.render(in: rendererContext.cgContext) }
