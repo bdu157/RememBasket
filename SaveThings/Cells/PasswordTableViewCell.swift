@@ -33,6 +33,8 @@ class PasswordTableViewCell: UITableViewCell {
         }
     }
     
+    var dividerPosition: CGPoint!
+    
     var delegate: PasswordTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -63,6 +65,8 @@ class PasswordTableViewCell: UITableViewCell {
         logoLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor, constant: 18.5).isActive = true
         logoLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -15).isActive = true
         
+        //setting the default location
+        self.dividerPosition = self.dividerLabel.center
     }
     
     //private method
@@ -126,14 +130,14 @@ class PasswordTableViewCell: UITableViewCell {
             UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.dividerLabel.center = CGPoint(x: self.logoImageView.center.x + (29+10), y: self.dividerLabel.center.y)
             })
-            
+            //self.logoImageView.center.x + (29+10)
             //titleLabel animation part
             UILabel.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2) {
                 self.titleLabel.alpha = 0.0
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.dividerPosition.x - self.basketButton.bounds.maxX, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
@@ -162,7 +166,7 @@ class PasswordTableViewCell: UITableViewCell {
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.basketButton.center.x - (15+18), y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.dividerPosition.x - self.basketButton.bounds.maxX, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {

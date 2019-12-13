@@ -250,7 +250,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="anK-V3-Zpq"/>
                                                         <constraint firstAttribute="width" constant="40" id="pJA-LU-6pi"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="basket"/>
+                                                    <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="basketButtonTapped:" destination="HCF-YT-f3J" eventType="touchUpInside" id="Nte-yv-HKZ"/>
                                                     </connections>
@@ -588,7 +588,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="basket" width="512" height="512"/>
         <image name="note" width="30" height="30"/>
         <image name="password" width="30" height="30"/>
         <image name="settings" width="33" height="33"/>
