@@ -42,7 +42,7 @@ class PasswordTableViewCell: UITableViewCell {
         self.userNameLabel.alpha = 0.0
         self.passwordLabel.alpha = 0.0
         
-        self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+        self.basketButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
         
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
@@ -85,14 +85,14 @@ class PasswordTableViewCell: UITableViewCell {
     private func updateBasketButtonImage(for password: Password) {
 
         if password.openBasket == true {
-            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
+            self.basketButton.setImage(UIImage(named: "openLock.png"), for: .normal)
             self.titleLabel.alpha = 0
             self.userNameLabel.alpha = 1
             self.passwordLabel.alpha = 1
             self.userNameLabel.textColor = .orange
             self.passwordLabel.textColor = .orange
         } else {
-            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+            self.basketButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
             self.titleLabel.alpha = 1
             self.userNameLabel.alpha = 0
             self.passwordLabel.alpha = 0
@@ -109,10 +109,11 @@ class PasswordTableViewCell: UITableViewCell {
         guard let password = self.password else {return}
         //when clicking the button
         if password.openBasket == false {
-            self.basketButton.setImage(UIImage(named: "basket-id-password.png"), for: .normal)
+            self.basketButton.setImage(UIImage(named: "openLock.png"), for: .normal)
+            self.basketButton.imageView?.tintColor = .orange
             showUserNameAndPassword()
         } else {
-            self.basketButton.setImage(UIImage(named: "basket.png"), for: .normal)
+            self.basketButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
             showTitle()
         }
     }
