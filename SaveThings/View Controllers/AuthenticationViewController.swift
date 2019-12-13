@@ -33,9 +33,7 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.addLabelLocations()
         self.setUpLabels()
-        self.scatterLetters()
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             if myContext.biometryType == .faceID {
@@ -73,7 +71,7 @@ class AuthenticationViewController: UIViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Pleas type device password") { (success, error) in
                 if success {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9, execute: {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
                     })
                     //use userdefault to automatically run this part as soon as the app launches within viewDidLoad
@@ -85,7 +83,6 @@ class AuthenticationViewController: UIViewController {
         } else {
             print("your device does not support biometrics")
         }
-    //give a delay on success here for about 0.7 seconds so performSegue happens after animation is set
     }
     
     
@@ -106,7 +103,7 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.alpha = 1.0
                 self.labelN.alpha = 1.0
                 self.labelG.alpha = 1.0
-                self.labelSecondS.alpha = 1.0
+                //self.labelSecondS.alpha = 1.0
             }
             
             
@@ -121,7 +118,7 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
                 self.labelN.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
                 self.labelG.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
-                self.labelSecondS.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
+                //self.labelSecondS.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
             }
             
             //position
@@ -135,13 +132,14 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
                 self.labelN.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
                 self.labelG.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
-                self.labelSecondS.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
+                //self.labelSecondS.center = CGPoint(x: self.view.bounds.maxX - 50, y: -self.labelSecondS.bounds.size.height)
             }
         
         }
         UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: animBlock, completion: {(_) in
             DispatchQueue.main.async {
                 self.gatherLetters()
+                self.secondSAnimation()
             }
         })
     }
@@ -159,43 +157,62 @@ class AuthenticationViewController: UIViewController {
             self.labelI.transform = .identity
             self.labelN.transform = .identity
             self.labelG.transform = .identity
-            self.labelSecondS.transform = .identity
+            //self.labelSecondS.transform = .identity
         }, completion: nil)
         
         
         //position reset - x and y
         //color reset - backgroundColor/textColor
-        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
+        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG]
         UIView.animate(withDuration: 0.6, delay: 0, options: .curveLinear, animations: {
                 var index = 0
             for x in labels {
                 guard let label = x else {return}
                 
                 //label.alpha = 1
-                
-//                label.layer.shadowOpacity = 1.0
-//                label.layer.shadowOffset = CGSize.zero
-//                label.layer.shadowColor = UIColor.darkGray.cgColor
-//                label.backgroundColor = .clear
-                
+                label.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
+                label.layer.shadowOpacity = 1.0
+                label.layer.shadowOffset = CGSize.zero
+                label.layer.shadowColor = UIColor.darkGray.cgColor
+                label.backgroundColor = .clear
                 label.center = self.labelLocations[index]
                 index += 1
                 
             }
         }, completion: nil)
+    }
+    
+    func secondSAnimation() {
+    
+        let animBlock = {
+            
+            self.labelSecondS.center = CGPoint(x: self.view.bounds.maxX - 50, y: -self.labelSecondS.bounds.size.height)
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.4, animations: {
+                self.labelSecondS.center = self.labelLocations.last!
+                self.labelSecondS.alpha = 1
+                self.labelSecondS.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255, green: CGFloat(Int.random(in: 0...255)) / 255, blue: CGFloat(Int.random(in: 1...254)) / 255, alpha: 1)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.2, animations: {
+                self.labelSecondS.transform = CGAffineTransform(scaleX: 1.7, y: 0.6)
+            })  //this is going to be happening at the same time as above
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.2, animations: {
+                self.labelSecondS.transform = CGAffineTransform(scaleX: 0.6, y: 1.7)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.15, animations: {
+                self.labelSecondS.transform = CGAffineTransform(scaleX: 1.11, y: 0.9)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.15, animations: {
+                self.labelSecondS.transform = .identity
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.15, animations: {
+                self.saveThingsButtonView.alpha = 1
+                self.saveThingsButtonView.backgroundColor = self.labelSecondS.textColor
+            })
+        }
         
-       UIView.animate(withDuration: 0.6, animations: {
-            self.labelS.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-           self.labelA.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelV.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelE.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelT.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelH.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelI.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelN.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelG.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-            self.labelSecondS.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
-        }, completion: nil)
+        UIView.animateKeyframes(withDuration: 1.3, delay: 0.0, options: [], animations: animBlock, completion: nil)
+        
     }
     
     //Private method
@@ -208,15 +225,18 @@ class AuthenticationViewController: UIViewController {
 //    }
 
     private func setUpLabels() {
-        let labelss = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
-        for y in labelss {
+        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
+        for y in labels {
             guard let label = y else {return}
-            self.labelLocations.append(label.center)
+            label.alpha = 0
             label.layer.shadowOpacity = 1.0
             label.layer.shadowOffset = CGSize.zero
             label.layer.shadowColor = UIColor.darkGray.cgColor
             label.backgroundColor = .clear
-            label.alpha = 0.0
+            self.labelLocations.append(label.center)
+        }
+        DispatchQueue.main.async {
+            self.scatterLetters()
         }
     }
     

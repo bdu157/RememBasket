@@ -34,7 +34,7 @@ extension UIView {
     }
     
     func shapeSaveThingsButtonView() {
-        layer.backgroundColor = #colorLiteral(red: 0.4904693301, green: 0.7448655672, blue: 0.9686274529, alpha: 1)
+        layer.backgroundColor = UIColor.clear.cgColor
 //        layer.borderWidth = 1.3
         
         //shadow
