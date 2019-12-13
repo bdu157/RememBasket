@@ -71,7 +71,7 @@ class AuthenticationViewController: UIViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Pleas type device password") { (success, error) in
                 if success {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
                     })
                     //use userdefault to automatically run this part as soon as the app launches within viewDidLoad
@@ -137,10 +137,8 @@ class AuthenticationViewController: UIViewController {
         
         }
         UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: animBlock, completion: {(_) in
-            DispatchQueue.main.async {
                 self.gatherLetters()
                 self.secondSAnimation()
-            }
         })
     }
     
@@ -205,13 +203,14 @@ class AuthenticationViewController: UIViewController {
             UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.15, animations: {
                 self.labelSecondS.transform = .identity
             })
-            UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.15, animations: {
-                self.saveThingsButtonView.alpha = 1
-                self.saveThingsButtonView.backgroundColor = self.labelSecondS.textColor
+            UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.20, animations: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
+                    self.saveThingsButtonAnimation()
+                })
             })
         }
         
-        UIView.animateKeyframes(withDuration: 1.3, delay: 0.0, options: [], animations: animBlock, completion: nil)
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: animBlock, completion: nil)
         
     }
     
@@ -240,4 +239,9 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
+    private func saveThingsButtonAnimation() {
+        UIView.animate(withDuration: 0.20) {
+            self.saveThingsButtonView.backgroundColor = self.labelSecondS.textColor
+        }
+    }
 }
