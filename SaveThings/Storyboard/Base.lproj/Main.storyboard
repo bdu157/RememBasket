@@ -205,7 +205,7 @@
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="lCO-eg-iA0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="RTA-od-zFt"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="RTA-od-zFt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R28-pe-owM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -547,11 +547,11 @@
             </objects>
             <point key="canvasLocation" x="776.81159420289862" y="649.55357142857144"/>
         </scene>
-        <!--Notes-->
+        <!--Memo-->
         <scene sceneID="fpB-aG-vll">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1h-jl-CjP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notes" id="ycE-Sg-hvK"/>
+                    <tabBarItem key="tabBarItem" title="Memo" image="memo" id="ycE-Sg-hvK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mKK-fR-6OK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -566,11 +566,11 @@
             </objects>
             <point key="canvasLocation" x="668" y="-305"/>
         </scene>
-        <!--Passwords-->
+        <!--Password-->
         <scene sceneID="NRJ-sN-eBi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CCd-xu-Agx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Passwords" id="9lz-w5-yFg"/>
+                    <tabBarItem key="tabBarItem" title="Password" image="password" id="9lz-w5-yFg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="hKf-WN-EOo">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -589,6 +589,9 @@
     </scenes>
     <resources>
         <image name="basket" width="512" height="512"/>
+        <image name="memo" width="30" height="30"/>
+        <image name="password" width="30" height="30"/>
+        <image name="settings" width="33" height="33"/>
         <image name="title" width="1600" height="1600"/>
     </resources>
     <inferredMetricsTieBreakers>
