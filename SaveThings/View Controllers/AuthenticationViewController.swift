@@ -73,9 +73,9 @@ class AuthenticationViewController: UIViewController {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Pleas type device password") { (success, error) in
                 if success {
-                    DispatchQueue.main.sync {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
-                    }
+                    })
                     //use userdefault to automatically run this part as soon as the app launches within viewDidLoad
                     print("good")
                 } else {
