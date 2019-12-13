@@ -426,7 +426,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                     self.logoRightView.alpha = 1
                     self.logoRightLabel.alpha = 1
                     self.logoRightLabel.text = String(newText.prefix(1).capitalized)
-                    self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 2...255)) / 255, green: CGFloat(Int.random(in: 1...255)) / 255, blue: CGFloat(Int.random(in: 1...255)) / 255, alpha: 1)
+                    self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255, green: CGFloat(Int.random(in: 0...255)) / 255, blue: CGFloat(Int.random(in: 1...254)) / 255, alpha: 1)
                     self.rightViewBackgroundColor = self.logoRightView.backgroundColor
                 }
             }, completion: nil)
