@@ -183,7 +183,8 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let password = self.passwords[indexPath.row]
         self.passwordController.toggleOpenBasket(for: password)
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     /* not being used

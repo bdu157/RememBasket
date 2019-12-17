@@ -66,7 +66,7 @@ class PasswordTableViewCell: UITableViewCell {
         logoLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -15).isActive = true
         
         //setting the default location
-        self.dividerPosition = self.dividerLabel.center
+        //self.dividerPosition = self.dividerLabel.center
     }
     
     //private method
@@ -130,14 +130,13 @@ class PasswordTableViewCell: UITableViewCell {
             UILabel.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5, animations: {
                 self.dividerLabel.center = CGPoint(x: self.logoImageView.center.x + (29+10), y: self.dividerLabel.center.y)
             })
-            //self.logoImageView.center.x + (29+10)
             //titleLabel animation part
             UILabel.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2) {
                 self.titleLabel.alpha = 0.0
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.dividerPosition.x - self.basketButton.bounds.maxX, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.basketButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
@@ -166,7 +165,7 @@ class PasswordTableViewCell: UITableViewCell {
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.dividerPosition.x - self.basketButton.bounds.maxX, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.basketButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
