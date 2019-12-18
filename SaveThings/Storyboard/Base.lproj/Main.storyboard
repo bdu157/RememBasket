@@ -533,7 +533,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonsView" destination="8bl-4D-EsQ" id="inZ-6H-omA"/>
+                        <outlet property="buttonsViewInUpdateView" destination="8bl-4D-EsQ" id="inZ-6H-omA"/>
                         <outlet property="cancelButton" destination="IhZ-Gr-NXL" id="nTr-GC-T91"/>
                         <outlet property="createdDateLabel" destination="blw-eL-qk9" id="G7o-hH-V3j"/>
                         <outlet property="createdLabel" destination="DwP-YG-doH" id="KhC-6n-Abz"/>

@@ -19,7 +19,7 @@ class PasswordDetailViewController: UIViewController {
     //Buttons
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var buttonsViewInUpdateView: UIView!
     
     //Date Labels
     @IBOutlet weak var createdDateLabel: UILabel!
@@ -154,7 +154,7 @@ class PasswordDetailViewController: UIViewController {
             self.createdDateLabel.text = createdDate
             
             //Labels UISetUp
-            self.buttonsView?.isHidden = false
+            self.buttonsViewInUpdateView?.isHidden = false
             self.createdDateLabel?.isHidden = false
             self.createdLabel.isHidden = false
             self.modifiedDateLabel?.isHidden = true
@@ -186,7 +186,7 @@ class PasswordDetailViewController: UIViewController {
             self.title = "Add Password"
             
             //Labels UISetUp
-            self.buttonsView?.isHidden = true
+            self.buttonsViewInUpdateView?.isHidden = true
             self.createdDateLabel?.isHidden = true
             self.modifiedDateLabel?.isHidden = true
             self.createdLabel?.isHidden = true
@@ -198,7 +198,7 @@ class PasswordDetailViewController: UIViewController {
     //MARK: ButtonView Set Up
     //ButtonView SetUp
     private func setUpButtonsUIView() {
-        self.buttonsView.shapeButtonsView()
+        self.buttonsViewInUpdateView.shapeButtonsViewInUpdateView()
     }
     
     //MARK: Notes TextView Set Up
