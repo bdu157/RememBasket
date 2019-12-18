@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 extension UILabel {
+    
+    func setUpPlaceHolderLabels(for name: String) {
+        font = UIFont.systemFont(ofSize: 15, weight: .thin)
+        text = name
+        textColor = .lightGray
+        alpha = 0
+    }
+    
     func pulse() {
         
         let pulse = CASpringAnimation(keyPath: "transform.scale")

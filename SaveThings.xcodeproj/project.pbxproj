@@ -74,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				0B67735A237D20D8003C1D53 /* transitionAnimation.swift */,
-				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 			);
 			path = Later;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 				0B8BD10E238B9D2B00AEF451 /* TextFieldExtension.swift */,
 				0BE431AA238A43EF009B8033 /* UIViewExtension.swift */,
 				0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */,
+				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0BA26A212393BF74004836B8 /* StringExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
 			);
