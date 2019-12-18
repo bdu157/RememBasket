@@ -173,8 +173,8 @@
 				0BE431AA238A43EF009B8033 /* UIViewExtension.swift */,
 				0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */,
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
-				0BA26A212393BF74004836B8 /* StringExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
+				0BA26A212393BF74004836B8 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

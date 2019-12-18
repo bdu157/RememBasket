@@ -230,7 +230,7 @@ class PasswordDetailViewController: UIViewController {
         self.addRightLogoView()
         //Title Image
         let titleIcon = UIImage(named: "title")!
-        self.userNameTextField.addLeftImage(image: titleIcon)
+        self.titleTextField.addLeftImage(image: titleIcon)
         
         
         //MARK: Username TextFields Set Up
