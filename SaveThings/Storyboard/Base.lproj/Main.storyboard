@@ -255,7 +255,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="basketButtonTapped:" destination="HCF-YT-f3J" eventType="touchUpInside" id="Nte-yv-HKZ"/>
+                                                        <action selector="lockButtonTapped:" destination="HCF-YT-f3J" eventType="touchUpInside" id="Nte-yv-HKZ"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wells Fargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8B-Cg-jGs">
@@ -310,7 +310,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="basketButton" destination="mQx-Fy-UtY" id="Iav-Ac-n3v"/>
+                                    <outlet property="LockButton" destination="mQx-Fy-UtY" id="Iav-Ac-n3v"/>
                                     <outlet property="cellView" destination="b56-jf-3vI" id="qkX-F9-eqB"/>
                                     <outlet property="dividerLabel" destination="ksI-Fj-qpO" id="xrU-qK-f27"/>
                                     <outlet property="logoImageView" destination="DbL-PI-uLq" id="RAu-rR-Fv7"/>

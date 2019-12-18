@@ -162,7 +162,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     
     
     //MARK: Protocol method - one to one communication between cell and PasswordTableViewController (update Object as well)
-    func toggleOpenBasketImage(for cell: PasswordTableViewCell) {
+    func toggleLockImage(for cell: PasswordTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let password = self.passwords[indexPath.row]
         self.passwordController.toggleOpenBasket(for: password)
