@@ -10,11 +10,13 @@ import UIKit
 import LocalAuthentication
 
 class AuthenticationViewController: UIViewController {
-
+    
+    //MARK: Properties and Outlets
     @IBOutlet weak var authenticationButton: UIButton!
     @IBOutlet weak var faceortouchIDImageView: UIImageView!
     @IBOutlet weak var saveThingsButtonView: UIView!
     
+    //SAVETHINGS Labels
     @IBOutlet weak var labelS: UILabel!
     @IBOutlet weak var labelA: UILabel!
     @IBOutlet weak var labelV: UILabel!
@@ -33,8 +35,29 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpLabels()
-        
+        setUpLabels()
+        setUpAuthenticationImage()
+        setUpButtonUI()
+    }
+    
+    //MARK: Private methods Set Ups
+    private func setUpLabels() {
+        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
+        for y in labels {
+            guard let label = y else {return}
+            label.alpha = 0
+            label.layer.shadowOpacity = 1.0
+            label.layer.shadowOffset = CGSize.zero
+            label.layer.shadowColor = UIColor.darkGray.cgColor
+            label.backgroundColor = .clear
+            self.labelLocations.append(label.center)
+        }
+        DispatchQueue.main.async {
+            self.scatterLetters()
+        }
+    }
+    
+    private func setUpAuthenticationImage() {
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
             if myContext.biometryType == .faceID {
                 faceortouchIDImageView.image = UIImage(named: "faceID")
@@ -44,27 +67,19 @@ class AuthenticationViewController: UIViewController {
                 faceortouchIDImageView.image = UIImage(named: "none")
             }
         }
-        
-        
+    }
+    
+    private func setUpButtonUI() {
         self.saveThingsButtonView.shapeSaveThingsButtonView()
         self.authenticationButton.setTitleColor(.white, for: .normal)
         self.authenticationButton.layer.shadowOpacity = 1.0
         self.authenticationButton.layer.shadowOffset = CGSize.zero
         self.authenticationButton.layer.shadowColor = UIColor.gray.cgColor
         self.authenticationButton.layer.cornerRadius = 10
-
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    //MARK: Start Saving Things Button Action
     @IBAction func buttonTapped(_ sender: Any) {
         let context:LAContext = LAContext()
         
@@ -74,7 +89,7 @@ class AuthenticationViewController: UIViewController {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
                         self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
                     })
-                    //use userdefault to automatically run this part as soon as the app launches within viewDidLoad
+                    //use userdefault to automatically run this part as soon as the app launches within viewDidLoad - option for auto authentication in Settings Tab
                     print("good")
                 } else {
                     print("no authentication")
@@ -86,7 +101,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     
-    //scatter part
+    //Scatter Animation
     func scatterLetters() {
         
         let animBlock = {
@@ -103,9 +118,7 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.alpha = 1.0
                 self.labelN.alpha = 1.0
                 self.labelG.alpha = 1.0
-                //self.labelSecondS.alpha = 1.0
             }
-            
             
             //rotation
             UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.6) {
@@ -118,7 +131,6 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
                 self.labelN.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
                 self.labelG.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
-                //self.labelSecondS.transform = CGAffineTransform(rotationAngle: CGFloat(Int.random(in: -360...360)))
             }
             
             //position
@@ -132,18 +144,16 @@ class AuthenticationViewController: UIViewController {
                 self.labelI.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
                 self.labelN.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
                 self.labelG.layer.position = CGPoint(x: Int.random(in: 0...300), y: Int.random(in: 0...700))
-                //self.labelSecondS.center = CGPoint(x: self.view.bounds.maxX - 50, y: -self.labelSecondS.bounds.size.height)
             }
-        
         }
         UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: animBlock, completion: {(_) in
-                self.gatherLetters()
-                self.secondSAnimation()
+            self.gatherLetters()
+            self.secondSAnimation()
         })
     }
     
-    //gather
-    func gatherLetters() {
+    //MARK: Gather animation as soon as scatter animation is done
+    private func gatherLetters() {
         //rotation reset
         UIView.animate(withDuration: 0.6, animations: {
             self.labelS.transform = .identity
@@ -155,19 +165,16 @@ class AuthenticationViewController: UIViewController {
             self.labelI.transform = .identity
             self.labelN.transform = .identity
             self.labelG.transform = .identity
-            //self.labelSecondS.transform = .identity
         }, completion: nil)
         
-        
         //position reset - x and y
-        //color reset - backgroundColor/textColor
+        //color set up
         let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG]
         UIView.animate(withDuration: 0.6, delay: 0, options: .curveLinear, animations: {
-                var index = 0
+            var index = 0
             for x in labels {
                 guard let label = x else {return}
                 
-                //label.alpha = 1
                 label.textColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255.0, green: CGFloat(Int.random(in: 0...255)) / 255.0, blue: CGFloat(Int.random(in: 0...255)) / 255.0, alpha: 1)
                 label.layer.shadowOpacity = 1.0
                 label.layer.shadowOffset = CGSize.zero
@@ -175,13 +182,12 @@ class AuthenticationViewController: UIViewController {
                 label.backgroundColor = .clear
                 label.center = self.labelLocations[index]
                 index += 1
-                
             }
         }, completion: nil)
     }
     
-    func secondSAnimation() {
-    
+    private func secondSAnimation() {
+        
         let animBlock = {
             
             self.labelSecondS.center = CGPoint(x: self.view.bounds.maxX - 50, y: -self.labelSecondS.bounds.size.height)
@@ -209,36 +215,9 @@ class AuthenticationViewController: UIViewController {
                 })
             })
         }
-        
         UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: animBlock, completion: nil)
-        
     }
-    
-    //Private method
-//    private func addLabelLocations() {
-//        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
-//        for x in labels {
-//            guard let label = x else {return}
-//            self.labelLocations.append(label.center)
-//        }
-//    }
 
-    private func setUpLabels() {
-        let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]
-        for y in labels {
-            guard let label = y else {return}
-            label.alpha = 0
-            label.layer.shadowOpacity = 1.0
-            label.layer.shadowOffset = CGSize.zero
-            label.layer.shadowColor = UIColor.darkGray.cgColor
-            label.backgroundColor = .clear
-            self.labelLocations.append(label.center)
-        }
-        DispatchQueue.main.async {
-            self.scatterLetters()
-        }
-    }
-    
     private func saveThingsButtonAnimation() {
         UIView.animate(withDuration: 0.20) {
             self.saveThingsButtonView.backgroundColor = self.labelSecondS.textColor
