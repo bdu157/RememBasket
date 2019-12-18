@@ -12,15 +12,13 @@ import UIKit
 
 class PasswordController {
     
-    //CRUD
+    //MARK: CRUD
     //create password
     func createPassword(title: String, userName: String, password: String, notes: String?, imageURLString: String?, logoViewbgColor: String) {
         //let firstLetterOfTitle = title[0] this would work with StringExtension
         let _ = Password(title: title, username: userName, password: password, notes: notes, imageURLString: imageURLString, logoViewbgColor: logoViewbgColor)
         saveToPersistentStore()
     }
-    
-    //read password
     
     //update password
     func updatePassword(for password: Password, changeTitleTo: String, changeUserNameTo: String, changePasswordTo: String, changeNotesTo: String?, modifiedDate: Date, changeImageURLStringTo: String?, logoViewbgColor: String) {
@@ -35,7 +33,7 @@ class PasswordController {
         saveToPersistentStore()
     }
     
-    //toggle openBasket
+    //toggle lockButton in cell
     func toggleOpenBasket(for password: Password) {
         password.openBasket = !password.openBasket
         saveToPersistentStore()
@@ -65,21 +63,8 @@ class PasswordController {
         }
     }
     
-    //MARK: SaveToCoreDataStore - backgroundContext
-    func saveToPersistentStoreBackgroundContext(bgcontext: NSManagedObjectContext = CoreDataStack.shared.mainContext) throws {
-        var error: Error?
-        bgcontext.performAndWait {
-            do {
-                try bgcontext.save()
-            } catch let saveError {
-                error = saveError
-            }
-        }
-        if let error = error {throw error}
-    }
-    
-    
-    //Networking for company logo
+    //MARK: Networking for company logo - will be used later
+    /*
     enum NetworkError: Error {
         case badData
         case noData
@@ -157,5 +142,6 @@ class PasswordController {
             completion(.success(image))
         }.resume()
     }
+     */
 }
 
