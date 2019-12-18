@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PasswordTableViewCellDelegate {
-    func toggleOpenBasketImage(for cell: PasswordTableViewCell)
+    func toggleLockImage(for cell: PasswordTableViewCell)
 }

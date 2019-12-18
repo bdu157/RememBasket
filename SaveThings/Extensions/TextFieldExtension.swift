@@ -14,7 +14,6 @@ extension UITextField {
         
         layer.cornerRadius = 18
         layer.borderWidth = 0.4
-        //layer.borderColor = UIColor.orange.cgColor
         backgroundColor = .white
         tintColor = .orange
         textColor = .black
@@ -25,7 +24,7 @@ extension UITextField {
         layer.shadowColor = UIColor.darkGray.cgColor
     }
     
-    
+    //Adding Left Image
     func addLeftImage(image: UIImage) {
         
         let leftImageView = UIImageView(frame: CGRect(x: 10.0, y: 5.0, width:20.0, height: 20.0))
@@ -41,9 +40,7 @@ extension UITextField {
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
 
-    
-    //textFieldAnimation
-
+    //TextField animaion when required fields are missing
     func shake() {
         
         let shake = CABasicAnimation(keyPath: "position")

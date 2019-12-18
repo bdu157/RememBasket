@@ -10,58 +10,54 @@ import UIKit
 
 class PasswordDetailViewController: UIViewController {
     
+    //MARK: Properties and Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
+    //Buttons
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var buttonsViewInUpdateView: UIView!
     
-    
+    //Date Labels
     @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var modifiedDateLabel: UILabel!
     @IBOutlet weak var modifiedLabel: UILabel!
     
     
-    //private properties for showHideButton
+    //MARK: Private Properties
+    //Private Properties for showHideButton
     private var showHideButton: UIButton = UIButton()
     private var hidePassword: Bool = false
     
-    //private properties for setting up logoimage
+    //Private Properties for setUpLogoImage
     private var logoRightLabel: UILabel = UILabel()
     private var logoRightView: UIView = UIView()
     private var rightViewBackgroundColor: UIColor!
     
-    
-    //textfield input animation for placeholder
+    //Private Properties for textFields placeholder animation
     private var titleLabel: UILabel = UILabel()
     private var userNameLabel: UILabel = UILabel()
     private var passwordInputLabel: UILabel = UILabel()
     private var chosenLabel: UILabel!
     
-    //imageview for company logo
-    //    private var logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-    
-    
-    //logo
-    //private var searchTerm: String = "noURL"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.updateViews()
         
-        self.setUpTextFields()
-        
         self.setUpButtonsUIView()
-        
+        self.setUpNotesTextView()
+        self.setUpTextFields()
         self.addDoneButtonToKeyboard()
-        //delegates are set up through storyboards
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        //TextFields Delegates are set up through storyboard
     }
     
     var password: Password? {
@@ -72,6 +68,7 @@ class PasswordDetailViewController: UIViewController {
     
     var passwordController: PasswordController?
     
+    //MARK: Save Button Action
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let title = self.titleTextField.text,
@@ -95,14 +92,13 @@ class PasswordDetailViewController: UIViewController {
             let logoViewbgColor = self.rightViewBackgroundColor else {return}
         
         if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-            
-            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString())
-            
+            passwordController.createPassword(title: title, userName: userName, password: passwordInput, notes: notes, imageURLString: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor(RGB) to String (Hex) for CoreData
             navigationController?.popViewController(animated: true)
         }
     }
     
-
+    
+    //MARK: Update Button Action on UpdateView
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
         
         guard let title = self.titleTextField.text,
@@ -126,60 +122,61 @@ class PasswordDetailViewController: UIViewController {
         }
         
         if !title.isEmpty && !userName.isEmpty && !passwordInput.isEmpty {
-            //add imageURL and rightuiview color to be updated
-            //update
-            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, modifiedDate: Date(), changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor to String
+            passwordController.updatePassword(for: password, changeTitleTo: title, changeUserNameTo: userName, changePasswordTo: passwordInput, changeNotesTo: notes, modifiedDate: Date(), changeImageURLStringTo: nil, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor(RGB) to String (Hex) for CoreData
             NotificationCenter.default.post(name: .needtoReloadData, object: self)
             self.dismiss(animated: true, completion: nil)
         }
     }
     
+    //MARK: Cancel Button Action on UpdateView
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     
-    //private methods
+    //MARK: Private Methods
     private func updateViews() {
         if let password = self.password, isViewLoaded {
-            //self.title = password.title
+   
             self.titleTextField?.text = password.title
             self.userNameTextField?.text = password.username
             self.passwordTextField?.text = password.password
             self.notesTextView?.text = password.notes
             
-            self.buttonsView?.isHidden = false
-            
-            //created date
-            self.createdDateLabel?.isHidden = false
-            self.createdLabel.isHidden = false
-            
+            //Date Formatter
             let dateFormatter = DateFormatter()
-            //dateFormatter.dateFormat = "yyyy-MM-dd'T00':HH:mm:sssZ"
             dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
             let dateFromCoreData = password.timestamp
             let createdDate = dateFormatter.string(from: dateFromCoreData!)
             dateFormatter.timeZone = NSTimeZone.local
             
+            //Created Date
             self.createdDateLabel.text = createdDate
-
+            
+            //Labels UISetUp
+            self.buttonsViewInUpdateView?.isHidden = false
+            self.createdDateLabel?.isHidden = false
+            self.createdLabel.isHidden = false
             self.modifiedDateLabel?.isHidden = true
             self.modifiedLabel?.isHidden = true
-            
-            //modieifed date
-        
+
+            //Handle Modified Date
             if password.modifiedDate != nil {
-                let dateFormatterModified = DateFormatter()
+                
+                //Labels UISetUp
                 self.modifiedDateLabel?.isHidden = false
                 self.modifiedLabel?.isHidden = false
+                
+                //DateFormatter
+                let dateFormatterModified = DateFormatter()
                 dateFormatterModified.dateFormat = "MM/dd/yyyy HH:mm:ss"
                 let modifiedDateFromCoreData = password.modifiedDate
                 let modifiedDate = dateFormatter.string(from: modifiedDateFromCoreData!)
                 dateFormatter.timeZone = NSTimeZone.local
                 
+                //Modified Date
                 self.modifiedDateLabel.text = modifiedDate
             }
-                
             
             self.logoRightLabel.text = String(password.title!.prefix(1).capitalized)
             self.logoRightView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
@@ -187,7 +184,9 @@ class PasswordDetailViewController: UIViewController {
             
         } else {
             self.title = "Add Password"
-            self.buttonsView?.isHidden = true
+            
+            //Labels UISetUp
+            self.buttonsViewInUpdateView?.isHidden = true
             self.createdDateLabel?.isHidden = true
             self.modifiedDateLabel?.isHidden = true
             self.createdLabel?.isHidden = true
@@ -195,51 +194,17 @@ class PasswordDetailViewController: UIViewController {
         }
     }
     
-    //setup uiview
+
+    //MARK: ButtonView Set Up
+    //ButtonView SetUp
     private func setUpButtonsUIView() {
-        self.buttonsView.shapeButtonsView()
+        self.buttonsViewInUpdateView.shapeButtonsViewInUpdateView()
     }
     
-    //setup textfield design
-    private func setUpTextFields() {
-        //title
-        titleTextField.shapeTextField()
-        //titleLabel
-        //titleLabel.frame = CGRect(x: 40, y: self.titleTextField.frame.origin.y / 2 - 7, width: 40, height: 40)
-        titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
-        titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
-        titleLabel.text = "Title"
-        titleLabel.textColor = .lightGray
-        titleLabel.alpha = 0
-        self.titleTextField.addSubview(titleLabel)
-        
-        self.addRightLogoView()
-        
-        
-        
-        //userName
-        userNameTextField.shapeTextField()
-        //userNameLabel
-        userNameLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
-        userNameLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
-        userNameLabel.text = "Username"
-        userNameLabel.textColor = .lightGray
-        userNameLabel.alpha = 0
-        self.userNameTextField.addSubview(userNameLabel)
-        
-        
-        //password
-        passwordTextField.shapeTextField()
-        //passwordInputLabel
-        passwordInputLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
-        passwordInputLabel.font = UIFont.systemFont(ofSize: 15, weight: .thin)
-        passwordInputLabel.text = "Password"
-        passwordInputLabel.textColor = .lightGray
-        passwordInputLabel.alpha = 0
-        self.passwordTextField.addSubview(passwordInputLabel)
-        
-        
-        //notesTextField
+    //MARK: Notes TextView Set Up
+    //TextView SetUp
+    private func setUpNotesTextView() {
+    
         notesTextView.tintColor = .orange
         notesTextView.textColor = .black
         notesTextView.layer.cornerRadius = 8
@@ -250,22 +215,50 @@ class PasswordDetailViewController: UIViewController {
         notesTextView.clipsToBounds = false
         notesTextView.layer.shadowOffset = CGSize.zero
         notesTextView.layer.shadowColor = UIColor.darkGray.cgColor
+    }
+    
+    //MARK: TextFields Set Up
+    private func setUpTextFields() {
         
-        
-        //textfields images
+        //MARK: Title TextFields Set Up
+        titleTextField.shapeTextField()
+        //Placeholder SetUp
+        titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
+        titleLabel.setUpPlaceHolderLabels(for: "Title")
+        self.titleTextField.addSubview(titleLabel)
+        //RightLogoView SetUp
+        self.addRightLogoView()
+        //Title Image
         let titleIcon = UIImage(named: "title")!
         self.titleTextField.addLeftImage(image: titleIcon)
         
+        
+        //MARK: Username TextFields Set Up
+        userNameTextField.shapeTextField()
+        //Placeholder SetUp
+        userNameLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
+        userNameLabel.setUpPlaceHolderLabels(for: "Username")
+        self.userNameTextField.addSubview(userNameLabel)
+        //Username Image
         let userNameIcon = UIImage(named: "userName")!
         self.userNameTextField.addLeftImage(image: userNameIcon)
         
+
+        //MARK: Password TextFields Set Up
+        passwordTextField.shapeTextField()
+        //Placeholder SetUp
+        passwordInputLabel.frame = CGRect(x: 40, y: 15, width: 80, height: 40)
+        passwordInputLabel.setUpPlaceHolderLabels(for: "Password")
+        self.passwordTextField.addSubview(passwordInputLabel)
+        //Lock Image
         let lockIcon = UIImage(named: "lock")!
         self.passwordTextField.addLeftImage(image: lockIcon)
-        
+        //Eye Image
         let eyesClosed = UIImage(named: "eyes-closed")!
         self.setUpShowHidePasswordButton(image: eyesClosed)
     }
     
+    //SetUp ShowHideButton
     private func setUpShowHidePasswordButton(image: UIImage) {
         showHideButton = UIButton(frame: CGRect(x: 3.0, y: 3.0, width: 30.0, height: 30.0))
         showHideButton.setImage(image, for: .normal)
@@ -276,7 +269,6 @@ class PasswordDetailViewController: UIViewController {
         self.passwordTextField.rightView = iconContainer
         self.passwordTextField.rightViewMode = .always
         
-        //logic for show hide button
         showHideButton.addTarget(self, action: #selector(showHideButtonImageTapped), for: .touchUpInside)
     }
     
@@ -292,7 +284,8 @@ class PasswordDetailViewController: UIViewController {
         }
     }
     
-    //set up rightview for setting up the logo image property
+    
+    //Set Up Right LogoView in Title TextField
     private func addRightLogoView() {
         logoRightLabel.frame = CGRect(x: 12.0, y: 6.0, width: 30.0, height: 30.0)
         logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
@@ -317,8 +310,7 @@ class PasswordDetailViewController: UIViewController {
 }
 
 
-
-//Extensions
+//MARK: UITextFieldDelegate Methods
 extension PasswordDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -335,65 +327,8 @@ extension PasswordDetailViewController: UITextFieldDelegate {
         return true
     }
     
-    /*
-     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-     
-     if textField == self.titleTextField {
-     
-     let inputText = textField.text!
-     //add fetch company logo here and make completion result to show in logoRightView
-     //this will hit the internet on g, o, o, g, l, e for google and once it hits google it will show the logo image
-     // then save it to the object property - image
-     if !inputText.isEmpty {
-     
-     //                var searchTerms: [String] {
-     //                    // less common -> more common
-     //                    let domainExtensionsArray = ["io", "co.kr", "us", "org", "co", "net", "com"]
-     //                    let betterTerm = inputText.replacingOccurrences(of: " ", with: "").lowercased()
-     //
-     //                    var completeDomainsArray: [String] = []
-     //
-     //                    for domain in domainExtensionsArray {
-     //                        completeDomainsArray.append("\(betterTerm).\(domain)")
-     //                    }
-     //
-     //                    return completeDomainsArray
-     //                }
-     
-     
-     self.passwordController?.fetchCompanyLogoForOneTerm(searchTerm: inputText, completion: { (result) in
-     if let result = try? result.get() {
-     DispatchQueue.main.async {
-     self.logoImageView.alpha = 1
-     self.logoImageView.image = result
-     self.logoRightView.alpha = 1
-     self.logoRightView.backgroundColor = .clear
-     self.logoRightView.layer.borderColor = UIColor.clear.cgColor
-     self.logoRightView.addSubview(self.logoImageView)
-     self.searchTerm = inputText
-     print("setting \(self.searchTerm) in fetchcompanylogo")
-     }
-     } else {
-     self.searchTerm = "noURL"
-     }
-     })
-     } else {
-     self.logoImageView.image = nil
-     self.logoRightView.layer.cornerRadius = 10
-     self.logoRightView.layer.borderWidth = 1.5
-     self.logoRightView.backgroundColor = .white
-     
-     self.searchTerm = "noURL"
-     }
-     }
-     
-     
-     return true
-     }
-     */
     
-    
-    //textfield being edited
+    //When TextField is being edited
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let oldText = textField.text,
@@ -421,7 +356,7 @@ extension PasswordDetailViewController: UITextFieldDelegate {
                 self.chosenLabel.alpha = 1
                 self.chosenLabel.frame.origin.x = 40
                 self.chosenLabel.frame.origin.y = -5
-                //give a logic so if there is no image from the internet then trigger this
+               
                 if self.chosenLabel == self.titleLabel {
                     self.logoRightView.alpha = 1
                     self.logoRightLabel.alpha = 1
@@ -450,6 +385,8 @@ extension PasswordDetailViewController: UITextFieldDelegate {
     
 }
 
+
+//MARK: UITextViewDelegate Methods
 extension PasswordDetailViewController: UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -473,8 +410,8 @@ extension PasswordDetailViewController: UITextViewDelegate {
         let info:NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         
-        //Key Logic for show and hide
-        //self.view.fram.origin.y + space between textview and the bottom of the app
+        //MARK: Key Logic for keyboard appear/disappear with right positioning
+        //self.view.frame.origin.y + space between textview and the bottom of the app
         if notification.name == UIResponder.keyboardWillShowNotification {
             self.view.frame.origin.y = -keyboardSize.height + (self.view.frame.height - (self.notesTextView.frame.origin.y + self.notesTextView.frame.height))
         } else {

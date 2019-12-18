@@ -12,19 +12,6 @@ import UIKit
 extension UIView {
     func setShadowandCornerRadius(scale:Bool = true) {
         layer.backgroundColor = UIColor.white.cgColor
-        //        layer.borderWidth = 1.3
-        //        layer.borderColor = UIColor.orange.cgColor
-        
-        //shadow
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize.zero
-        layer.shadowColor = UIColor.darkGray.cgColor
-        layer.cornerRadius = 10
-    }
-    func shapeButtonsView() {
-        //layer.backgroundColor = UIColor.white.cgColor
-        //        layer.borderWidth = 1.3
-        //        layer.borderColor = UIColor.orange.cgColor
         
         //shadow
         layer.shadowOpacity = 1.0
@@ -35,13 +22,22 @@ extension UIView {
     
     func shapeSaveThingsButtonView() {
         layer.backgroundColor = UIColor.clear.cgColor
-//        layer.borderWidth = 1.3
-        
+
         //shadow
         layer.shadowOpacity = 1.0
         layer.shadowOffset = CGSize.zero
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.cornerRadius = 15
+    }
+    
+    func shapeButtonsViewInUpdateView() {
+        
+        layer.backgroundColor = UIColor.orange.cgColor
+        //shadow
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.cornerRadius = 10
     }
     
     var image: UIImage? {

@@ -11,45 +11,16 @@ import CoreData
 
 class PasswordTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, PasswordTableViewCellDelegate {
     
+    
+    //MARK: Properties
     let passwordController = PasswordController()
     let searchController = UISearchController(searchResultsController: nil)
-    
-    /* not being used
-     //fetchedResultsController -> changed this lazy var to computed property
-     lazy var fetchedResultsController: NSFetchedResultsController<Password> = {
-     let fetchRequest: NSFetchRequest<Password> = Password.fetchRequest()
-     let moc = CoreDataStack.shared.mainContext
-     
-     fetchRequest.sortDescriptors = self.sortOnes //giving first NSSortDescriptor mood is the key to make section srot correctly
-     let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "sectionTitle", cacheName: nil)
-     frc.delegate = self
-     try! frc.performFetch()
-     return frc
-     //add NSFetchResulsControllerDelegate
-     }()
-     */
-    
-    //computed property
-    var sortOnes: [NSSortDescriptor] {
-        let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
-        
-        switch selectedScopeIndex {
-        case 0:
-            return [NSSortDescriptor(key: "title", ascending: true)]
-        case 1:
-            return [NSSortDescriptor(key: "title", ascending: false)]
-        case 2:
-            return [NSSortDescriptor(key: "timestamp", ascending: false)]
-        default:
-            return [NSSortDescriptor(key: "title", ascending: true)]
-        }
-    }
     
     
     var passwords: [Password] {
         let fetchRequest: NSFetchRequest<Password> = Password.fetchRequest()
         let moc = CoreDataStack.shared.mainContext
-        //let bgContext = CoreDataStack.shared.container.newBackgroundContext()
+        
         let searchText = searchController.searchBar.text!
         
         if !searchText.isEmpty {
@@ -65,72 +36,81 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //private computed property - to determine NSSortDescriptor based on selectedScopeButtonIndex
+    private var sortOnes: [NSSortDescriptor] {
+        let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        
-        searchController.searchBar.placeholder = "Search Password"
-        searchController.searchBar.tintColor = .orange
-        searchController.searchBar.scopeButtonTitles = ["A-Z", "Z-A", "Recently Added"]
-        
-        //searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
-        
-        observeShouldReloadData()
+        switch selectedScopeIndex {
+        case 0:
+            return [NSSortDescriptor(key: "title", ascending: true)]
+        case 1:
+            return [NSSortDescriptor(key: "title", ascending: false)]
+        case 2:
+            return [NSSortDescriptor(key: "timestamp", ascending: false)]
+        default:
+            return [NSSortDescriptor(key: "title", ascending: true)]
+        }
     }
     
-    //observeShouldReloadData
-    func observeShouldReloadData() {
-        NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .needtoReloadData, object: nil)
-    }
-    
-    
-    @objc func refresh(notification: Notification) {
-        self.tableView.reloadData()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
     
-    //tableView data source
+        navigationBarSetUp()
+        searchControllerSetUp()
+        observeShouldReloadData()
+    }
     
-    /* section not being used
-     override func numberOfSections(in tableView: UITableView) -> Int {
-     //return self.fetchedResultsController.sections?.count ?? 1
-     return 1
-     }
-     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-     guard let section = self.fetchedResultsController.sections?[section] else {return nil}
-     return section.name
-     }
-     */
     
+    //MARK: Observer for reloadData() - once present modally view is dismiessed
+    private func observeShouldReloadData() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .needtoReloadData, object: nil)
+    }
+    
+    @objc func refresh(notification: Notification) {
+        self.tableView.reloadData()
+    }
+    
+    
+    //MARK: SearchController SetUp
+    private func searchControllerSetUp() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Password"
+        searchController.searchBar.tintColor = .orange
+        searchController.searchBar.scopeButtonTitles = ["A-Z", "Z-A", "Recently Added"]
+        searchController.searchResultsUpdater = self
+    }
+    
+    
+    //MARK: NavigationBarSetUp
+    private func navigationBarSetUp() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    
+    //MARK: TableView Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
         return passwords.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTableViewCell
-        //let password = self.fetchedResultsController.object(at: indexPath)
         let password = self.passwords[indexPath.row]
         cell.delegate = self
         cell.password = password
         return cell
     }
     
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //let password = self.fetchedResultsController.object(at: indexPath)
             let password = self.passwords[indexPath.row]
             self.passwordController.deletePassword(for: password)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -153,6 +133,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
+    //MARK: Reset Button
     @IBAction func resetButtonTapped(_ sender: Any) {
         self.reset()
     }
@@ -167,6 +148,7 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     
+    //MARK:UISearchResultsUpdating method
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let scopeIndex = searchBar.selectedScopeButtonIndex
@@ -179,13 +161,30 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     
-    func toggleOpenBasketImage(for cell: PasswordTableViewCell) {
+    //MARK: Protocol method - one to one communication between cell and PasswordTableViewController (update Object as well)
+    func toggleLockImage(for cell: PasswordTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let password = self.passwords[indexPath.row]
         self.passwordController.toggleOpenBasket(for: password)
-        //self.tableView.reloadData()
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    
+    //MARK: FetchedResultsController
+    /* not being used
+     //fetchedResultsController -> changed this lazy var to computed property
+     lazy var fetchedResultsController: NSFetchedResultsController<Password> = {
+     let fetchRequest: NSFetchRequest<Password> = Password.fetchRequest()
+     let moc = CoreDataStack.shared.mainContext
+     
+     fetchRequest.sortDescriptors = self.sortOnes //giving first NSSortDescriptor mood is the key to make section srot correctly
+     let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "sectionTitle", cacheName: nil)
+     frc.delegate = self
+     try! frc.performFetch()
+     return frc
+     //add NSFetchResulsControllerDelegate
+     }()
+     */
     
     /* not being used
      //MARK: - NSfetchresultcontrollerDelegate - boilerPlate codes for coreData start here.
