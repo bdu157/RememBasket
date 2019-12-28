@@ -26,8 +26,13 @@
 		0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */; };
 		0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1C239391DF004836B8 /* CoreDataStack.swift */; };
 		0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A212393BF74004836B8 /* StringExtension.swift */; };
+		0BCC0C2E23B2049400065EC8 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
+		0BF5529623AED496003D473B /* NoteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529523AED496003D473B /* NoteCollectionViewController.swift */; };
+		0BF5529823AED4DE003D473B /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */; };
+		0BF5529A23AED6C2003D473B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529923AED6C2003D473B /* Note.swift */; };
+		0BF5529C23AED74A003D473B /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529B23AED74A003D473B /* NoteController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +60,13 @@
 		0BA26A1C239391DF004836B8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 2.xcdatamodel"; sourceTree = "<group>"; };
 		0BA26A212393BF74004836B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		0BF5529523AED496003D473B /* NoteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewController.swift; sourceTree = "<group>"; };
+		0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BF5529923AED6C2003D473B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		0BF5529B23AED74A003D473B /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +147,7 @@
 				0B65A762239389A500300633 /* Models.xcdatamodeld */,
 				0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */,
 				0BA26A1C239391DF004836B8 /* CoreDataStack.swift */,
+				0BF5529923AED6C2003D473B /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */,
+				0BF5529B23AED74A003D473B /* NoteController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -155,6 +167,8 @@
 				0B17025523A1199900924B7F /* AuthenticationViewController.swift */,
 				0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */,
 				0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */,
+				0BF5529523AED496003D473B /* NoteCollectionViewController.swift */,
+				0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -163,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */,
+				0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,6 +267,7 @@
 			files = (
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
+				0BF5529A23AED6C2003D473B /* Note.swift in Sources */,
 				0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */,
@@ -262,12 +278,16 @@
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,
 				0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */,
+				0BF5529823AED4DE003D473B /* NoteCollectionViewCell.swift in Sources */,
 				0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */,
 				0B8BD10F238B9D2B00AEF451 /* TextFieldExtension.swift in Sources */,
 				0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */,
+				0BF5529C23AED74A003D473B /* NoteController.swift in Sources */,
 				0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */,
+				0BCC0C2E23B2049400065EC8 /* PopOverViewController.swift in Sources */,
 				0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */,
 				0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */,
+				0BF5529623AED496003D473B /* NoteCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

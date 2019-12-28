@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -178,22 +179,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwz-Qa-5Js" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-255" y="-58"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="I0s-RT-zJr">
-            <objects>
-                <viewController id="qcs-Nt-J9Q" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tWu-BO-Swg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="WlJ-aQ-7R4"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="wfx-eS-98M"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-iS-d65" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1430" y="-305"/>
         </scene>
         <!--Settings-->
         <scene sceneID="b1o-xw-STK">
@@ -556,18 +541,121 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o1h-jl-CjP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Note" image="note" id="ycE-Sg-hvK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mKK-fR-6OK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mKK-fR-6OK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="qcs-Nt-J9Q" kind="relationship" relationship="rootViewController" id="fKp-0e-Mcm"/>
+                        <segue destination="x4c-Jb-S1A" kind="relationship" relationship="rootViewController" id="Jra-UF-rUr"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yu2-FC-BL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="-305"/>
+            <point key="canvasLocation" x="714" y="-305"/>
+        </scene>
+        <!--Notes-->
+        <scene sceneID="IEl-zL-Scd">
+            <objects>
+                <collectionViewController id="x4c-Jb-S1A" customClass="NoteCollectionViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qRh-Lk-N9y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lkH-9r-Qqr">
+                            <size key="itemSize" width="80" height="100"/>
+                            <size key="estimatedItemSize" width="80" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="qgf-UP-JaL" customClass="NoteCollectionViewCell" customModule="SaveThings" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jbk-dp-lz7">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-89-t32">
+                                            <rect key="frame" x="5" y="40" width="71" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel" destination="18Z-89-t32" id="MXZ-Wf-YWO"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="x4c-Jb-S1A" id="eQF-DY-ISq"/>
+                            <outlet property="delegate" destination="x4c-Jb-S1A" id="e50-hn-qwO"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Notes" largeTitleDisplayMode="always" id="JEw-Ql-tJs">
+                        <barButtonItem key="rightBarButtonItem" title="Add Category" id="q5I-7k-Xi1">
+                            <connections>
+                                <segue destination="xcl-g3-r1Z" kind="popoverPresentation" identifier="toAddCategory" popoverAnchorBarButtonItem="q5I-7k-Xi1" id="nBX-Ew-DTH">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVZ-SP-TD5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518.840579710145" y="-305.35714285714283"/>
+        </scene>
+        <!--Pop Over View Controller-->
+        <scene sceneID="Rkf-HB-vUG">
+            <objects>
+                <viewController id="xcl-g3-r1Z" customClass="PopOverViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uce-VD-R8N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-Oh-aF6">
+                                <rect key="frame" x="60" y="74" width="294" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMW-4K-g7D">
+                                <rect key="frame" x="157.5" y="138" width="99" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Add Category">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addCategoryButtonTapped:" destination="xcl-g3-r1Z" eventType="touchUpInside" id="5qg-eW-mQB"/>
+                                    <segue destination="D9h-yP-wes" kind="unwind" unwindAction="unwindToNoteCollectionViewController:" id="ShF-W2-ApM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zuz-tT-GKF" firstAttribute="trailing" secondItem="aLg-Oh-aF6" secondAttribute="trailing" constant="60" id="6VR-BD-OuJ"/>
+                            <constraint firstItem="hMW-4K-g7D" firstAttribute="top" secondItem="aLg-Oh-aF6" secondAttribute="bottom" constant="30" id="hEZ-Xv-Rpc"/>
+                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="top" secondItem="zuz-tT-GKF" secondAttribute="top" constant="30" id="lzI-dG-EqH"/>
+                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="leading" secondItem="zuz-tT-GKF" secondAttribute="leading" constant="60" id="oKj-zi-pTL"/>
+                            <constraint firstItem="hMW-4K-g7D" firstAttribute="centerX" secondItem="Uce-VD-R8N" secondAttribute="centerX" id="uKv-fS-LQb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zuz-tT-GKF"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="414" height="200"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="200"/>
+                    <connections>
+                        <outlet property="categoryTextField" destination="aLg-Oh-aF6" id="n2A-GR-wAa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xPc-qF-Pao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="D9h-yP-wes" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2009" y="-747"/>
         </scene>
         <!--Password-->
         <scene sceneID="NRJ-sN-eBi">
