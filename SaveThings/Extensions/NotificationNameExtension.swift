@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static var needtoReloadData = Notification.Name("needtoReloadData")
+    static var addCategoryClicked = Notification.Name("addCategoryClicked")
 }
