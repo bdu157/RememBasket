@@ -9,9 +9,12 @@
 import UIKit
 import CoreData
 
-class NoteCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
+class NoteCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, NoteCollectionViewCellDelegate {
+    
     
     let noteController = NoteController()
+    
+    @IBOutlet weak var addCategoryButton: UIBarButtonItem!
     
     //unwindSegue from popover VC
     @IBAction func unwindToNoteCollectionViewController(_ sender: UIStoryboardSegue) {
@@ -31,9 +34,33 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.observerShouldShowNewCategory()
+        //toolbar
+        navigationController?.isToolbarHidden = true
+        //edit
+        navigationItem.leftBarButtonItem = editButtonItem
+        installsStandardGestureForInteractiveMovement = true
         
+        self.observerShouldShowNewCategory()
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        addCategoryButton.isEnabled = !editing
+        collectionView?.allowsMultipleSelection = editing
+        collectionView.indexPathsForSelectedItems?.forEach {
+            collectionView.deselectItem(at: $0, animated: false)
+        }
+        
+        guard let indexes = collectionView?.indexPathsForVisibleItems else {
+            return
+        }
+        for index in indexes {
+            let cell = collectionView?.cellForItem(at: index) as! NoteCollectionViewCell
+            cell.isEditing = isEditing
+        }
+    }
+    
+    
     
     func observerShouldShowNewCategory() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshViews(notification:)), name: .addCategoryClicked, object: nil)
@@ -85,8 +112,18 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"CategoryCell", for: indexPath) as! NoteCollectionViewCell
         let category = self.fetchedResultsController.object(at: indexPath)
         cell.category = category
+        cell.delegate = self
+        cell.isEditing = isEditing
         return cell
     }
+    
+    func removeCellAndReload(for cell: NoteCollectionViewCell) {
+        
+        guard let indexPath = collectionView.indexPath(for: cell) else {return}
+        let category = self.fetchedResultsController.object(at: indexPath)
+        self.noteController.deleteCategory(for: category)
+        collectionView.reloadData()
+       }
 }
 
 extension NoteCollectionViewController: UIPopoverPresentationControllerDelegate {

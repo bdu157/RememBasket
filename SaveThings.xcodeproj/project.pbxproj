@@ -33,6 +33,7 @@
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
 		0BED43D723B9F434009B4D74 /* Category+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43D623B9F434009B4D74 /* Category+Convenience.swift */; };
 		0BED43D923B9F447009B4D74 /* Note+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43D823B9F447009B4D74 /* Note+Convenience.swift */; };
+		0BED43DB23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */; };
 		0BF5529623AED496003D473B /* NoteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529523AED496003D473B /* NoteCollectionViewController.swift */; };
 		0BF5529823AED4DE003D473B /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */; };
 		0BF5529C23AED74A003D473B /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF5529B23AED74A003D473B /* NoteController.swift */; };
@@ -71,6 +72,7 @@
 		0BED43CD23B9EB6F009B4D74 /* Models 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 5.xcdatamodel"; sourceTree = "<group>"; };
 		0BED43D623B9F434009B4D74 /* Category+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Convenience.swift"; sourceTree = "<group>"; };
 		0BED43D823B9F447009B4D74 /* Note+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Convenience.swift"; sourceTree = "<group>"; };
+		0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		0BF5529523AED496003D473B /* NoteCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewController.swift; sourceTree = "<group>"; };
 		0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BF5529B23AED74A003D473B /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				0BE431AD238A43F9009B8033 /* Extensions */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
+				0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */,
 			);
 			path = SaveThings;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,
+				0BED43DB23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift in Sources */,
 				0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */,
 				0BF5529823AED4DE003D473B /* NoteCollectionViewCell.swift in Sources */,
 				0B666D8E2368720800B0E72A /* AppDelegate.swift in Sources */,

@@ -584,10 +584,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXn-hH-OdO">
+                                            <rect key="frame" x="47" y="8" width="29" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="deleteButton"/>
+                                            <connections>
+                                                <action selector="deleteButtonTapped:" destination="qgf-UP-JaL" eventType="touchUpInside" id="dY8-U7-lJ7"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="categoryLabel" destination="18Z-89-t32" id="MXZ-Wf-YWO"/>
+                                    <outlet property="deleteButton" destination="rXn-hH-OdO" id="IsC-2x-Y4K"/>
                                     <segue destination="bKg-0f-0OB" kind="show" identifier="ToDetail" id="OmV-H4-qf5"/>
                                 </connections>
                             </collectionViewCell>
@@ -606,6 +615,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addCategoryButton" destination="q5I-7k-Xi1" id="VFH-RI-HBi"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVZ-SP-TD5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -709,6 +721,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="deleteButton" width="512" height="512"/>
         <image name="note" width="30" height="30"/>
         <image name="password" width="30" height="30"/>
         <image name="settings" width="33" height="33"/>
