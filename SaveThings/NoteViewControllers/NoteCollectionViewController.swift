@@ -16,6 +16,10 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     
     @IBOutlet weak var addCategoryButton: UIBarButtonItem!
     
+    private let leftAndRightPaddings: CGFloat = 8.0
+    private let numberOfItem: CGFloat = 3.0
+    private let heightAdjustment: CGFloat = 30.0
+    
     //unwindSegue from popover VC
     @IBAction func unwindToNoteCollectionViewController(_ sender: UIStoryboardSegue) {
         
@@ -34,8 +38,12 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //toolbar
-        navigationController?.isToolbarHidden = true
+        let width = (view.frame.size.width - 20) / 3
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
+        
+        
+        
         //edit
         navigationItem.leftBarButtonItem = editButtonItem
         installsStandardGestureForInteractiveMovement = true
@@ -67,8 +75,7 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     @objc func refreshViews(notification: Notification) {
-        let indexPath = IndexPath(row: fetchedResultsController.fetchedObjects!.count - 1, section: 0)
-        collectionView.insertItems(at: [indexPath])
+        collectionView.reloadData()
         
     }
     
