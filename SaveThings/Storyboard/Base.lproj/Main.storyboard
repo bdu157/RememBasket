@@ -597,7 +597,7 @@
                                 <connections>
                                     <outlet property="categoryLabel" destination="18Z-89-t32" id="MXZ-Wf-YWO"/>
                                     <outlet property="deleteButton" destination="rXn-hH-OdO" id="IsC-2x-Y4K"/>
-                                    <segue destination="bKg-0f-0OB" kind="show" identifier="ToDetail" id="OmV-H4-qf5"/>
+                                    <segue destination="bKg-0f-0OB" kind="show" identifier="ToNoteTableView" id="OmV-H4-qf5"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

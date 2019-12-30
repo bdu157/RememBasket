@@ -72,6 +72,7 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //for popoverview
         if segue.identifier == "toAddCategory" {
             
             let popOverVC = segue.destination as! PopOverViewController
@@ -82,20 +83,14 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
                 ppc?.sourceRect = button.bounds
             }
             ppc?.delegate = self
+        } else if segue.identifier == "ToNoteTableView" {
+            guard let destVC = segue.destination as? NoteTableViewController,
+                let selectedItem = collectionView.indexPathsForSelectedItems?.first else {return}
+            destVC.noteController = self.noteController
+            destVC.category = self.fetchedResultsController.object(at: selectedItem)
+            
         }
     }
-    
-    /* pass category fetchedRC.object(at: index) to tableViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "petSegue" {
-            if let index = sender as? IndexPath {
-                let pvc = segue.destination as! PetsViewController
-                let friend = fetchedRC.object(at: index)
-                pvc.friend = friend
-            }
-        }
-    }
-    */
     
     // MARK: UICollectionViewDataSource
     

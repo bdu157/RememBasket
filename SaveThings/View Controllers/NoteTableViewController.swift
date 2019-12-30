@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class NoteTableViewController: UITableViewController {
-
-    /* add this with Note
+class NoteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var category: Category!
+    var noteController: NoteController!
     
     var note: [Note] {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
@@ -31,7 +31,6 @@ class NoteTableViewController: UITableViewController {
             NSLog("there is an error getting data through Predicate")
             return []
         }
-        
     }
     
     //private computed property - to determine NSSortDescriptor based on selectedScopeButtonIndex
@@ -50,10 +49,11 @@ class NoteTableViewController: UITableViewController {
         }
     }
     
+    /*
     add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
     and once a category is deleted it will remove them all
-    */
-
+ */
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
