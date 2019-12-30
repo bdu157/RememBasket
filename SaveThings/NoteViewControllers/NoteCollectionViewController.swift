@@ -22,13 +22,13 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     var fetchedResultsController: NSFetchedResultsController<Category> {
-    let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-    let moc = CoreDataStack.shared.mainContext
-    let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-    frc.delegate = self
-    try! frc.performFetch()
-    return frc
+        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        let moc = CoreDataStack.shared.mainContext
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
     }
     
     override func viewDidLoad() {
@@ -67,7 +67,9 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     @objc func refreshViews(notification: Notification) {
-        collectionView.reloadData()
+        let indexPath = IndexPath(row: fetchedResultsController.fetchedObjects!.count - 1, section: 0)
+        collectionView.insertItems(at: [indexPath])
+        
     }
     
     // MARK: - Navigation
@@ -117,8 +119,8 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
         guard let indexPath = collectionView.indexPath(for: cell) else {return}
         let category = self.fetchedResultsController.object(at: indexPath)
         self.noteController.deleteCategory(for: category)
-        collectionView.reloadData()
-       }
+        collectionView.deleteItems(at: [indexPath])
+    }
 }
 
 extension NoteCollectionViewController: UIPopoverPresentationControllerDelegate {
