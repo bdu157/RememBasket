@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class NoteDetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
+    
+    var noteController: NoteController?
+    var category: Category!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,5 +56,11 @@ class NoteDetailViewController: UIViewController {
         }
     }
     */
-
+    @IBAction func addButtonTapped(_ sender: Any) {
+        guard let title = self.titleTextField.text,
+            let content = self.contentTextView.text,
+            let noteController = self.noteController else {return}
+            noteController.createNote(title: title, content: content, owner: self.category)
+        navigationController?.popViewController(animated: true)
+    }
 }

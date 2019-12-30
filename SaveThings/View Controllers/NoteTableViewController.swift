@@ -14,18 +14,18 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     var category: Category!
     var noteController: NoteController!
     
-    var note: [Note] {
+    var notes: [Note] {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let moc = CoreDataStack.shared.mainContext
-        fetchRequest.predicate = NSPredicate(format: "category == %@", category)
+        fetchRequest.predicate = NSPredicate(format: "owner == %@", category)
      
-        let searchText = searchController.searchBar.text!
-        
-        if !searchText.isEmpty {
-            fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ AND category = %@", searchText, category)
-        }
+//        let searchText = searchController.searchBar.text!
+//
+//        if !searchText.isEmpty {
+//            fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ AND category = %@", searchText, category)
+//        }
         do {
-            fetchRequest.sortDescriptors = self.sortOnes
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
             return try moc.fetch(fetchRequest)
         } catch {
             NSLog("there is an error getting data through Predicate")
@@ -34,20 +34,20 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     //private computed property - to determine NSSortDescriptor based on selectedScopeButtonIndex
-    private var sortOnes: [NSSortDescriptor] {
-        let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
-        
-        switch selectedScopeIndex {
-        case 0:
-            return [NSSortDescriptor(key: "title", ascending: true)]
-        case 1:
-            return [NSSortDescriptor(key: "title", ascending: false)]
-        case 2:
-            return [NSSortDescriptor(key: "timestamp", ascending: false)]
-        default:
-            return [NSSortDescriptor(key: "title", ascending: true)]
-        }
-    }
+//    private var sortOnes: [NSSortDescriptor] {
+//        let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
+//
+//        switch selectedScopeIndex {
+//        case 0:
+//            return [NSSortDescriptor(key: "title", ascending: true)]
+//        case 1:
+//            return [NSSortDescriptor(key: "title", ascending: false)]
+//        case 2:
+//            return [NSSortDescriptor(key: "timestamp", ascending: false)]
+//        default:
+//            return [NSSortDescriptor(key: "title", ascending: true)]
+//        }
+//    }
     
     /*
     add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
@@ -59,27 +59,31 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return self.notes.count
     }
 
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
+        let note = self.notes[indexPath.row]
+        cell.textLabel?.text = note.title
+        cell.detailTextLabel?.text = note.content
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -116,14 +120,16 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       if segue.identifier == "ToAddNote" {
+           guard let detailVC = segue.destination as? NoteDetailViewController else {return}
+           detailVC.noteController = self.noteController
+        detailVC.category = self.category
+       }
     }
-    */
 
 }
