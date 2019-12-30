@@ -586,17 +586,22 @@
                                                 <action selector="deleteButtonTapped:" destination="qgf-UP-JaL" eventType="touchUpInside" id="dY8-U7-lJ7"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dfasdfasdfasd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-89-t32">
-                                            <rect key="frame" x="11" y="77" width="128" height="53"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdfasdfasd" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-89-t32">
+                                            <rect key="frame" x="5" y="60" width="140" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="iIY-dh-5pr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="18Z-89-t32" secondAttribute="bottom" constant="20" id="cZw-3A-kce"/>
+                                    <constraint firstItem="18Z-89-t32" firstAttribute="leading" secondItem="qgf-UP-JaL" secondAttribute="leading" constant="5" id="dwa-ap-GTE"/>
                                     <constraint firstAttribute="trailing" secondItem="rXn-hH-OdO" secondAttribute="trailing" constant="10" id="tbX-fw-dVa"/>
+                                    <constraint firstAttribute="trailing" secondItem="18Z-89-t32" secondAttribute="trailing" constant="5" id="xlw-8K-2px"/>
                                     <constraint firstItem="rXn-hH-OdO" firstAttribute="top" secondItem="qgf-UP-JaL" secondAttribute="top" constant="10" id="yOt-cl-xfp"/>
                                 </constraints>
                                 <connections>
@@ -725,18 +730,20 @@
         <!--Pop Over View Controller-->
         <scene sceneID="Rkf-HB-vUG">
             <objects>
-                <viewController id="xcl-g3-r1Z" customClass="PopOverViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uce-VD-R8N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                <viewController modalTransitionStyle="flipHorizontal" interfaceStyle="light" id="xcl-g3-r1Z" customClass="PopOverViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" alpha="0.80000000000000004" contentMode="scaleToFill" id="Uce-VD-R8N">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-Oh-aF6">
-                                <rect key="frame" x="60" y="74" width="294" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-Oh-aF6">
+                                <rect key="frame" x="10" y="21" width="274" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMW-4K-g7D">
-                                <rect key="frame" x="157.5" y="138" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMW-4K-g7D">
+                                <rect key="frame" x="101" y="80" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Add Category">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -747,19 +754,12 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="zuz-tT-GKF" firstAttribute="trailing" secondItem="aLg-Oh-aF6" secondAttribute="trailing" constant="60" id="6VR-BD-OuJ"/>
-                            <constraint firstItem="hMW-4K-g7D" firstAttribute="top" secondItem="aLg-Oh-aF6" secondAttribute="bottom" constant="30" id="hEZ-Xv-Rpc"/>
-                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="top" secondItem="zuz-tT-GKF" secondAttribute="top" constant="30" id="lzI-dG-EqH"/>
-                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="leading" secondItem="zuz-tT-GKF" secondAttribute="leading" constant="60" id="oKj-zi-pTL"/>
-                            <constraint firstItem="hMW-4K-g7D" firstAttribute="centerX" secondItem="Uce-VD-R8N" secondAttribute="centerX" id="uKv-fS-LQb"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.29948871110000003" green="0.63560609680000002" blue="0.79487230330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="zuz-tT-GKF"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="414" height="200"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="130"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="200"/>
+                    <size key="freeformSize" width="300" height="130"/>
                     <connections>
                         <outlet property="categoryTextField" destination="aLg-Oh-aF6" id="n2A-GR-wAa"/>
                     </connections>
@@ -767,7 +767,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPc-qF-Pao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="D9h-yP-wes" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1758" y="-830"/>
+            <point key="canvasLocation" x="1801" y="-727"/>
         </scene>
         <!--Password-->
         <scene sceneID="NRJ-sN-eBi">
