@@ -15,8 +15,15 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = 14
-        self.layer.backgroundColor = UIColor.orange.cgColor
+        self.layer.backgroundColor = UIColor.white.cgColor
+        
+        self.layer.cornerRadius = 14.0
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.layer.shadowRadius = 14.0
+        self.layer.shadowOpacity = 0.7
+        self.layer.masksToBounds = false
+        
         self.deleteButton.setImage(UIImage(named: "deleteButton"), for: .normal)
     }
     

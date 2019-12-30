@@ -43,7 +43,6 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
         layout.itemSize = CGSize(width: width, height: width)
         
         
-        
         //edit
         navigationItem.leftBarButtonItem = editButtonItem
         installsStandardGestureForInteractiveMovement = true
