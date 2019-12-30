@@ -11,3 +11,4 @@ import Foundation
 protocol NoteCollectionViewCellDelegate {
     func removeCellAndReload(for cell: NoteCollectionViewCell)
 }
+
