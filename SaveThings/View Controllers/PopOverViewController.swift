@@ -23,7 +23,7 @@ class PopOverViewController: UIViewController {
         if let newCategoryInput = self.categoryTextField.text,
             let noteController = noteController {
             
-            noteController.createCategory(for: newCategoryInput)
+            noteController.createCategory(name: newCategoryInput)
             
             NotificationCenter.default.post(name: .addCategoryClicked, object: self)
         }

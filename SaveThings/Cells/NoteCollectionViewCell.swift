@@ -18,7 +18,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.layer.backgroundColor = UIColor.orange.cgColor
     }
     
-    var note: Note? {
+    var category: Category? {
         didSet {
             self.updateViews()
         }
@@ -26,7 +26,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
 
     
     private func updateViews() {
-        guard let note = note else {return}
-        self.categoryLabel.text = note.category
+        guard let category = self.category else {return}
+        self.categoryLabel.text = category.name
     }
 }

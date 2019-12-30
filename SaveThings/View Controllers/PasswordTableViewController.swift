@@ -33,7 +33,6 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
             NSLog("there is an error getting data through Predicate")
             return []
         }
-        
     }
     
     //private computed property - to determine NSSortDescriptor based on selectedScopeButtonIndex

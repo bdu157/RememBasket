@@ -8,14 +8,63 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class NoteController {
     
-    var notes: [Note] = []
+    //CRUD for category
+    func createCategory(name: String) {
+        let _ = Category(name: name)
+        saveToPersistentStore()
+    }
     
-    //create category
-    func createCategory(for categoryName: String) {
-        let category = Note(category: categoryName)
-        self.notes.append(category)
+    func updateCategory(for category: Category, changeCategoryNameTo: String) {
+        category.name = changeCategoryNameTo
+        saveToPersistentStore()
+    }
+    
+    func deleteCategory(for category: Category) {
+        let moc = CoreDataStack.shared.mainContext
+        moc.delete(category)
+        do {
+            try moc.save()
+        } catch {
+            moc.reset()
+            NSLog("there is an error in deleting category: \(error)")
+        }
+    }
+    
+    //CRUD for note
+    func createNote(title: String, content: String, owner: Category) {
+        let _ = Note(title: title, content: content, owner: owner)
+        saveToPersistentStore()
+    }
+    
+    func updateNote(for note: Note, changeTitleTo: String, changeContentTo: String) {
+        note.title = changeTitleTo
+        note.content = changeContentTo
+        saveToPersistentStore()
+    }
+    
+    func deleteNote(for note: Note) {
+        let moc = CoreDataStack.shared.mainContext
+        moc.delete(note)
+        do {
+            try moc.save()
+        } catch {
+            moc.reset()
+            NSLog("there is an error in deleting note: \(error)")
+        }
+    }
+    
+    
+    //MARK: SaveToCoreDataStore - maincontext
+    func saveToPersistentStore() {
+        do {
+            let moc = CoreDataStack.shared.mainContext
+            try moc.save()
+        } catch {
+            NSLog("Error saving managed object context:\(error)")
+        }
     }
 }

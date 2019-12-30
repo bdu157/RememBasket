@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
-class NoteCollectionViewController: UICollectionViewController {
+class NoteCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
     
     let noteController = NoteController()
     
     //unwindSegue from popover VC
     @IBAction func unwindToNoteCollectionViewController(_ sender: UIStoryboardSegue) {
         
+    }
+    
+    var fetchedResultsController: NSFetchedResultsController<Category> {
+    let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+    let moc = CoreDataStack.shared.mainContext
+    let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+    frc.delegate = self
+    try! frc.performFetch()
+    return frc
     }
     
     override func viewDidLoad() {
@@ -47,18 +58,33 @@ class NoteCollectionViewController: UICollectionViewController {
         }
     }
     
+    /* pass category fetchedRC.object(at: index) to tableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "petSegue" {
+            if let index = sender as? IndexPath {
+                let pvc = segue.destination as! PetsViewController
+                let friend = fetchedRC.object(at: index)
+                pvc.friend = friend
+            }
+        }
+    }
+    */
+    
     // MARK: UICollectionViewDataSource
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return self.fetchedResultsController.sections?.count ?? 1
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.noteController.notes.count
+        return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"CategoryCell", for: indexPath) as! NoteCollectionViewCell
-        let note = self.noteController.notes[indexPath.item]
-        cell.note = note
+        let category = self.fetchedResultsController.object(at: indexPath)
+        cell.category = category
         return cell
     }
 }
