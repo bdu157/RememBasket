@@ -12,6 +12,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,13 +26,23 @@ class NoteCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         
         self.deleteButton.setImage(UIImage(named: "deleteButton"), for: .normal)
+        self.editButton.setImage(UIImage(named: "editButton"), for: .normal)
     }
     
     var delegate: NoteCollectionViewCellDelegate?
     
     var isEditing: Bool = false {
         didSet {
-            self.deleteButton.isHidden = !isEditing
+            if self.isEditing {
+                UIButton.animate(withDuration: 0.6) {
+                    self.deleteButton.alpha = 1
+                    self.editButton.alpha = 1
+                }
+            } else if !self.isEditing {
+                self.deleteButton.alpha = 0
+                self.editButton.alpha = 0
+                
+            }
         }
     }
     
