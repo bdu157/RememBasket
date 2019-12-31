@@ -10,5 +10,6 @@ import Foundation
 
 protocol NoteCollectionViewCellDelegate {
     func removeCellAndReload(for cell: NoteCollectionViewCell)
+    func editAlert(for cell: NoteCollectionViewCell)
 }
 

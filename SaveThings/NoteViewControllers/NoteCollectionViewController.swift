@@ -11,7 +11,6 @@ import CoreData
 
 class NoteCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, NoteCollectionViewCellDelegate {
     
-    
     let noteController = NoteController()
     
     @IBOutlet weak var addCategoryButton: UIBarButtonItem!
@@ -120,12 +119,40 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
         return cell
     }
     
+    
+    //delegate methods
     func removeCellAndReload(for cell: NoteCollectionViewCell) {
-        
         guard let indexPath = collectionView.indexPath(for: cell) else {return}
         let category = self.fetchedResultsController.object(at: indexPath)
         self.noteController.deleteCategory(for: category)
         collectionView.deleteItems(at: [indexPath])
+    }
+    
+    func editAlert(for cell: NoteCollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {return}
+        let category = self.fetchedResultsController.object(at: indexPath)
+        
+        let alert = UIAlertController(title: "Edit Category Name", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (textField: UITextField!) -> Void in
+            textField.text = category.name
+        }
+        let updateAction = UIAlertAction(title: "Update", style: .default) { output -> Void in
+            let firstTextField = alert.textFields?.first
+            
+            if let input = firstTextField?.text {
+                self.noteController.updateCategory(for: category, changeCategoryNameTo: input)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(updateAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

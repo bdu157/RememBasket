@@ -16,7 +16,6 @@ class PopOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func addCategoryButtonTapped(_ sender: Any) {

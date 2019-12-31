@@ -588,6 +588,9 @@
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jhgjgjhgjhgjhgjhgjhgjhgjhghg" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-89-t32">
                                             <rect key="frame" x="5" y="50" width="140" height="90"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" selected="YES" keyboardKey="YES" staticText="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="iIY-dh-5pr"/>
                                             </constraints>
@@ -602,6 +605,9 @@
                                                 <constraint firstAttribute="height" constant="30" id="hfU-Ib-PUr"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="editButton"/>
+                                            <connections>
+                                                <action selector="editButtonTapped:" destination="qgf-UP-JaL" eventType="touchUpInside" id="WvX-Te-0Lg"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -778,7 +784,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPc-qF-Pao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="D9h-yP-wes" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="-727"/>
+            <point key="canvasLocation" x="2132" y="-773"/>
         </scene>
         <!--Password-->
         <scene sceneID="NRJ-sN-eBi">

@@ -60,4 +60,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         delegate?.removeCellAndReload(for: self)
     }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+        delegate?.editAlert(for: self)
+    }
 }
