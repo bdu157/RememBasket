@@ -576,10 +576,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXn-hH-OdO">
-                                            <rect key="frame" x="115" y="5" width="30" height="30"/>
+                                            <rect key="frame" x="120" y="5" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="0Xw-0t-PwU"/>
-                                                <constraint firstAttribute="height" constant="30" id="JIy-lF-5yj"/>
+                                                <constraint firstAttribute="width" constant="25" id="0Xw-0t-PwU"/>
+                                                <constraint firstAttribute="height" constant="25" id="JIy-lF-5yj"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="deleteButton"/>
                                             <connections>
@@ -587,22 +587,22 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jhgjgjhgjhgjhgjhgjhgjhgjhghg" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Z-89-t32">
-                                            <rect key="frame" x="5" y="50" width="140" height="90"/>
+                                            <rect key="frame" x="5" y="45" width="140" height="95"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" selected="YES" keyboardKey="YES" staticText="YES"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="90" id="iIY-dh-5pr"/>
+                                                <constraint firstAttribute="height" constant="95" id="iIY-dh-5pr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-Eb-w0k">
-                                            <rect key="frame" x="5" y="5" width="30" height="30"/>
+                                            <rect key="frame" x="5" y="5" width="25" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="f45-dX-sje"/>
-                                                <constraint firstAttribute="height" constant="30" id="hfU-Ib-PUr"/>
+                                                <constraint firstAttribute="width" constant="25" id="f45-dX-sje"/>
+                                                <constraint firstAttribute="height" constant="25" id="hfU-Ib-PUr"/>
                                             </constraints>
                                             <state key="normal" title="Button" image="editButton"/>
                                             <connections>
