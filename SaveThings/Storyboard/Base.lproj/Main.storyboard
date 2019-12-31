@@ -699,7 +699,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yh-K4-I6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2307" y="-291"/>
+            <point key="canvasLocation" x="2303" y="-311"/>
         </scene>
         <!--Add Note-->
         <scene sceneID="A3U-eQ-GUk">
@@ -748,43 +748,64 @@
         <scene sceneID="Rkf-HB-vUG">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" interfaceStyle="light" id="xcl-g3-r1Z" customClass="PopOverViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" alpha="0.80000000000000004" contentMode="scaleToFill" id="Uce-VD-R8N">
+                    <view key="view" contentMode="scaleToFill" id="Uce-VD-R8N">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-Oh-aF6">
-                                <rect key="frame" x="10" y="21" width="274" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMW-4K-g7D">
-                                <rect key="frame" x="100" y="80" width="101" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMW-4K-g7D">
+                                <rect key="frame" x="90" y="90" width="120" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Add Category">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addCategoryButtonTapped:" destination="xcl-g3-r1Z" eventType="touchUpInside" id="5qg-eW-mQB"/>
                                     <segue destination="D9h-yP-wes" kind="unwind" unwindAction="unwindToNoteCollectionViewController:" id="ShF-W2-ApM"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nVb-mf-h7l">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="130"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-Oh-aF6">
+                                <rect key="frame" x="15" y="40" width="270" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2PE-AD-GNR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xcl-g3-r1Z" id="H8Y-Yd-iiV"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.35285174850000001" green="0.73464411500000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hMW-4K-g7D" firstAttribute="top" secondItem="aLg-Oh-aF6" secondAttribute="bottom" constant="10" id="AvM-c4-Qg6"/>
+                            <constraint firstItem="hMW-4K-g7D" firstAttribute="leading" secondItem="zuz-tT-GKF" secondAttribute="leading" constant="90" id="Bea-Rs-W1a"/>
+                            <constraint firstItem="nVb-mf-h7l" firstAttribute="trailing" secondItem="zuz-tT-GKF" secondAttribute="trailing" id="Psd-z4-kps"/>
+                            <constraint firstItem="zuz-tT-GKF" firstAttribute="trailing" secondItem="aLg-Oh-aF6" secondAttribute="trailing" constant="15" id="U2d-hc-xxr"/>
+                            <constraint firstItem="nVb-mf-h7l" firstAttribute="leading" secondItem="zuz-tT-GKF" secondAttribute="leading" id="V4F-6q-nOR"/>
+                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="leading" secondItem="zuz-tT-GKF" secondAttribute="leading" constant="15" id="Z3I-xA-Nkt"/>
+                            <constraint firstItem="nVb-mf-h7l" firstAttribute="bottom" secondItem="zuz-tT-GKF" secondAttribute="bottom" id="a4r-UG-m1r"/>
+                            <constraint firstItem="nVb-mf-h7l" firstAttribute="top" secondItem="Uce-VD-R8N" secondAttribute="top" id="jAe-HE-sTa"/>
+                            <constraint firstItem="aLg-Oh-aF6" firstAttribute="top" secondItem="Uce-VD-R8N" secondAttribute="top" constant="40" id="nlp-7e-zeE"/>
+                            <constraint firstItem="zuz-tT-GKF" firstAttribute="trailing" secondItem="hMW-4K-g7D" secondAttribute="trailing" constant="90" id="w9U-o9-1TT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zuz-tT-GKF"/>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="130"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="130"/>
                     <connections>
+                        <outlet property="addCategoryButton" destination="hMW-4K-g7D" id="4tc-Re-A5h"/>
                         <outlet property="categoryTextField" destination="aLg-Oh-aF6" id="n2A-GR-wAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPc-qF-Pao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="D9h-yP-wes" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2132" y="-773"/>
+            <point key="canvasLocation" x="2131.8840579710145" y="-773.4375"/>
         </scene>
         <!--Password-->
         <scene sceneID="NRJ-sN-eBi">
