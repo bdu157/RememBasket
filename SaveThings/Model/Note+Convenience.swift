@@ -10,11 +10,13 @@ import Foundation
 import CoreData
 
 extension Note {
-    convenience init(title: String, content: String, timestamp: Date = Date(), owner: Category, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(title: String, content: String, timestamp: Date = Date(), owner: Category, openPreview: Bool = false, logoViewbgColor: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.title = title
         self.content = content
         self.timestamp = timestamp
         self.owner = owner
+        self.openPreview = openPreview
+        self.logoViewbgColor = logoViewbgColor
     }
 }

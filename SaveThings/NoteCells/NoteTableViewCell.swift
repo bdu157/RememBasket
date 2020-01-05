@@ -1,49 +1,48 @@
 //
-//  PasswordTableViewCell.swift
-//  RememBasket
+//  NoteTableViewCell.swift
+//  SaveThings
 //
-//  Created by Dongwoo Pae on 11/23/19.
-//  Copyright © 2019 Dongwoo Pae. All rights reserved.
+//  Created by Dongwoo Pae on 1/5/20.
+//  Copyright © 2020 Dongwoo Pae. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class PasswordTableViewCell: UITableViewCell {
+class NoteTableViewCell: UITableViewCell {
     
     //MARK: Properties and Outlets
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dividerLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var LockButton: UIButton!
+    @IBOutlet weak var previewLabel: UILabel!
+    @IBOutlet weak var previewButton: UIButton!
+    
     
     //MARK: Private Properties
     private var logoLabel: UILabel = UILabel()
     
-    let passwordController = PasswordController()
+    let noteController = NoteController()
     
-    var password: Password? {
+    var note: Note? {
         didSet {
             self.updateViews()
         }
     }
     
-    var delegate: PasswordTableViewCellDelegate?
+    var delegate: NoteTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         updateViews()
-          
+        
         self.selectionStyle = .none
         self.cellView.setShadowandCornerRadius()
-        self.userNameLabel.alpha = 0.0
-        self.passwordLabel.alpha = 0.0
+        self.previewLabel.alpha = 0.0
         
-        self.LockButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+        self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
         
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
@@ -70,60 +69,60 @@ class PasswordTableViewCell: UITableViewCell {
     
     //UpdateViews
     private func updateViews() {
-        guard let password = self.password else {return}
+        guard let note = self.note else {return}
         
-        self.titleLabel?.text = password.title
-        self.userNameLabel?.text = password.username
-        self.passwordLabel?.text = password.password
+        self.titleLabel?.text = note.title
+        self.previewLabel?.text = note.content
         
-        print("\(password.logoViewbgColor!)")
+        print("\(note.logoViewbgColor!)")
         DispatchQueue.main.async {
-            self.logoImageView.backgroundColor = UIColor(hexString: password.logoViewbgColor!)
-            self.logoLabel.text = password.title?.prefix(1).capitalized
+            self.logoImageView.backgroundColor = UIColor(hexString: note.logoViewbgColor!)
+            self.logoLabel.text = note.title?.prefix(1).capitalized
         }
-        updateLockButtonImage(for: password)
+        updatePreviewButtonImage(for: note)
     }
     
-    //Update BasketButtonImage
-    private func updateLockButtonImage(for password: Password) {
-
-        if password.openBasket == true {
-            self.LockButton.setImage(UIImage(named: "openLock.png"), for: .normal)
+    //Update PreviewButton image
+    private func updatePreviewButtonImage(for note: Note) {
+        
+        if note.openPreview == true {
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .orange
+            
             self.titleLabel.alpha = 0
-            self.userNameLabel.alpha = 1
-            self.passwordLabel.alpha = 1
-            self.userNameLabel.textColor = .orange
-            self.passwordLabel.textColor = .orange
+            self.previewLabel.alpha = 1
+            
+            self.previewLabel.textColor = .orange
         } else {
-            self.LockButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .black
             self.titleLabel.alpha = 1
-            self.userNameLabel.alpha = 0
-            self.passwordLabel.alpha = 0
+            self.previewLabel.alpha = 0
         }
     }
     
     
-    //MARK: LockButton Action
-
-    @IBAction func lockButtonTapped(_ sender: Any) {
-        dividerAnimation()
+    //MARK: PreviewButton Action
+    @IBAction func previewButtonTapped(_ sender: Any) {
+        self.dividerAnimation()
     }
     
-    //MARK: Cell Animation - Divider, ShowTitle, ShowID/Password and LockButton
+    //MARK: Cell Animation - Divider, ShowTitle, ShowPreview and the other preview image
     private func dividerAnimation() {
-        guard let password = self.password else {return}
+        guard let note = self.note else {return}
         //when clicking the button
-        if password.openBasket == false {
-            self.LockButton.setImage(UIImage(named: "openLock.png"), for: .normal)
-            self.LockButton.imageView?.tintColor = .orange
-            showUserNameAndPassword()
+        if note.openPreview == false {
+            self.previewButton.imageView?.tintColor = .orange
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
+            showPreview()
         } else {
-            self.LockButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .black
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
             showTitle()
         }
     }
-
-    private func showUserNameAndPassword() {
+    
+    private func showPreview() {
         
         UILabel.animateKeyframes(withDuration: 1.0, delay: 0, options: [], animations: {
             
@@ -136,18 +135,16 @@ class PasswordTableViewCell: UITableViewCell {
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.LockButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.previewButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
-                self.userNameLabel.alpha = 1.0
-                self.passwordLabel.alpha = 1.0
-                self.userNameLabel.textColor = .orange
-                self.passwordLabel.textColor = .orange
+                self.previewLabel.alpha = 1.0
+                self.previewLabel.textColor = .orange
             }
             
         }, completion: { (_) in
-            self.delegate?.toggleLockImage(for: self)
+            self.delegate?.togglePreviewImage(for: self)
         })
     }
     
@@ -160,12 +157,11 @@ class PasswordTableViewCell: UITableViewCell {
             
             //titleLabel animation part
             UILabel.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2) {
-                self.userNameLabel.alpha = 0.0
-                self.passwordLabel.alpha = 0.0
+                self.previewLabel.alpha = 0.0
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.LockButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.previewButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
@@ -173,7 +169,7 @@ class PasswordTableViewCell: UITableViewCell {
             }
             
         }, completion:  { (_) in
-                   self.delegate?.toggleLockImage(for: self)
-               })
+            self.delegate?.togglePreviewImage(for: self)
+        })
     }
 }

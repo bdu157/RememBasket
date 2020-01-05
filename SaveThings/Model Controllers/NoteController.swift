@@ -35,8 +35,8 @@ class NoteController {
     }
     
     //CRUD for note
-    func createNote(title: String, content: String, owner: Category) {
-        let _ = Note(title: title, content: content, owner: owner)
+    func createNote(title: String, content: String, owner: Category, logoViewbgColor: String) {
+        let _ = Note(title: title, content: content, owner: owner, logoViewbgColor: logoViewbgColor)
         saveToPersistentStore()
     }
     
@@ -66,5 +66,11 @@ class NoteController {
         } catch {
             NSLog("Error saving managed object context:\(error)")
         }
+    }
+    
+    //toggle preview button in cell
+    func toggleImageforPreview(for note: Note) {
+        note.openPreview = !note.openPreview
+        saveToPersistentStore()
     }
 }
