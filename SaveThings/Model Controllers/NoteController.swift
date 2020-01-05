@@ -69,7 +69,8 @@ class NoteController {
     }
     
     //toggle preview button in cell
-    func toggleImageforPreview(for: Note) {
-        
+    func toggleImageforPreview(for note: Note) {
+        note.openPreview = !note.openPreview
+        saveToPersistentStore()
     }
 }

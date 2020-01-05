@@ -181,7 +181,8 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
-                                                        <action selector="previewButtonTapped:" destination="JVt-Y8-rkT" eventType="touchUpInside" id="f5f-XN-Tnh"/>
+                                                        <action selector="previewButtonTapped:" destination="8Fi-1b-GAs" eventType="touchUpInside" id="1yo-DD-g0m"/>
+                                                        <action selector="previewButtonTapped:" destination="JVt-Y8-rkT" eventType="touchUpInside" id="ns5-aV-KJl"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wells Fargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBC-Sr-JxQ">
@@ -249,6 +250,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yh-K4-I6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="8Fi-1b-GAs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2286.9565217391305" y="-291.29464285714283"/>
         </scene>

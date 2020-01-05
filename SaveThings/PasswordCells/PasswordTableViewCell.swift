@@ -104,8 +104,9 @@ class PasswordTableViewCell: UITableViewCell {
     
     
     //MARK: LockButton Action
-    @IBAction func lockButtonTapped(_ sender: Any) {
-        self.dividerAnimation()
+
+    @IBAction func previewButtonTapped(_ sender: Any) {
+        dividerAnimation()
     }
     
     //MARK: Cell Animation - Divider, ShowTitle, ShowID/Password and LockButton

@@ -104,10 +104,10 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
         let note = self.notes[indexPath.row]
-        cell.textLabel?.text = note.title
-        cell.detailTextLabel?.text = note.content
+        cell.delegate = self
+        cell.note = note
         return cell
     }
 
@@ -132,6 +132,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         } else if segue.identifier == "ToAddNote" {
             guard let detailVC = segue.destination as? NoteDetailViewController else {return}
             detailVC.noteController = self.noteController
+            detailVC.category = self.category
         }
     }
     
@@ -147,12 +148,11 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         }
     }
     
-    //MARK: Protocol method - one to one communication between cell and PasswordTableViewController (update Object as well)
+    //MARK: Protocol method - one to one communication between cell and NoteTableViewCell (update Object as well)
     func togglePreviewImage(for cell: NoteTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let note = self.notes[indexPath.row]
         self.noteController.toggleImageforPreview(for: note)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-
 }
