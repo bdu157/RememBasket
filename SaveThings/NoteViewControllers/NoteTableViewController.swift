@@ -11,6 +11,7 @@ import CoreData
 
 class NoteTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, NoteTableViewCellDelegate {
     
+    //MARK: Properties
     var category: Category!
     var noteController: NoteController!
     let searchController = UISearchController(searchResultsController: nil)
@@ -52,7 +53,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     
     /*
     add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
-    and once a category is deleted it will remove them all
+    and once a category is deleted it will remove them all - relational CoreData
  */
  
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.separatorStyle = .none
         
         navigationBarSetUp()
         searchControllerSetUp()
