@@ -17,6 +17,7 @@ class NoteDetailViewController: UIViewController {
     
     var noteController: NoteController?
     var category: Category!
+    
     var note: Note? {
         didSet {
             self.updateViews()
@@ -65,7 +66,7 @@ class NoteDetailViewController: UIViewController {
         guard let title = self.titleTextField.text,
             let content = self.contentTextView.text,
             let noteController = self.noteController else {return}
-            noteController.createNote(title: title, content: content, owner: self.category)
+        noteController.createNote(title: title, content: content, owner: self.category, logoViewbgColor: "String")
         navigationController?.popViewController(animated: true)
     }
     
