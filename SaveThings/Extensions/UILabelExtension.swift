@@ -14,7 +14,7 @@ extension UILabel {
     func setUpPlaceHolderLabels(for name: String) {
         font = UIFont.systemFont(ofSize: 15, weight: .thin)
         text = name
-        textColor = .lightGray
+        textColor = .black
         alpha = 0
     }
     

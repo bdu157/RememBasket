@@ -120,14 +120,16 @@
 			isa = PBXGroup;
 			children = (
 				0B677353237CF14B003C1D53 /* Model */,
-				0B677354237CF154003C1D53 /* Model Controller */,
+				0B677354237CF154003C1D53 /* Model Controllers */,
 				0B677357237CF17D003C1D53 /* View Controllers */,
-				0B85DC9F23883F3A00F4C95B /* Cells */,
+				0BADDC6B23BA48B4009502E6 /* PasswordViewControllers */,
+				0BADDC6C23BA48CB009502E6 /* NoteViewControllers */,
+				0B85DC9F23883F3A00F4C95B /* PasswordCells */,
+				0BADDC6D23BA48FE009502E6 /* NoteCells */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0BE431AD238A43F9009B8033 /* Extensions */,
+				0BADDC6E23BA493C009502E6 /* Protocols */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
-				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
-				0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */,
 			);
 			path = SaveThings;
 			sourceTree = "<group>";
@@ -155,44 +157,74 @@
 			isa = PBXGroup;
 			children = (
 				0B65A762239389A500300633 /* Models.xcdatamodeld */,
-				0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */,
 				0BA26A1C239391DF004836B8 /* CoreDataStack.swift */,
+				0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */,
 				0BED43D623B9F434009B4D74 /* Category+Convenience.swift */,
 				0BED43D823B9F447009B4D74 /* Note+Convenience.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0B677354237CF154003C1D53 /* Model Controller */ = {
+		0B677354237CF154003C1D53 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */,
 				0BF5529B23AED74A003D473B /* NoteController.swift */,
 			);
-			path = "Model Controller";
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		0B677357237CF17D003C1D53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0B17025523A1199900924B7F /* AuthenticationViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0B85DC9F23883F3A00F4C95B /* PasswordCells */ = {
+			isa = PBXGroup;
+			children = (
+				0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */,
+			);
+			path = PasswordCells;
+			sourceTree = "<group>";
+		};
+		0BADDC6B23BA48B4009502E6 /* PasswordViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */,
 				0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */,
+			);
+			path = PasswordViewControllers;
+			sourceTree = "<group>";
+		};
+		0BADDC6C23BA48CB009502E6 /* NoteViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				0BF5529523AED496003D473B /* NoteCollectionViewController.swift */,
 				0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */,
 				0B95127423B714CD002858A2 /* NoteTableViewController.swift */,
 				0B95127623B79F09002858A2 /* NoteDetailViewController.swift */,
 			);
-			path = "View Controllers";
+			path = NoteViewControllers;
 			sourceTree = "<group>";
 		};
-		0B85DC9F23883F3A00F4C95B /* Cells */ = {
+		0BADDC6D23BA48FE009502E6 /* NoteCells */ = {
 			isa = PBXGroup;
 			children = (
-				0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */,
 				0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */,
 			);
-			path = Cells;
+			path = NoteCells;
+			sourceTree = "<group>";
+		};
+		0BADDC6E23BA493C009502E6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
+				0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		0BE431AD238A43F9009B8033 /* Extensions */ = {

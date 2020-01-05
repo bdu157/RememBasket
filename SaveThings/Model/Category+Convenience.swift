@@ -10,9 +10,10 @@ import Foundation
 import CoreData
 
 extension Category {
-    convenience init(name: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(name: String, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.name = name
+        self.timestamp = timestamp
     }
 }
 
