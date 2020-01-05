@@ -67,4 +67,9 @@ class NoteController {
             NSLog("Error saving managed object context:\(error)")
         }
     }
+    
+    //toggle preview button in cell
+    func toggleImageforPreview(for: Note) {
+        
+    }
 }

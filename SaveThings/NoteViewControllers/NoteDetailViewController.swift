@@ -17,6 +17,11 @@ class NoteDetailViewController: UIViewController {
     
     var noteController: NoteController?
     var category: Category!
+    var note: Note? {
+        didSet {
+            self.updateViews()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -62,5 +67,9 @@ class NoteDetailViewController: UIViewController {
             let noteController = self.noteController else {return}
             noteController.createNote(title: title, content: content, owner: self.category)
         navigationController?.popViewController(animated: true)
+    }
+    
+    private func updateViews() {
+        
     }
 }

@@ -10,6 +10,8 @@
 		0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */; };
 		0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */; };
 		0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17025523A1199900924B7F /* AuthenticationViewController.swift */; };
+		0B2F298923C1CE1600537BC7 /* NoteTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */; };
+		0B2F298B23C1CE6600537BC7 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */; };
 		0B65228D23C1C3C300F8ECDE /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B65228C23C1C3C300F8ECDE /* Password.storyboard */; };
 		0B65229023C1C49100F8ECDE /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B65228E23C1C49100F8ECDE /* Settings.storyboard */; };
 		0B65229223C1C4A300F8ECDE /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B65229123C1C4A300F8ECDE /* Note.storyboard */; };
@@ -47,6 +49,8 @@
 		0B08C1E0239FAE970090010A /* Models 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 4.xcdatamodel"; sourceTree = "<group>"; };
 		0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B17025523A1199900924B7F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		0B65228C23C1C3C300F8ECDE /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
 		0B65228F23C1C49100F8ECDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SaveThings/Storyboard/Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		0B65229123C1C4A300F8ECDE /* Note.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				0BF5529723AED4DE003D473B /* NoteCollectionViewCell.swift */,
+				0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */,
 			);
 			path = NoteCells;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 			children = (
 				0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */,
 				0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */,
+				0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -324,7 +330,9 @@
 			files = (
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
+				0B2F298923C1CE1600537BC7 /* NoteTableViewCellDelegate.swift in Sources */,
 				0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */,
+				0B2F298B23C1CE6600537BC7 /* NoteTableViewCell.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
