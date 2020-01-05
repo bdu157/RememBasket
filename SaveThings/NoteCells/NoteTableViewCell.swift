@@ -42,7 +42,7 @@ class NoteTableViewCell: UITableViewCell {
         self.cellView.setShadowandCornerRadius()
         self.previewLabel.alpha = 0.0
         
-        self.previewButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+        self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
         
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
@@ -86,13 +86,16 @@ class NoteTableViewCell: UITableViewCell {
     private func updatePreviewButtonImage(for note: Note) {
         
         if note.openPreview == true {
-            self.previewButton.setImage(UIImage(named: "openLock.png"), for: .normal)
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .orange
+            
             self.titleLabel.alpha = 0
             self.previewLabel.alpha = 1
             
             self.previewLabel.textColor = .orange
         } else {
-            self.previewButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .black
             self.titleLabel.alpha = 1
             self.previewLabel.alpha = 0
         }
@@ -109,11 +112,12 @@ class NoteTableViewCell: UITableViewCell {
         guard let note = self.note else {return}
         //when clicking the button
         if note.openPreview == false {
-            self.previewButton.setImage(UIImage(named: "openLock.png"), for: .normal)
             self.previewButton.imageView?.tintColor = .orange
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
             showPreview()
         } else {
-            self.previewButton.setImage(UIImage(named: "closedLock.png"), for: .normal)
+            self.previewButton.imageView?.tintColor = .black
+            self.previewButton.setImage(UIImage(named: "preview.png"), for: .normal)
             showTitle()
         }
     }
