@@ -14,6 +14,8 @@ class PopOverViewController: UIViewController {
 
     @IBOutlet weak var addCategoryButton: UIButton!
     
+    
+    
     var noteController: NoteController?
     
     //Private Properties for textfield

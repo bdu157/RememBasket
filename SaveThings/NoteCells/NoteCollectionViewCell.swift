@@ -13,6 +13,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var timestampLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,6 +56,15 @@ class NoteCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         guard let category = self.category else {return}
         self.categoryLabel.text = category.name
+        
+        //Date Formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateFromCoreData = category.timestamp
+        let createdDate = dateFormatter.string(from: dateFromCoreData!)
+        dateFormatter.timeZone = NSTimeZone.local
+        
+        self.timestampLabel.text = "Created: \(createdDate)"
     }
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
