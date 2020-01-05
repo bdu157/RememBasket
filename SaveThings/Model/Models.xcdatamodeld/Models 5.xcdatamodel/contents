@@ -8,6 +8,7 @@
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="content" attributeType="String"/>
         <attribute name="logoViewbgColor" attributeType="String"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="openPreview" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="54" width="128" height="88"/>
-        <element name="Note" positionX="-54" positionY="63" width="128" height="133"/>
+        <element name="Note" positionX="-54" positionY="63" width="128" height="148"/>
         <element name="Password" positionX="-63" positionY="-18" width="128" height="178"/>
     </elements>
 </model>

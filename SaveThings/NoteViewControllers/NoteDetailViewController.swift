@@ -7,15 +7,50 @@
 //
 
 import UIKit
-import CoreData
 
 class NoteDetailViewController: UIViewController {
-
     
+    //MARK: Properties and Outlets
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var notesTextView: UITextView!
     
-    var noteController: NoteController?
+    //Buttons
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var buttonsViewInUpdateView: UIView!
+    
+    //Date Labels
+    @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
+    @IBOutlet weak var modifiedDateLabel: UILabel!
+    @IBOutlet weak var modifiedLabel: UILabel!
+    
+    
+    //MARK: Private Properties
+    
+    //Private Properties for setUpLogoImage
+    private var logoRightLabel: UILabel = UILabel()
+    private var logoRightView: UIView = UIView()
+    private var rightViewBackgroundColor: UIColor!
+    
+    //Private Properties for textFields placeholder animation
+    private var titleLabel: UILabel = UILabel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.updateViews()
+        
+        self.setUpButtonsUIView()
+        self.setUpNotesTextView()
+        self.setUpTextField()
+        self.addDoneButtonToKeyboard()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //TextField and textview delegates are set up through storyboard
+    }
+    
     var category: Category!
     
     var note: Note? {
@@ -24,53 +59,279 @@ class NoteDetailViewController: UIViewController {
         }
     }
     
+    var noteController: NoteController?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    //MARK: Save Button Action
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    /* make sure you give note.category = category when creating a new note
-     
-    var category: Category!
-     
-    @IBAction func addPet() {
-     
-     use NoteController
-     
-        let data = PetData()
-        let pet = Pet(entity: Pet.entity(), insertInto: context)
-        pet.name = data.name
-        pet.kind = data.kind
-        pet.dob = data.dob as NSDate
-        pet.owner = friend
-        appDelegate.saveContext()
-        refresh()
-        collectionView.reloadData()
+    @IBAction func addButtonTapped(_ sender: Any) {
+        guard let title = self.titleTextField.text else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        guard let noteController = self.noteController,
+            let content = self.notesTextView.text,
+            let logoViewbgColor = self.rightViewBackgroundColor else {return}
+        
+        if !title.isEmpty {
+            noteController.createNote(title: title, content: content, owner: self.category, logoViewbgColor: logoViewbgColor.rgbUIColorToHexString()) //convert UIColor(RGB) to String (Hex) for CoreData
+            navigationController?.popViewController(animated: true)
         }
     }
-    */
-    @IBAction func addButtonTapped(_ sender: Any) {
+    
+    //MARK: Update Button Action on UpdateView
+    @IBAction func saveButtonFromUpdateView(_ sender: Any) {
         guard let title = self.titleTextField.text,
-            let content = self.contentTextView.text,
-            let noteController = self.noteController else {return}
-        noteController.createNote(title: title, content: content, owner: self.category, logoViewbgColor: "String")
-        navigationController?.popViewController(animated: true)
+            let logoViewbgColor = self.rightViewBackgroundColor,
+            let content = self.notesTextView.text,
+            let note = self.note else {return}
+        
+        if title.isEmpty {
+            self.titleTextField.shake()
+        }
+        
+        if !title.isEmpty {
+            noteController?.updateNote(for: note, changeTitleTo: title, changeContentTo: content, modifiedDate: Date(), logoViewbgColor: logoViewbgColor.rgbUIColorToHexString())//convert UIColor(RGB) to String (Hex) for CoreData
+            NotificationCenter.default.post(name: .needtoReloadData, object: self)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
+    //MARK: Cancel Button Action on UpdateView
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //MARK: Private Methods
     private func updateViews() {
+        if let note = self.note, isViewLoaded {
+            
+            self.titleTextField?.text = note.title
+            self.notesTextView?.text = note.content
+            
+            //Date Formatter
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss"
+            let dateFromCoreData = note.timestamp
+            let createdDate = dateFormatter.string(from: dateFromCoreData!)
+            dateFormatter.timeZone = NSTimeZone.local
+            
+            //Created Date
+            self.createdDateLabel.text = createdDate
+            
+            //Labels UISetUp r
+            self.buttonsViewInUpdateView?.isHidden = false
+            self.createdDateLabel?.isHidden = false
+            self.createdLabel.isHidden = false
+            self.modifiedDateLabel?.isHidden = true
+            self.modifiedLabel?.isHidden = true
+            
+            //Handle Modified Date
+            if note.modifiedDate != nil {
+                
+                //Labels UISetUp
+                self.modifiedDateLabel?.isHidden = false
+                self.modifiedLabel?.isHidden = false
+                
+                //DateFormatter
+                let dateFormatterModified = DateFormatter()
+                dateFormatterModified.dateFormat = "MM/dd/yyyy HH:mm:ss"
+                let modifiedDateFromCoreData = note.modifiedDate
+                let modifiedDate = dateFormatter.string(from: modifiedDateFromCoreData!)
+                dateFormatter.timeZone = NSTimeZone.local
+                
+                //Modified Date
+                self.modifiedDateLabel.text = modifiedDate
+            }
+            
+            self.logoRightLabel.text = String(note.title!.prefix(1).capitalized)
+            self.logoRightView.backgroundColor = UIColor(hexString: note.logoViewbgColor!)
+            self.rightViewBackgroundColor = UIColor(hexString: note.logoViewbgColor!)
+            
+        } else {
+            self.title = "Add Note"
+            
+            //Labels UISetUp
+            self.buttonsViewInUpdateView?.isHidden = true
+            self.createdDateLabel?.isHidden = true
+            self.modifiedDateLabel?.isHidden = true
+            self.createdLabel?.isHidden = true
+            self.modifiedLabel?.isHidden = true
+        }
+    }
+    
+    
+    //MARK: ButtonView Set Up
+    //ButtonView SetUp
+    private func setUpButtonsUIView() {
+        self.buttonsViewInUpdateView.shapeButtonsViewInUpdateView()
+    }
+    
+    //MARK: Notes TextView Set Up
+    //TextView SetUp
+    private func setUpNotesTextView() {
         
+        notesTextView.tintColor = .orange
+        notesTextView.textColor = .black
+        notesTextView.layer.cornerRadius = 8
+        notesTextView.layer.borderWidth = 0.6
+        
+        //shadow
+        notesTextView.layer.shadowOpacity = 0.6
+        notesTextView.clipsToBounds = false
+        notesTextView.layer.shadowOffset = CGSize.zero
+        notesTextView.layer.shadowColor = UIColor.darkGray.cgColor
+    }
+    
+    //MARK: TextFields Set Up
+    private func setUpTextField() {
+        
+        //MARK: Title TextFields Set Up
+        titleTextField.shapeTextField()
+        //Placeholder SetUp
+        titleLabel.frame = CGRect(x: 40, y: 15, width: 40, height: 40)
+        titleLabel.setUpPlaceHolderLabels(for: "Title")
+        self.titleTextField.addSubview(titleLabel)
+        //RightLogoView SetUp
+        self.addRightLogoView()
+        //Title Image
+        let titleIcon = UIImage(named: "title")!
+        self.titleTextField.addLeftImage(image: titleIcon)
+        
+    }
+    
+    
+    //Set Up Right LogoView in Title TextField
+    private func addRightLogoView() {
+        logoRightLabel.frame = CGRect(x: 12.0, y: 6.0, width: 30.0, height: 30.0)
+        logoRightLabel.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.0)
+        logoRightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        
+        //give constraints for the label
+        logoRightView.frame = CGRect(x: 0.0, y: 0.0, width: 40, height: 40)
+        logoRightView.layer.cornerRadius = 10
+        logoRightView.layer.borderWidth = 1.5
+        logoRightView.layer.borderColor = UIColor.black.cgColor
+        
+        logoRightView.addSubview(logoRightLabel)
+        
+        //add padding by adding another uiview with bigger width
+        let logoRightViewWithPadding: UIView = UIView(frame: CGRect(x: 0.0, y: 0, width: 50, height: 40))
+        logoRightViewWithPadding.addSubview(logoRightView)
+        
+        self.titleTextField.rightView = logoRightViewWithPadding
+        self.titleTextField.rightViewMode = .always
+    }
+    
+}
+
+
+//MARK: UITextFieldDelegate Methods
+extension NoteDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("UIResponder.keyboardWillShow/HideNotification are removed")
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+            self.view.frame.origin.y = 0
+        }, completion: nil)
+        return true
+    }
+    
+    
+    //When TextField is being edited
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let oldText = textField.text,
+            let stringRange = Range(range, in: oldText) else {
+                return false
+        }
+        
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        
+        if !newText.isEmpty {
+            
+            UILabel.animate(withDuration: 0.1, animations: {
+                self.titleLabel.alpha = 1
+                self.titleLabel.frame.origin.x = 40
+                self.titleLabel.frame.origin.y = -5
+                
+                self.logoRightView.alpha = 1
+                self.logoRightLabel.alpha = 1
+                self.logoRightLabel.text = String(newText.prefix(1).capitalized)
+                self.logoRightView.backgroundColor = UIColor(red: CGFloat(Int.random(in: 0...255)) / 255, green: CGFloat(Int.random(in: 0...255)) / 255, blue: CGFloat(Int.random(in: 1...254)) / 255, alpha: 1)
+                self.rightViewBackgroundColor = self.logoRightView.backgroundColor
+            }, completion: nil)
+        } else {
+            UILabel.animate(withDuration: 0.1, animations: {
+                self.titleLabel.alpha = 0
+                self.titleLabel.frame.origin.x = 40
+                self.titleLabel.frame.origin.y = 15
+                self.logoRightLabel.text = nil
+                self.logoRightView.backgroundColor = .white
+                
+                self.logoRightView.layer.borderColor = UIColor.black.cgColor
+            }, completion: nil)
+        }
+        return true
+    }
+    
+}
+
+
+//MARK: UITextViewDelegate Methods
+extension NoteDetailViewController: UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print("textview is being editied")
+        print("UIResponder.keyboardWillShowNotification is set")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        print("UIResponder.keyboardWillHideNotification is set")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        return true
+    }
+    
+    //this reacts whenver keyboard appears and disappears
+    //make this occur only when textView is selected
+    @objc func keyboardWillChange(notification: Notification) {
+        print("keyboard did show: \(notification.name.rawValue)")
+        
+        let info:NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        //MARK: Key Logic for keyboard appear/disappear with right positioning
+        //self.view.frame.origin.y + space between textview and the bottom of the app
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            self.view.frame.origin.y = -keyboardSize.height + (self.view.frame.height - (self.notesTextView.frame.origin.y + self.notesTextView.frame.height))
+        } else {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func addDoneButtonToKeyboard() {
+        let toolBar = UIToolbar(frame: CGRect(x:0.0, y:0.0, width: UIScreen.main.bounds.size.width, height:44.0))
+        let barButton = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(doneButtonTapped(sender:)))
+        let rightSide = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([rightSide, barButton], animated: false)
+        self.notesTextView.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonTapped(sender: Any) {
+        self.notesTextView.endEditing(true)
+        print("UIResponder.keyboardWillShow/HideNotification are removed")
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

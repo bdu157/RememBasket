@@ -24,7 +24,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         let searchText = searchController.searchBar.text!
 
         if !searchText.isEmpty {
-            fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ AND owner = %@", searchText, self.category)
         }
         do {
             fetchRequest.sortDescriptors = sortOnes
@@ -131,6 +131,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
             let note = self.notes[selectedRow.row]
             detailVC.note = note
             detailVC.noteController = self.noteController
+            detailVC.category = self.category
         } else if segue.identifier == "ToAddNote" {
             guard let detailVC = segue.destination as? NoteDetailViewController else {return}
             detailVC.noteController = self.noteController
