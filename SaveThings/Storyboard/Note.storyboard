@@ -186,8 +186,8 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wells Fargo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBC-Sr-JxQ">
-                                                    <rect key="frame" x="88" y="16" width="89.5" height="33"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                                    <rect key="frame" x="88" y="16" width="104" height="33"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -412,6 +412,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsViewInUpdateView" destination="Skx-5A-lQx" id="OLq-T3-Mcu"/>
+                        <outlet property="cancelButton" destination="l7D-jC-VUM" id="qfz-pb-B30"/>
                         <outlet property="createdDateLabel" destination="DwP-rN-Asq" id="xgz-GE-3aF"/>
                         <outlet property="createdLabel" destination="hPu-c9-9ZL" id="NCh-hE-k9q"/>
                         <outlet property="modifiedDateLabel" destination="Vkr-Vo-R7u" id="LL0-jI-Xd1"/>
