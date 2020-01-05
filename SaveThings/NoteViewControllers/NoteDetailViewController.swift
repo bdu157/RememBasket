@@ -7,70 +7,25 @@
 //
 
 import UIKit
-import CoreData
 
-class NoteDetailViewController: UIViewController {
-
+class NoteDetailViewControllers: UIViewController {
     
+    //MARK: Properties and Outlets
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var notesTextView: UITextView!
     
-    var noteController: NoteController?
-    var category: Category!
-    
-    var note: Note? {
-        didSet {
-            self.updateViews()
-        }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //Buttons - not yet implemented
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
 
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var buttonsViewInUpdateView: UIView!
+    
+    //Date Labels - not yet implemented
+    @IBOutlet weak var createdDateLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
+    @IBOutlet weak var modifiedDateLabel: UILabel!
+    @IBOutlet weak var modifiedLabel: UILabel!
+    
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    /* make sure you give note.category = category when creating a new note
-     
-    var category: Category!
-     
-    @IBAction func addPet() {
-     
-     use NoteController
-     
-        let data = PetData()
-        let pet = Pet(entity: Pet.entity(), insertInto: context)
-        pet.name = data.name
-        pet.kind = data.kind
-        pet.dob = data.dob as NSDate
-        pet.owner = friend
-        appDelegate.saveContext()
-        refresh()
-        collectionView.reloadData()
-        }
-    }
-    */
-    @IBAction func addButtonTapped(_ sender: Any) {
-        guard let title = self.titleTextField.text,
-            let content = self.contentTextView.text,
-            let noteController = self.noteController else {return}
-        noteController.createNote(title: title, content: content, owner: self.category, logoViewbgColor: "String")
-        navigationController?.popViewController(animated: true)
-    }
-    
-    private func updateViews() {
-        
-    }
 }
