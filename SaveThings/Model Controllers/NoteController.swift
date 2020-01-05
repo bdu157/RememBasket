@@ -40,10 +40,11 @@ class NoteController {
         saveToPersistentStore()
     }
     
-    func updateNote(for note: Note, changeTitleTo: String, changeContentTo: String, modifiedDate: Date) {
+    func updateNote(for note: Note, changeTitleTo: String, changeContentTo: String, modifiedDate: Date, logoViewbgColor: String) {
         note.title = changeTitleTo
         note.content = changeContentTo
         note.modifiedDate = modifiedDate
+        note.logoViewbgColor = logoViewbgColor
         saveToPersistentStore()
     }
     

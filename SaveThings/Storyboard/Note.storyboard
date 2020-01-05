@@ -233,6 +233,7 @@
                                     <outlet property="previewButton" destination="b6K-Lp-e50" id="rx7-8T-SFF"/>
                                     <outlet property="previewLabel" destination="9zk-UP-FpK" id="Emy-co-AGq"/>
                                     <outlet property="titleLabel" destination="IBC-Sr-JxQ" id="cyE-47-WMl"/>
+                                    <segue destination="sG0-zh-0U8" kind="presentation" identifier="ToUpdateNote" id="YeU-uK-hP8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -259,11 +260,11 @@
             <objects>
                 <viewController id="sG0-zh-0U8" customClass="NoteDetailViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17F-GI-1ry">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" allowsEditingTextAttributes="YES" placeholder="Title (required)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-du-ezo">
-                                <rect key="frame" x="20" y="150" width="374" height="70"/>
+                                <rect key="frame" x="20" y="10" width="374" height="70"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -275,15 +276,18 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="title"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="sG0-zh-0U8" id="V93-xd-kdP"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0N-bi-Hs1">
-                                <rect key="frame" x="20" y="240" width="57" height="26.5"/>
+                                <rect key="frame" x="20" y="100" width="57" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoP-ck-Qgx">
-                                <rect key="frame" x="20" y="276.5" width="374" height="350"/>
+                                <rect key="frame" x="20" y="136.5" width="374" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="rpH-nY-Tgs"/>
@@ -291,9 +295,12 @@
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sG0-zh-0U8" id="mRe-nZ-A5L"/>
+                                </connections>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Skx-5A-lQx">
-                                <rect key="frame" x="80" y="661.5" width="254" height="40"/>
+                                <rect key="frame" x="80" y="521.5" width="254" height="40"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-jC-VUM">
                                         <rect key="frame" x="151.5" y="3" width="82.5" height="34"/>
@@ -301,6 +308,9 @@
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="sG0-zh-0U8" eventType="touchUpInside" id="YgC-2r-fqN"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0W-Vu-f6X">
                                         <rect key="frame" x="123" y="-10" width="8.5" height="60"/>
@@ -315,6 +325,9 @@
                                         <state key="normal" title="Update">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveButtonFromUpdateView:" destination="sG0-zh-0U8" eventType="touchUpInside" id="4e3-pg-bKF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -334,7 +347,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sQP-1T-NE3">
-                                <rect key="frame" x="5" y="721.5" width="374" height="18"/>
+                                <rect key="frame" x="5" y="581.5" width="374" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Modified:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoV-yl-WJC">
                                         <rect key="frame" x="0.0" y="0.0" width="182" height="18"/>
@@ -351,7 +364,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xu6-gJ-8TU">
-                                <rect key="frame" x="5" y="740.5" width="374" height="18"/>
+                                <rect key="frame" x="5" y="600.5" width="374" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPu-c9-9ZL">
                                         <rect key="frame" x="0.0" y="0.0" width="182" height="18"/>
@@ -393,14 +406,19 @@
                     <navigationItem key="navigationItem" title="Add Note" id="5LR-tk-YiG">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="A8o-jD-fYd">
                             <connections>
-                                <action selector="addButtonTapped:" destination="sG0-zh-0U8" id="fxc-Zd-bn8"/>
+                                <action selector="addButtonTapped:" destination="sG0-zh-0U8" id="EZb-Hf-aVs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsViewInUpdateView" destination="Skx-5A-lQx" id="OLq-T3-Mcu"/>
+                        <outlet property="createdDateLabel" destination="DwP-rN-Asq" id="xgz-GE-3aF"/>
+                        <outlet property="createdLabel" destination="hPu-c9-9ZL" id="NCh-hE-k9q"/>
+                        <outlet property="modifiedDateLabel" destination="Vkr-Vo-R7u" id="LL0-jI-Xd1"/>
+                        <outlet property="modifiedLabel" destination="EoV-yl-WJC" id="dwl-b5-cT1"/>
                         <outlet property="notesTextView" destination="RoP-ck-Qgx" id="anl-2c-rCa"/>
                         <outlet property="titleTextField" destination="mhG-du-ezo" id="G4K-Bo-0d7"/>
+                        <outlet property="updateButton" destination="YVT-TS-lPx" id="nbc-95-f1I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NC-iV-9yu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -477,5 +495,8 @@
         <image name="note" width="30" height="30"/>
         <image name="title" width="1600" height="1600"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YeU-uK-hP8"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

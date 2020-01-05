@@ -131,6 +131,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
             let note = self.notes[selectedRow.row]
             detailVC.note = note
             detailVC.noteController = self.noteController
+            detailVC.category = self.category
         } else if segue.identifier == "ToAddNote" {
             guard let detailVC = segue.destination as? NoteDetailViewController else {return}
             detailVC.noteController = self.noteController
