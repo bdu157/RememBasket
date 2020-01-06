@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Speech
 
-class NoteDetailViewController: UIViewController {
+class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //MARK: Properties and Outlets
     @IBOutlet weak var titleTextField: UITextField!
@@ -49,6 +50,42 @@ class NoteDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         //TextField and textview delegates are set up through storyboard
+        
+        //add authorization here
+        speechRecognizer.delegate = self
+        
+        self.speechImageView.alpha = 0.0
+    }
+    
+    
+    // MARK: Speech-to-text recognition authentication
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SFSpeechRecognizer.requestAuthorization {
+            [unowned self] (authStatus) in
+            DispatchQueue.main.async {
+                switch authStatus {
+                case .authorized:
+                    self.recordButton.isEnabled = true
+                    self.recordButton.alpha = 1.0
+                case .denied:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Speech recognition authorization denied")
+                case .restricted:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Not available on this device")
+                case .notDetermined:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Not determined")
+                default:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                }
+            }
+        }
     }
     
     var category: Category!
@@ -122,7 +159,7 @@ class NoteDetailViewController: UIViewController {
             //Created Date
             self.createdDateLabel.text = createdDate
             
-            //Labels UISetUp r
+            //Labels UISetUp
             self.buttonsViewInUpdateView?.isHidden = false
             self.createdDateLabel?.isHidden = false
             self.createdLabel.isHidden = false
@@ -168,6 +205,18 @@ class NoteDetailViewController: UIViewController {
     //ButtonView SetUp
     private func setUpButtonsUIView() {
         self.buttonsViewInUpdateView.shapeButtonsViewInUpdateView()
+        
+        //record button layout
+        self.recordButton.layer.borderColor = UIColor.systemBlue.cgColor
+        self.recordButton.layer.borderWidth = 1.5
+        self.recordButton.layer.backgroundColor = UIColor.clear.cgColor
+        
+        //shadow
+        self.recordButton.layer.shadowOpacity = 0.6
+        self.recordButton.layer.shadowOffset = CGSize.zero
+        self.recordButton.layer.shadowColor = UIColor.darkGray.cgColor
+        self.recordButton.layer.cornerRadius = 15
+        
     }
     
     //MARK: Notes TextView Set Up
@@ -226,6 +275,113 @@ class NoteDetailViewController: UIViewController {
         self.titleTextField.rightViewMode = .always
     }
     
+    
+    // MARK: Speech to text
+    
+    // MARK: Properties
+    
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
+    
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var speechImageView: UIImageView!
+    
+    // MARK: View Controller Lifecycle
+    
+    private func startRecording() throws {
+        
+        // Cancel the previous task if it's running.
+        recognitionTask?.cancel()
+        self.recognitionTask = nil
+        
+        // Configure the audio session for the app.
+        let audioSession = AVAudioSession.sharedInstance()
+        try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        let inputNode = audioEngine.inputNode
+        
+        // Configure the microphone input.
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        // Create and configure the speech recognition request.
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else {
+            print("unable to create recognitionRequest")
+            return
+        }
+        recognitionRequest.shouldReportPartialResults = true
+        
+        // Keep speech recognition data on device
+        if #available(iOS 13, *) {
+            recognitionRequest.requiresOnDeviceRecognition = false
+        }
+        
+        // Create a recognition task for the speech recognition session.
+        // Keep a reference to the task so that it can be canceled.
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            
+            //error is not nil all the time so either (result && error) || (error)
+            if error != nil {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                self.recordButton.isEnabled = true
+                //when there is no speech to convert into text, this will be called and the button will be changed
+                //self.recordButton.setImage(UIImage(named: "speechtotext"), for: [])
+                self.recordButton.setTitleColor(.systemBlue, for: .normal)
+                self.recordButton.setTitle("Speech-to-Text", for: .normal)
+                UIImageView.animate(withDuration: 0.4) {
+                    self.speechImageView.alpha = 0.0
+                }
+                
+                print("nothing to do speech-to-text here")
+            } else {
+                guard let result = result else {return}
+                // Update the text view with the results.
+                
+                self.notesTextView.text = result.bestTranscription.formattedString
+            }
+        }
+        
+        audioEngine.prepare()
+        try audioEngine.start()
+        
+        self.notesTextView.text = "Start your speech"
+    }
+    
+    
+    @IBAction func recordButtonTapped() {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            //this is key to reset
+            self.recognitionTask?.cancel()
+            
+        } else {
+            do {
+                try startRecording()
+                //recordButton.setImage(UIImage(named: "speechtotext"), for: .normal)
+                self.recordButton.setTitleColor(.systemBlue, for: .normal)
+                self.recordButton.setTitle("Stop", for: .normal)
+                UIImageView.animate(withDuration: 0.4) {
+                    self.speechImageView.alpha = 1.0
+                }
+                DispatchQueue.main.async {
+                    self.speechImageView.pulse()
+                }
+            } catch {
+                recordButton.setTitle("Recording Not Available", for: [])
+            }
+        }
+    }
 }
 
 
