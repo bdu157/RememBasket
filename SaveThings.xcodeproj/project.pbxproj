@@ -10,6 +10,7 @@
 		0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */; };
 		0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */; };
 		0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17025523A1199900924B7F /* AuthenticationViewController.swift */; };
+		0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */; };
 		0B2F298923C1CE1600537BC7 /* NoteTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */; };
 		0B2F298B23C1CE6600537BC7 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */; };
 		0B65228D23C1C3C300F8ECDE /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B65228C23C1C3C300F8ECDE /* Password.storyboard */; };
@@ -49,6 +50,7 @@
 		0B08C1E0239FAE970090010A /* Models 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 4.xcdatamodel"; sourceTree = "<group>"; };
 		0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B17025523A1199900924B7F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		0B65228C23C1C3C300F8ECDE /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				0BE431AA238A43EF009B8033 /* UIViewExtension.swift */,
 				0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */,
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
+				0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
 			);
 			path = Extensions;
@@ -339,6 +342,7 @@
 				0B68DD0F239A58BC00E2DD67 /* UIColorExtension.swift in Sources */,
 				0BED43D723B9F434009B4D74 /* Category+Convenience.swift in Sources */,
 				0BED43D923B9F447009B4D74 /* Note+Convenience.swift in Sources */,
+				0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */,
 				0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
