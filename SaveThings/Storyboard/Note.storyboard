@@ -380,9 +380,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIj-it-kNN">
-                                <rect key="frame" x="253" y="238" width="141" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIj-it-kNN">
+                                <rect key="frame" x="268" y="244" width="126" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Speech-to-Text">
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -391,11 +390,14 @@
                                     <action selector="recordButtonTapped" destination="sG0-zh-0U8" eventType="touchUpInside" id="h5n-HR-6vu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="speechtotext" translatesAutoresizingMaskIntoConstraints="NO" id="wpE-us-KsJ">
-                                <rect key="frame" x="200" y="235" width="52" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speechtotext" translatesAutoresizingMaskIntoConstraints="NO" id="wpE-us-KsJ">
+                                <rect key="frame" x="210" y="236" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2hc-ia-Wy4"/>
+                                    <constraint firstAttribute="width" constant="50" id="bzI-t6-jw6"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -414,9 +416,14 @@
                             <constraint firstItem="mBh-N6-ZsN" firstAttribute="trailing" secondItem="mhG-du-ezo" secondAttribute="trailing" constant="20" id="bGQ-gg-8xM"/>
                             <constraint firstItem="mBh-N6-ZsN" firstAttribute="trailing" secondItem="Skx-5A-lQx" secondAttribute="trailing" constant="80" id="dLf-0C-Uag"/>
                             <constraint firstItem="Xu6-gJ-8TU" firstAttribute="top" secondItem="sQP-1T-NE3" secondAttribute="bottom" constant="1" id="eFX-8P-UXx"/>
+                            <constraint firstItem="wpE-us-KsJ" firstAttribute="top" secondItem="mhG-du-ezo" secondAttribute="bottom" constant="16" id="gaz-de-iwO"/>
                             <constraint firstItem="sQP-1T-NE3" firstAttribute="leading" secondItem="mBh-N6-ZsN" secondAttribute="leading" constant="5" id="l0z-60-Y1W"/>
+                            <constraint firstItem="WIj-it-kNN" firstAttribute="top" secondItem="mhG-du-ezo" secondAttribute="bottom" constant="24" id="lew-oD-RYk"/>
+                            <constraint firstItem="mBh-N6-ZsN" firstAttribute="trailing" secondItem="WIj-it-kNN" secondAttribute="trailing" constant="20" id="nAY-wv-1A0"/>
                             <constraint firstItem="mhG-du-ezo" firstAttribute="leading" secondItem="mBh-N6-ZsN" secondAttribute="leading" constant="20" id="nIk-j3-epm"/>
+                            <constraint firstItem="WIj-it-kNN" firstAttribute="leading" secondItem="wpE-us-KsJ" secondAttribute="trailing" constant="8" id="pNX-c5-HRf"/>
                             <constraint firstItem="A0N-bi-Hs1" firstAttribute="top" secondItem="mhG-du-ezo" secondAttribute="bottom" constant="25" id="pW6-av-zdG"/>
+                            <constraint firstItem="WIj-it-kNN" firstAttribute="firstBaseline" secondItem="A0N-bi-Hs1" secondAttribute="firstBaseline" id="zJu-ne-00A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mBh-N6-ZsN"/>
                     </view>
