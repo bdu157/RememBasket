@@ -181,10 +181,10 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.recordButton.layer.backgroundColor = UIColor.clear.cgColor
 
         //shadow
-        self.recordButton.layer.shadowOpacity = 1.0
+        self.recordButton.layer.shadowOpacity = 0.6
         self.recordButton.layer.shadowOffset = CGSize.zero
         self.recordButton.layer.shadowColor = UIColor.darkGray.cgColor
-        self.recordButton.layer.cornerRadius = 15
+         self.recordButton.layer.cornerRadius = 15
 
     }
     
