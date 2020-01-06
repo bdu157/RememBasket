@@ -55,7 +55,7 @@ class PasswordDetailViewController: UIViewController {
         self.setUpTextFields()
         self.addDoneButtonToKeyboard()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         
         //TextFields Delegates are set up through storyboard
     }
