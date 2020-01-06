@@ -11,6 +11,7 @@
 		0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */; };
 		0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B17025523A1199900924B7F /* AuthenticationViewController.swift */; };
 		0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */; };
+		0B1C991223C3460C00FA3AA8 /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C991123C3460C00FA3AA8 /* AppearanceHelper.swift */; };
 		0B2F298923C1CE1600537BC7 /* NoteTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */; };
 		0B2F298B23C1CE6600537BC7 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */; };
 		0B65228D23C1C3C300F8ECDE /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B65228C23C1C3C300F8ECDE /* Password.storyboard */; };
@@ -51,6 +52,7 @@
 		0B08C1E1239FDBA60090010A /* PasswordTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B17025523A1199900924B7F /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		0B1C991123C3460C00FA3AA8 /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceHelper.swift; sourceTree = "<group>"; };
 		0B2F298823C1CE1600537BC7 /* NoteTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		0B2F298A23C1CE6600537BC7 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		0B65228C23C1C3C300F8ECDE /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B1C991323C3461100FA3AA8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0B1C991123C3460C00FA3AA8 /* AppearanceHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0B24AFC72386BBA100EC1C5A /* Later */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 				0B677352237CF13D003C1D53 /* Storyboard */,
 				0BE431AD238A43F9009B8033 /* Extensions */,
 				0BADDC6E23BA493C009502E6 /* Protocols */,
+				0B1C991323C3461100FA3AA8 /* Helpers */,
 				0B666D9B2368720C00B0E72A /* Info.plist */,
 			);
 			path = SaveThings;
@@ -361,6 +372,7 @@
 				0B666D902368720800B0E72A /* SceneDelegate.swift in Sources */,
 				0B95127523B714CD002858A2 /* NoteTableViewController.swift in Sources */,
 				0BF5529623AED496003D473B /* NoteCollectionViewController.swift in Sources */,
+				0B1C991223C3460C00FA3AA8 /* AppearanceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

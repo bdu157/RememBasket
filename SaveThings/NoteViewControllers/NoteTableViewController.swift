@@ -91,7 +91,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     
     //MARK: NavigationBarSetUp
     private func navigationBarSetUp() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true

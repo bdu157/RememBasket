@@ -47,7 +47,7 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.setUpTextField()
         self.addDoneButtonToKeyboard()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         
         //TextField and textview delegates are set up through storyboard
         
