@@ -57,6 +57,37 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.speechImageView.alpha = 0.0
     }
     
+    
+    // MARK: Speech-to-text recognition authentication
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SFSpeechRecognizer.requestAuthorization {
+            [unowned self] (authStatus) in
+            DispatchQueue.main.async {
+                switch authStatus {
+                case .authorized:
+                    self.recordButton.isEnabled = true
+                    self.recordButton.alpha = 1.0
+                case .denied:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Speech recognition authorization denied")
+                case .restricted:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Not available on this device")
+                case .notDetermined:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                    print("Not determined")
+                default:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.alpha = 0.2
+                }
+            }
+        }
+    }
+    
     var category: Category!
     
     var note: Note? {
@@ -174,18 +205,18 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     //ButtonView SetUp
     private func setUpButtonsUIView() {
         self.buttonsViewInUpdateView.shapeButtonsViewInUpdateView()
-    
+        
         //record button layout
         self.recordButton.layer.borderColor = UIColor.systemBlue.cgColor
         self.recordButton.layer.borderWidth = 1.5
         self.recordButton.layer.backgroundColor = UIColor.clear.cgColor
-
+        
         //shadow
         self.recordButton.layer.shadowOpacity = 0.6
         self.recordButton.layer.shadowOffset = CGSize.zero
         self.recordButton.layer.shadowColor = UIColor.darkGray.cgColor
-         self.recordButton.layer.cornerRadius = 15
-
+        self.recordButton.layer.cornerRadius = 15
+        
     }
     
     //MARK: Notes TextView Set Up
@@ -256,9 +287,9 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var speechImageView: UIImageView!
-
+    
     // MARK: View Controller Lifecycle
-
+    
     private func startRecording() throws {
         
         // Cancel the previous task if it's running.
@@ -333,7 +364,7 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
             recognitionRequest?.endAudio()
             //this is key to reset
             self.recognitionTask?.cancel()
-
+            
         } else {
             do {
                 try startRecording()
