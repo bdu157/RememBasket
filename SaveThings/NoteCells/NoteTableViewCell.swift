@@ -18,7 +18,7 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var dividerLabel: UILabel!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var previewButton: UIButton!
-    
+    @IBOutlet weak var shareButton: UIButton!
     
     //MARK: Private Properties
     private var logoLabel: UILabel = UILabel()
@@ -135,7 +135,7 @@ class NoteTableViewCell: UITableViewCell {
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.previewButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.shareButton.bounds.maxX - self.previewButton.bounds.maxX - 15 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {
@@ -161,7 +161,7 @@ class NoteTableViewCell: UITableViewCell {
             }
             
             UILabel.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
-                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.previewButton.bounds.maxX - 23 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
+                self.dividerLabel.center = CGPoint(x: self.cellView.bounds.maxX - self.shareButton.bounds.maxX - self.previewButton.bounds.maxX - 15 - self.dividerLabel.frame.width / 2, y: self.dividerLabel.center.y)
             })
             
             UILabel.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2) {

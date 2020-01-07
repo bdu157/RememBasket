@@ -243,6 +243,7 @@
                                     <outlet property="logoImageView" destination="Gri-PZ-0IH" id="fGH-ou-Jh0"/>
                                     <outlet property="previewButton" destination="b6K-Lp-e50" id="rx7-8T-SFF"/>
                                     <outlet property="previewLabel" destination="9zk-UP-FpK" id="Emy-co-AGq"/>
+                                    <outlet property="shareButton" destination="zBe-Oa-DNL" id="3gx-vJ-adk"/>
                                     <outlet property="titleLabel" destination="IBC-Sr-JxQ" id="cyE-47-WMl"/>
                                     <segue destination="sG0-zh-0U8" kind="presentation" identifier="ToUpdateNote" id="YeU-uK-hP8"/>
                                 </connections>
