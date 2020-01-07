@@ -47,7 +47,8 @@ class NoteTableViewCell: UITableViewCell {
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
         
-        setUpLogoLabelFirstLetter()
+        self.setUpLogoLabelFirstLetter()
+        self.shareButton.setShadowAndColor()
     }
     
     
@@ -174,6 +175,7 @@ class NoteTableViewCell: UITableViewCell {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
+        self.shareButton.shake()
         self.delegate?.showActivityView(for: self)
     }
 }

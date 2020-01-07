@@ -35,6 +35,7 @@
 		0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */; };
 		0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1C239391DF004836B8 /* CoreDataStack.swift */; };
 		0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A212393BF74004836B8 /* StringExtension.swift */; };
+		0BCBF54C23C4C8BE00F96069 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBF54B23C4C8BE00F96069 /* UIButtonExtension.swift */; };
 		0BCC0C2E23B2049400065EC8 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
@@ -80,6 +81,7 @@
 		0BA26A1C239391DF004836B8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 2.xcdatamodel"; sourceTree = "<group>"; };
 		0BA26A212393BF74004836B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		0BCBF54B23C4C8BE00F96069 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */,
 				0BE431AE238A4429009B8033 /* UILabelExtension.swift */,
 				0B1C990F23C326A700FA3AA8 /* UIImageViewExtension.swift */,
+				0BCBF54B23C4C8BE00F96069 /* UIButtonExtension.swift */,
 				0B01BAC923841CCE009B1C6F /* NotificationNameExtension.swift */,
 			);
 			path = Extensions;
@@ -351,6 +354,7 @@
 				0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */,
 				0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */,
 				0B68DD0F239A58BC00E2DD67 /* UIColorExtension.swift in Sources */,
+				0BCBF54C23C4C8BE00F96069 /* UIButtonExtension.swift in Sources */,
 				0BED43D723B9F434009B4D74 /* Category+Convenience.swift in Sources */,
 				0BED43D923B9F447009B4D74 /* Note+Convenience.swift in Sources */,
 				0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */,

@@ -48,7 +48,7 @@ class PasswordTableViewCell: UITableViewCell {
         self.logoImageView.backgroundColor = .clear
         self.logoImageView.layer.cornerRadius = 10
         
-        setUpLogoLabelFirstLetter()
+        self.setUpLogoLabelFirstLetter()
     }
     
     
