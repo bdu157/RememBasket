@@ -172,4 +172,8 @@ class NoteTableViewCell: UITableViewCell {
             self.delegate?.togglePreviewImage(for: self)
         })
     }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        self.delegate?.showActivityView(for: self)
+    }
 }

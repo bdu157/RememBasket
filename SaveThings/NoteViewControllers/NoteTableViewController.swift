@@ -158,4 +158,15 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         self.noteController.toggleImageforPreview(for: note)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    // ActivityController to share notes
+    func showActivityView(for cell: NoteTableViewCell) {
+        guard let noteInput = cell.note?.content,
+            let noteTitle = cell.note?.title else {
+                print("no text found")
+                return
+            }
+            let vc = UIActivityViewController(activityItems: [noteTitle, noteInput], applicationActivities: [])
+            self.present(vc, animated: true, completion: nil)
+        }
 }
