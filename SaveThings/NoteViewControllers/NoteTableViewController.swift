@@ -20,9 +20,9 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let moc = CoreDataStack.shared.mainContext
         fetchRequest.predicate = NSPredicate(format: "owner == %@", category)
-     
+        
         let searchText = searchController.searchBar.text!
-
+        
         if !searchText.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ AND owner = %@", searchText, self.category)
         }
@@ -38,7 +38,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     //private computed property - to determine NSSortDescriptor based on selectedScopeButtonIndex
     private var sortOnes: [NSSortDescriptor] {
         let selectedScopeIndex = searchController.searchBar.selectedScopeButtonIndex
-
+        
         switch selectedScopeIndex {
         case 0:
             return [NSSortDescriptor(key: "title", ascending: true)]
@@ -52,15 +52,15 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     /*
-    add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
-    and once a category is deleted it will remove them all - relational CoreData
- */
- 
+     add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
+     and once a category is deleted it will remove them all - relational CoreData
+     */
+    
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           navigationItem.title = self.category.name
-           self.tableView.reloadData()
-       }
+        super.viewWillAppear(animated)
+        navigationItem.title = self.category.name
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         searchControllerSetUp()
         observeShouldReloadData()
     }
-
+    
     //MARK: Observer for reloadData() - once present modally view is dismiessed
     private func observeShouldReloadData() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .needtoReloadData, object: nil)
@@ -99,12 +99,12 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     
     
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.notes.count
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
         let note = self.notes[indexPath.row]
@@ -112,7 +112,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         cell.note = note
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let note = self.notes[indexPath.row]
@@ -120,9 +120,9 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToUpdateNote" {
@@ -157,5 +157,19 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         let note = self.notes[indexPath.row]
         self.noteController.toggleImageforPreview(for: note)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    // ActivityController to share notes
+    func showActivityView(for cell: NoteTableViewCell) {
+        guard let noteInput = cell.note?.content,
+            let noteTitle = cell.note?.title else {
+                print("no text found")
+                return
+        }
+        let titleString = "Title: "
+        let contentString = "Content: "
+        
+        let vc = UIActivityViewController(activityItems: [titleString, noteTitle, contentString, noteInput], applicationActivities: [])
+        self.present(vc, animated: true, completion: nil)
     }
 }

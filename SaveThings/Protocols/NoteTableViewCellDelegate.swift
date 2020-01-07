@@ -10,4 +10,5 @@ import Foundation
 
 protocol NoteTableViewCellDelegate {
     func togglePreviewImage(for cell: NoteTableViewCell)
+    func showActivityView(for cell: NoteTableViewCell)
 }
