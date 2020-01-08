@@ -25,7 +25,6 @@
 		0B666D9A2368720C00B0E72A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B666D982368720C00B0E72A /* LaunchScreen.storyboard */; };
 		0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */; };
 		0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */; };
-		0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B67735A237D20D8003C1D53 /* transitionAnimation.swift */; };
 		0B68DD0F239A58BC00E2DD67 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */; };
 		0B6E6AA92369C6F900CEAFF5 /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */; };
 		0B85DC9E23883F3600F4C95B /* PasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B85DC9D23883F3600F4C95B /* PasswordTableViewCell.swift */; };
@@ -34,7 +33,6 @@
 		0B95127723B79F09002858A2 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B95127623B79F09002858A2 /* NoteDetailViewController.swift */; };
 		0BA26A1B23938FC9004836B8 /* Password+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */; };
 		0BA26A1D239391DF004836B8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A1C239391DF004836B8 /* CoreDataStack.swift */; };
-		0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA26A212393BF74004836B8 /* StringExtension.swift */; };
 		0BCBF54C23C4C8BE00F96069 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBF54B23C4C8BE00F96069 /* UIButtonExtension.swift */; };
 		0BCC0C2E23B2049400065EC8 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
@@ -71,7 +69,6 @@
 		0B666D9B2368720C00B0E72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B677355237CF17A003C1D53 /* PasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTableViewController.swift; sourceTree = "<group>"; };
 		0B677358237CF23B003C1D53 /* PasswordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordDetailViewController.swift; sourceTree = "<group>"; };
-		0B67735A237D20D8003C1D53 /* transitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transitionAnimation.swift; sourceTree = "<group>"; };
 		0B68DD0D239A3B9C00E2DD67 /* Models 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 3.xcdatamodel"; sourceTree = "<group>"; };
 		0B68DD0E239A58BC00E2DD67 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0B6E6AA82369C6F900CEAFF5 /* PasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
@@ -82,7 +79,6 @@
 		0BA26A1A23938FC9004836B8 /* Password+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Password+Convenience.swift"; sourceTree = "<group>"; };
 		0BA26A1C239391DF004836B8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0BA26A202393B1BE004836B8 /* Models 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 2.xcdatamodel"; sourceTree = "<group>"; };
-		0BA26A212393BF74004836B8 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		0BCBF54B23C4C8BE00F96069 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -117,20 +113,10 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		0B24AFC72386BBA100EC1C5A /* Later */ = {
-			isa = PBXGroup;
-			children = (
-				0B67735A237D20D8003C1D53 /* transitionAnimation.swift */,
-				0BA26A212393BF74004836B8 /* StringExtension.swift */,
-			);
-			path = Later;
-			sourceTree = "<group>";
-		};
 		0B666D812368720800B0E72A = {
 			isa = PBXGroup;
 			children = (
 				0B666D8C2368720800B0E72A /* SaveThings */,
-				0B24AFC72386BBA100EC1C5A /* Later */,
 				0B677351237CF12F003C1D53 /* Resources */,
 				0B666D8B2368720800B0E72A /* Products */,
 			);
@@ -362,7 +348,6 @@
 				0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */,
 				0B677356237CF17A003C1D53 /* PasswordTableViewController.swift in Sources */,
 				0B2F298923C1CE1600537BC7 /* NoteTableViewCellDelegate.swift in Sources */,
-				0BA26A222393BF74004836B8 /* StringExtension.swift in Sources */,
 				0B2F298B23C1CE6600537BC7 /* NoteTableViewCell.swift in Sources */,
 				0B01BACA23841CCE009B1C6F /* NotificationNameExtension.swift in Sources */,
 				0B17025623A1199900924B7F /* AuthenticationViewController.swift in Sources */,
@@ -375,7 +360,6 @@
 				0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */,
 				0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */,
 				0BE497ED23C57A8200ACDD4E /* SettingsTableViewController.swift in Sources */,
-				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,
 				0BED43DB23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift in Sources */,
