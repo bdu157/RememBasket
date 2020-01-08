@@ -42,8 +42,14 @@ class AuthenticationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //show this if auto face id is checked
-        self.autoFaceID()
+        
+        //UserDefault for auto face/ touch ID
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: .shouldRunAutoFaceID) {
+            autoFaceID()
+        } else {
+            return
+        }
     }
     
     //MARK: Enable Auto face ID/ touch ID

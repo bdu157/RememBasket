@@ -19,6 +19,11 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateViews()
+    }
 
     // MARK: - Table view data source
 
@@ -104,8 +109,19 @@ class SettingsTableViewController: UITableViewController {
         present(composer, animated: true)
     }
     
-    @IBAction func autoFaceIDSwitchButtonTapped(_ sender: Any) {
-        
+    @IBAction func autoFaceIDSwitchButtonTapped(_ sender: UISwitch) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(sender.isOn, forKey: .shouldRunAutoFaceID)
+    }
+    
+    //UpdateView - UISwitch
+    private func updateViews() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: .shouldRunAutoFaceID) {
+            self.autoFaceIDSwitchButton.isOn = true
+        } else {
+            self.autoFaceIDSwitchButton.isOn = false
+        }
     }
 }
 
