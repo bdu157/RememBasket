@@ -74,6 +74,9 @@
                                                     <state key="normal" title="Rate US">
                                                         <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="rateUsButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="yd4-12-qg8"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -91,6 +94,9 @@
                                                     <state key="normal" title="Contact">
                                                         <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="contactButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="mbz-DH-vTf"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -104,6 +110,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="ULX-5u-aYq"/>
+                    <connections>
+                        <outlet property="rateUsButton" destination="hww-7t-19p" id="mkh-Gt-tI9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pas-Lb-m9z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

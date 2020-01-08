@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var rateUsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.separatorStyle = .none
     }
 
     // MARK: - Table view data source
@@ -73,4 +75,10 @@ class SettingsTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func rateUsButtonTapped(_ sender: Any) {
+        SKStoreReviewController.requestReview()
+    }
+    @IBAction func contactButtonTapped(_ sender: Any) {
+        
+    }
 }
