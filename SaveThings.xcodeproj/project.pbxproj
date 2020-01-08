@@ -39,6 +39,7 @@
 		0BCC0C2E23B2049400065EC8 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */; };
 		0BE431AB238A43EF009B8033 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AA238A43EF009B8033 /* UIViewExtension.swift */; };
 		0BE431AF238A4429009B8033 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE431AE238A4429009B8033 /* UILabelExtension.swift */; };
+		0BE497ED23C57A8200ACDD4E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE497EC23C57A8200ACDD4E /* SettingsTableViewController.swift */; };
 		0BED43D723B9F434009B4D74 /* Category+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43D623B9F434009B4D74 /* Category+Convenience.swift */; };
 		0BED43D923B9F447009B4D74 /* Note+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43D823B9F447009B4D74 /* Note+Convenience.swift */; };
 		0BED43DB23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BED43DA23BA25B7009B4D74 /* NoteCollectionViewCellDelegate.swift */; };
@@ -85,6 +86,7 @@
 		0BCC0C2D23B2049400065EC8 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		0BE431AA238A43EF009B8033 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		0BE431AE238A4429009B8033 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		0BE497EC23C57A8200ACDD4E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0BED43CD23B9EB6F009B4D74 /* Models 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Models 5.xcdatamodel"; sourceTree = "<group>"; };
 		0BED43D623B9F434009B4D74 /* Category+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Convenience.swift"; sourceTree = "<group>"; };
 		0BED43D823B9F447009B4D74 /* Note+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Convenience.swift"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				0B677357237CF17D003C1D53 /* View Controllers */,
 				0BADDC6B23BA48B4009502E6 /* PasswordViewControllers */,
 				0BADDC6C23BA48CB009502E6 /* NoteViewControllers */,
+				0BE497EB23C57A5100ACDD4E /* SettingsViewControllers */,
 				0B85DC9F23883F3A00F4C95B /* PasswordCells */,
 				0BADDC6D23BA48FE009502E6 /* NoteCells */,
 				0B677352237CF13D003C1D53 /* Storyboard */,
@@ -271,6 +274,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0BE497EB23C57A5100ACDD4E /* SettingsViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BE497EC23C57A8200ACDD4E /* SettingsTableViewController.swift */,
+			);
+			path = SettingsViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -359,6 +370,7 @@
 				0BED43D923B9F447009B4D74 /* Note+Convenience.swift in Sources */,
 				0B1C991023C326A700FA3AA8 /* UIImageViewExtension.swift in Sources */,
 				0B08C1E2239FDBA60090010A /* PasswordTableViewCellDelegate.swift in Sources */,
+				0BE497ED23C57A8200ACDD4E /* SettingsTableViewController.swift in Sources */,
 				0B67735B237D20D8003C1D53 /* transitionAnimation.swift in Sources */,
 				0B677359237CF23B003C1D53 /* PasswordDetailViewController.swift in Sources */,
 				0B65A764239389A500300633 /* Models.xcdatamodeld in Sources */,

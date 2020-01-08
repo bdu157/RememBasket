@@ -80,7 +80,6 @@ class PasswordTableViewController: UITableViewController, NSFetchedResultsContro
     private func searchControllerSetUp() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Password"
-        searchController.searchBar.tintColor = .orange
         searchController.searchBar.scopeButtonTitles = ["A-Z", "Z-A", "Recently Added"]
         searchController.searchResultsUpdater = self
     }

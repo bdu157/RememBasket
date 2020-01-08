@@ -21,14 +21,14 @@ enum AppearanceHelper {
         
         
         //Navigation button color
-        UINavigationBar.appearance().tintColor = .orange
+        UINavigationBar.appearance().tintColor = .systemTeal
         
         //UISearchBar
-        UISearchBar.appearance().tintColor = .orange
+        UISearchBar.appearance().tintColor = .systemTeal
         
         //TabBar
         UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = .orange
+        UITabBar.appearance().tintColor = .systemTeal
     }
     
     static func setWhiteAppearance() {
