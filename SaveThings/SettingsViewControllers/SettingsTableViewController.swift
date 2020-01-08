@@ -12,7 +12,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //self.tableView.separatorStyle = .none
     }
 
     // MARK: - Table view data source
