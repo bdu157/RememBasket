@@ -40,6 +40,39 @@ class AuthenticationViewController: UIViewController {
         setUpButtonUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //UserDefault for auto face/ touch ID
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: .shouldRunAutoFaceID) {
+            autoFaceID()
+        } else {
+            return
+        }
+    }
+    
+    //MARK: Enable Auto face ID/ touch ID
+    private func autoFaceID() {
+        let context:LAContext = LAContext()
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil) {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthentication, localizedReason: "Pleas type device password") { (success, error) in
+                if success {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                        self.performSegue(withIdentifier: "toPasswordTableVC", sender: self)
+                    })
+                    //use userdefault to automatically run this part as soon as the app launches within viewDidLoad - option for auto authentication in Settings Tab
+                    print("good")
+                } else {
+                    print("no authentication")
+                }
+            }
+        } else {
+            print("your device does not support biometrics")
+        }
+    }
+    
     //MARK: Private methods Set Ups
     private func setUpLabels() {
         let labels = [labelS, labelA, labelV, labelE, labelT, labelH, labelI, labelN, labelG, labelSecondS]

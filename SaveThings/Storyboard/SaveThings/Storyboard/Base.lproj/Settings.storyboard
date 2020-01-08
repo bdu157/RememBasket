@@ -1,27 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CKj-u5-WKG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VMU-Yx-30G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Settings-->
-        <scene sceneID="b1o-xw-STK">
+        <scene sceneID="AJa-5N-k8c">
             <objects>
-                <viewController id="CKj-u5-WKG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N2T-Vf-GGl">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VMU-Yx-30G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="RTA-od-zFt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="auh-rq-Cm8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="14Q-4d-QsU" kind="relationship" relationship="rootViewController" id="KQ2-ZZ-Bos"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mXW-Ng-9Ij" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="540"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="n7M-k3-HZH">
+            <objects>
+                <tableViewController id="14Q-4d-QsU" customClass="SettingsTableViewController" customModule="SaveThings" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="vOW-yV-Amr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="lCO-eg-iA0"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="RTA-od-zFt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R28-pe-owM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection headerTitle="Privacy Setting" id="unJ-l3-KMX">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="4hR-n8-caW">
+                                        <rect key="frame" x="20" y="55.5" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4hR-n8-caW" id="Ngd-ib-KXw">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-LI-Onc">
+                                                    <rect key="frame" x="305" y="20" width="51" height="31"/>
+                                                    <color key="onTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="autoFaceIDSwitchButtonTapped:" destination="14Q-4d-QsU" eventType="valueChanged" id="dHv-8j-NRq"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Auto touch ID/ face ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxM-9A-uzd">
+                                                    <rect key="frame" x="20" y="12" width="223" height="46"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VxM-9A-uzd" firstAttribute="leading" secondItem="Ngd-ib-KXw" secondAttribute="leading" constant="20" id="8Ny-c9-C1O"/>
+                                                <constraint firstAttribute="bottom" secondItem="VxM-9A-uzd" secondAttribute="bottom" constant="12" id="D0T-Au-u5t"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ns7-LI-Onc" secondAttribute="bottom" constant="19" id="K25-6B-TXJ"/>
+                                                <constraint firstItem="VxM-9A-uzd" firstAttribute="top" secondItem="Ngd-ib-KXw" secondAttribute="top" constant="12" id="VIR-qg-k8Z"/>
+                                                <constraint firstItem="Ns7-LI-Onc" firstAttribute="top" secondItem="Ngd-ib-KXw" secondAttribute="top" constant="20" id="ZHk-tz-qIv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ns7-LI-Onc" secondAttribute="trailing" constant="20" id="wUe-JW-MgW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Feedback" id="36Y-Lm-1mY">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="ivI-Rg-hwc">
+                                        <rect key="frame" x="20" y="181.5" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ivI-Rg-hwc" id="aZH-7v-A3d">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hww-7t-19p">
+                                                    <rect key="frame" x="20" y="14" width="144" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Rate US">
+                                                        <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="rateUsButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="yd4-12-qg8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="hww-7t-19p" secondAttribute="bottom" constant="14" id="1qO-a4-hOE"/>
+                                                <constraint firstItem="hww-7t-19p" firstAttribute="leading" secondItem="aZH-7v-A3d" secondAttribute="leading" constant="20" id="56a-6q-Rdv"/>
+                                                <constraint firstItem="hww-7t-19p" firstAttribute="top" secondItem="aZH-7v-A3d" secondAttribute="top" constant="14" id="9BU-rT-c2V"/>
+                                                <constraint firstAttribute="trailing" secondItem="hww-7t-19p" secondAttribute="trailing" constant="210" id="ZlF-i8-Ux0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="lAC-uT-ASx">
+                                        <rect key="frame" x="20" y="251.5" width="374" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lAC-uT-ASx" id="Gmx-2B-MuO">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vx-r3-5Ds">
+                                                    <rect key="frame" x="20" y="14" width="144" height="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Email Support">
+                                                        <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="emailSupportButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="TuP-QW-MVu"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="7Vx-r3-5Ds" secondAttribute="trailing" constant="210" id="9Ma-FH-Nyx"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Vx-r3-5Ds" secondAttribute="bottom" constant="14" id="eaO-Ky-5qs"/>
+                                                <constraint firstItem="7Vx-r3-5Ds" firstAttribute="leading" secondItem="Gmx-2B-MuO" secondAttribute="leading" constant="20" id="tDJ-pX-ke6"/>
+                                                <constraint firstItem="7Vx-r3-5Ds" firstAttribute="top" secondItem="Gmx-2B-MuO" secondAttribute="top" constant="14" id="xeb-7q-zAJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="14Q-4d-QsU" id="gsG-i9-2hN"/>
+                            <outlet property="delegate" destination="14Q-4d-QsU" id="1vg-aT-fqM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="ULX-5u-aYq"/>
+                    <connections>
+                        <outlet property="autoFaceIDSwitchButton" destination="Ns7-LI-Onc" id="NVM-L6-dqh"/>
+                        <outlet property="emailSupportButton" destination="7Vx-r3-5Ds" id="UJw-vU-IJJ"/>
+                        <outlet property="rateUsButton" destination="hww-7t-19p" id="mkh-Gt-tI9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pas-Lb-m9z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="378" y="642"/>
+            <point key="canvasLocation" x="1850.7246376811595" y="539.0625"/>
         </scene>
     </scenes>
     <resources>

@@ -84,7 +84,6 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     private func searchControllerSetUp() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Note"
-        searchController.searchBar.tintColor = .orange
         searchController.searchBar.scopeButtonTitles = ["A-Z", "Z-A", "Recently Added"]
         searchController.searchResultsUpdater = self
     }
