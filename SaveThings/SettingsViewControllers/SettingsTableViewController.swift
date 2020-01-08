@@ -14,6 +14,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var rateUsButton: UIButton!
     @IBOutlet weak var emailSupportButton: UIButton!
+    @IBOutlet weak var autoFaceIDSwitchButton: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +103,10 @@ class SettingsTableViewController: UITableViewController {
         
         present(composer, animated: true)
     }
+    
+    @IBAction func autoFaceIDSwitchButtonTapped(_ sender: Any) {
+        
+    }
 }
 
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
@@ -137,7 +142,7 @@ extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     }
     
     private func showNoEmailAlert() {
-        let alert = UIAlertController(title: "No Email Available", message: "Please contact us at dongwoopae@gmail.com", preferredStyle: .alert)
+        let alert = UIAlertController(title: "No Email View Available", message: "Please contact us at dongwoopae@gmail.com", preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(okayAction)
