@@ -43,17 +43,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-LI-Onc">
+                                                    <rect key="frame" x="284" y="19" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable Auto touch ID/ face ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxM-9A-uzd">
-                                                    <rect key="frame" x="20" y="25" width="223" height="21"/>
+                                                    <rect key="frame" x="40" y="29" width="223" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-LI-Onc">
-                                                    <rect key="frame" x="284" y="19" width="49" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -89,13 +89,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vx-r3-5Ds">
-                                                    <rect key="frame" x="46" y="15" width="55" height="39"/>
+                                                    <rect key="frame" x="48" y="15" width="96" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Contact">
+                                                    <state key="normal" title="Email Support">
                                                         <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="contactButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="mbz-DH-vTf"/>
+                                                        <action selector="emailSupportButtonTapped:" destination="14Q-4d-QsU" eventType="touchUpInside" id="TuP-QW-MVu"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -111,6 +111,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="ULX-5u-aYq"/>
                     <connections>
+                        <outlet property="emailSupportButton" destination="7Vx-r3-5Ds" id="UJw-vU-IJJ"/>
                         <outlet property="rateUsButton" destination="hww-7t-19p" id="mkh-Gt-tI9"/>
                     </connections>
                 </tableViewController>
