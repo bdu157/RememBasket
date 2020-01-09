@@ -16,6 +16,8 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     var noteController: NoteController!
     let searchController = UISearchController(searchResultsController: nil)
     
+    
+    //MARK: CoreData - computed property
     var notes: [Note] {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         let moc = CoreDataStack.shared.mainContext
@@ -52,7 +54,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     /*
-     add fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
+     added fetchedResultsController with <Note> that has title and contents inside of NoteTableViewController under one category
      and once a category is deleted it will remove them all - relational CoreData
      */
     
@@ -71,6 +73,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         observeShouldReloadData()
     }
     
+    
     //MARK: Observer for reloadData() - once present modally view is dismiessed
     private func observeShouldReloadData() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh(notification:)), name: .needtoReloadData, object: nil)
@@ -80,6 +83,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         self.tableView.reloadData()
     }
     
+    
     //MARK: SearchController SetUp
     private func searchControllerSetUp() {
         searchController.obscuresBackgroundDuringPresentation = false
@@ -87,6 +91,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         searchController.searchBar.scopeButtonTitles = ["A-Z", "Z-A", "Recently Added"]
         searchController.searchResultsUpdater = self
     }
+    
     
     //MARK: NavigationBarSetUp
     private func navigationBarSetUp() {
@@ -120,6 +125,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         }
     }
     
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -138,6 +144,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         }
     }
     
+    
     //MARK:UISearchResultsUpdating method
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -150,7 +157,9 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         }
     }
     
-    //MARK: Protocol method - one to one communication between cell and NoteTableViewCell (update Object as well)
+    
+    //MARK: Protocol methods - one to one communication between NoteTableView and NoteTableViewCell (update Object as well)
+    //change preview button image
     func togglePreviewImage(for cell: NoteTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {return}
         let note = self.notes[indexPath.row]
@@ -158,7 +167,7 @@ class NoteTableViewController: UITableViewController, NSFetchedResultsController
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
-    // ActivityController to share notes
+    //activityController to share note input
     func showActivityView(for cell: NoteTableViewCell) {
         guard let noteInput = cell.note?.content,
             let noteTitle = cell.note?.title else {

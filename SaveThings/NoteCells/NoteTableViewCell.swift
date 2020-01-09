@@ -20,9 +20,6 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var previewButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
-    //MARK: Private Properties
-    private var logoLabel: UILabel = UILabel()
-    
     let noteController = NoteController()
     
     var note: Note? {
@@ -31,7 +28,12 @@ class NoteTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: Private Properties
+    private var logoLabel: UILabel = UILabel()
+    
+    
     var delegate: NoteTableViewCellDelegate?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

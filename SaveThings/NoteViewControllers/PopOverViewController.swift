@@ -10,15 +10,14 @@ import UIKit
 
 class PopOverViewController: UIViewController {
     
+    
+    //MARK: Properties and Outlets
     @IBOutlet weak var categoryTextField: UITextField!
-
     @IBOutlet weak var addCategoryButton: UIButton!
-    
-    
     
     var noteController: NoteController?
     
-    //Private Properties for textfield
+    //Private properties
     private var categoryLabel: UILabel = UILabel()
     
     override func viewDidLoad() {
@@ -27,6 +26,7 @@ class PopOverViewController: UIViewController {
         self.setUpTextField()
         self.addCategoryButton.tintColor = .black
     }
+    
     
     @IBAction func addCategoryButtonTapped(_ sender: Any) {
         if let newCategoryInput = self.categoryTextField.text,
@@ -39,15 +39,17 @@ class PopOverViewController: UIViewController {
     }
     
     
+    //MARK: Private set up methods - titleTextField, Placeholder, CategoryLeftImage
     private func setUpTextField() {
-        //MARK: Title TextFields Set Up
+        //Title Set up
         categoryTextField.shapeTextField()
+        
         //Placeholder SetUp
         categoryLabel.frame = CGRect(x: 40, y: 15, width: 150, height: 40)
         categoryLabel.setUpPlaceHolderLabels(for: "Category Name")
         self.categoryTextField.addSubview(categoryLabel)
     
-        //Category Image
+        //Category leftImage
         let categoryIcon = UIImage(named: "category")!
         self.categoryTextField.addLeftImage(image: categoryIcon)
     }
