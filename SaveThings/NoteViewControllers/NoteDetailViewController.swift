@@ -11,7 +11,7 @@ import Speech
 
 class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     
-    //MARK: Properties and Outlets
+    //MARK: Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
@@ -47,18 +47,15 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.setUpTextField()
         self.addDoneButtonToKeyboard()
         
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        //TextField and textview delegates are set up through storyboard//
         
-        //TextField and textview delegates are set up through storyboard
-        
-        //add authorization here
         speechRecognizer.delegate = self
         
         self.speechImageView.alpha = 0.0
     }
     
     
-    // MARK: Speech-to-text recognition authentication
+    //MARK: Speech-to-text recognition authentication
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SFSpeechRecognizer.requestAuthorization {
@@ -88,6 +85,8 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+
+    //MARK: Properties
     var category: Category!
     
     var note: Note? {
@@ -98,8 +97,8 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var noteController: NoteController?
     
-    //MARK: Save Button Action
     
+    //MARK: Save Button Action
     @IBAction func addButtonTapped(_ sender: Any) {
         guard let title = self.titleTextField.text else {return}
         
@@ -116,6 +115,7 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
             navigationController?.popViewController(animated: true)
         }
     }
+    
     
     //MARK: Update Button Action on UpdateView
     @IBAction func saveButtonFromUpdateView(_ sender: Any) {
@@ -135,8 +135,8 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
-    //MARK: Cancel Button Action on UpdateView
     
+    //MARK: Cancel Button Action on UpdateView
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -219,6 +219,7 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
+    
     //MARK: Notes TextView Set Up
     //TextView SetUp
     private func setUpNotesTextView() {
@@ -234,6 +235,7 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         notesTextView.layer.shadowOffset = CGSize.zero
         notesTextView.layer.shadowColor = UIColor.darkGray.cgColor
     }
+    
     
     //MARK: TextFields Set Up
     private func setUpTextField() {
@@ -276,10 +278,8 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     
-    // MARK: Speech to text
-    
-    // MARK: Properties
-    
+    // MARK: Speech-to-text
+    // MARK: Properties and Outlets
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -335,7 +335,6 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.recordButton.isEnabled = true
                 //when there is no speech to convert into text, this will be called and the button will be changed
-                //self.recordButton.setImage(UIImage(named: "speechtotext"), for: [])
                 self.recordButton.setTitleColor(.systemBlue, for: .normal)
                 self.recordButton.setTitle("Speech-to-Text", for: .normal)
                 UIImageView.animate(withDuration: 0.4) {
@@ -368,7 +367,6 @@ class NoteDetailViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             do {
                 try startRecording()
-                //recordButton.setImage(UIImage(named: "speechtotext"), for: .normal)
                 self.recordButton.setTitleColor(.systemBlue, for: .normal)
                 self.recordButton.setTitle("Stop", for: .normal)
                 UIImageView.animate(withDuration: 0.4) {
@@ -459,7 +457,7 @@ extension NoteDetailViewController: UITextViewDelegate {
         return true
     }
     
-    //this reacts whenver keyboard appears and disappears
+    //this reacts whenever keyboard appears and disappears
     //make this occur only when textView is selected
     @objc func keyboardWillChange(notification: Notification) {
         print("keyboard did show: \(notification.name.rawValue)")

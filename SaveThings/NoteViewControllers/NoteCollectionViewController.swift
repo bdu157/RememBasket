@@ -11,19 +11,20 @@ import CoreData
 
 class NoteCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, NoteCollectionViewCellDelegate {
     
-    let noteController = NoteController()
-    
+    //MARK: Properties and Outlet
     @IBOutlet weak var addCategoryButton: UIBarButtonItem!
     
     private let leftAndRightPaddings: CGFloat = 8.0
     private let numberOfItem: CGFloat = 3.0
     private let heightAdjustment: CGFloat = 30.0
     
-    //unwindSegue from popover VC
-    @IBAction func unwindToNoteCollectionViewController(_ sender: UIStoryboardSegue) {
-        
-    }
+    let noteController = NoteController()
     
+    //UnwindSegue from popover VC
+    @IBAction func unwindToNoteCollectionViewController(_ sender: UIStoryboardSegue) {}
+    
+    
+    //MARK: CoreData - fetchedResultsController
     var fetchedResultsController: NSFetchedResultsController<Category> {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
@@ -41,14 +42,14 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         
-        
-        //edit
+        //edit button
         navigationItem.leftBarButtonItem = editButtonItem
         installsStandardGestureForInteractiveMovement = true
         
         self.observerShouldShowNewCategory()
     }
     
+    //MARK: Multiple collection cell set up
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         addCategoryButton.isEnabled = !editing
@@ -67,7 +68,7 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     
-    
+    //MARK: Observer for refreshing collectionview for categories
     func observerShouldShowNewCategory() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshViews(notification:)), name: .addCategoryClicked, object: nil)
     }
@@ -106,7 +107,6 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
@@ -120,7 +120,7 @@ class NoteCollectionViewController: UICollectionViewController, NSFetchedResults
     }
     
     
-    //delegate methods
+    //MARK: Delegate methods
     func removeCellAndReload(for cell: NoteCollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: cell) else {return}
         let category = self.fetchedResultsController.object(at: indexPath)

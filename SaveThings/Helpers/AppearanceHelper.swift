@@ -30,15 +30,4 @@ enum AppearanceHelper {
         UITabBar.appearance().barTintColor = .white
         UITabBar.appearance().tintColor = .systemTeal
     }
-    
-    static func setWhiteAppearance() {
-        let textAttributes = [NSAttributedString.Key.foregroundColor: mainColorDarkBlue]
-        UINavigationBar.appearance().titleTextAttributes = textAttributes
-        UINavigationBar.appearance().largeTitleTextAttributes = textAttributes
-        
-        UINavigationBar.appearance().barTintColor = .white
-        
-        UITabBar.appearance().barTintColor = .white
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0.0995137468, green: 0.263354212, blue: 0.4718250036, alpha: 1)
-    }
 }

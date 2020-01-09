@@ -12,6 +12,7 @@ import MessageUI
 
 class SettingsTableViewController: UITableViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var rateUsButton: UIButton!
     @IBOutlet weak var emailSupportButton: UIButton!
     @IBOutlet weak var autoFaceIDSwitchButton: UISwitch!
@@ -25,6 +26,8 @@ class SettingsTableViewController: UITableViewController {
         self.updateViews()
     }
 
+    
+    //MARK: Rate Button action
     @IBAction func rateUsButtonTapped(_ sender: Any) {
         SKStoreReviewController.requestReview()
         self.rateUsButton.shake()
@@ -36,6 +39,7 @@ class SettingsTableViewController: UITableViewController {
         self.showMailComposer()
     }
     
+    //MARK: Email Support
     private func showMailComposer() {
         
         guard MFMailComposeViewController.canSendMail() else {
@@ -51,12 +55,13 @@ class SettingsTableViewController: UITableViewController {
         present(composer, animated: true)
     }
     
+    
+    //MARK: UserDefaults for auto face ID set up
     @IBAction func autoFaceIDSwitchButtonTapped(_ sender: UISwitch) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: .shouldRunAutoFaceID)
     }
     
-    //UpdateView - UISwitch
     private func updateViews() {
         let userDefaults = UserDefaults.standard
         if userDefaults.bool(forKey: .shouldRunAutoFaceID) {
@@ -67,6 +72,7 @@ class SettingsTableViewController: UITableViewController {
     }
 }
 
+//MARK: Extension for Email Support
 extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if let _ = error {

@@ -10,6 +10,7 @@ import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
     
+    //MARK: Properties and Outlets
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
@@ -17,14 +18,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.backgroundColor = UIColor.white.cgColor
         
-        self.layer.cornerRadius = 14.0
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        self.layer.shadowRadius = 14.0
-        self.layer.shadowOpacity = 0.7
-        self.layer.masksToBounds = false
+        self.setUpCellShape()
         
         self.deleteButton.setImage(UIImage(named: "deleteButton"), for: .normal)
         self.editButton.setImage(UIImage(named: "editButton"), for: .normal)
@@ -32,6 +27,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     var delegate: NoteCollectionViewCellDelegate?
     
+    //MARK: Multiple Cells - animations for edit and delete buttons for cell
     var isEditing: Bool = false {
         didSet {
             if self.isEditing {
@@ -73,5 +69,16 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     @IBAction func editButtonTapped(_ sender: Any) {
         delegate?.editAlert(for: self)
+    }
+    
+    //MARK: Setting Up Cell Shape
+    private func setUpCellShape() {
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.layer.cornerRadius = 14.0
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        self.layer.shadowRadius = 14.0
+        self.layer.shadowOpacity = 0.7
+        self.layer.masksToBounds = false
     }
 }
